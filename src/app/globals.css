@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-primary: Impact, "Arial Black", "Arial Bold", sans-serif;
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-primary);
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Image zoom effect for banners */
+.banner-img-container {
+  overflow: hidden;
+}
+.banner-img-container img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.banner-img-container:hover img {
+  transform: scale(1.05);
+}

@@ -15,8 +15,8 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YARIK | CG ARTIST",
-  description: "Portfolio of Yarik, CG Artist & 3D Generalist",
+  title: "LSRSP",
+  description: "Portfolio of LSRSP, CG Artist & 3D Generalist",
 };
 
 export default function RootLayout({

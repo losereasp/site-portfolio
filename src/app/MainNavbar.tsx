@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Magnetic from "./Magnetic";
 
 interface MainNavbarProps {
   lightMode?: boolean;
@@ -31,25 +32,32 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           : "bg-transparent py-8 border-transparent shadow-none"
       }`}
     >
-      <Link href="/" className="font-primary text-2xl md:text-4xl tracking-tight uppercase text-[#FF5F1F] hover:opacity-80 transition-opacity">
-        LSRSP
-      </Link>
+      <Magnetic>
+        <Link href="/" className="font-primary text-2xl md:text-4xl tracking-tight uppercase text-[#FF5F1F] hover:underline underline-offset-8 transition-all">
+          LSRSP
+        </Link>
+      </Magnetic>
       <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight text-[#FF5F1F]">
-        {/* REEL появляется только после скролла */}
-        <a 
-          href="https://vimeo.com/1175696148" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className={`hover:underline underline-offset-8 transition-all duration-500 ${
-            scrolled 
-              ? "opacity-100 translate-y-0 pointer-events-auto" 
-              : "opacity-0 -translate-y-4 pointer-events-none"
-          }`}
-        >
-          REEL
-        </a>
-        <a href="#work" className="hover:underline underline-offset-8 transition-all">WORK</a>
-        <Link href="/about" className="hover:underline underline-offset-8 transition-all">ABOUT</Link>
+        <Magnetic>
+          <a 
+            href="https://vimeo.com/1175696148" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className={`hover:underline underline-offset-8 transition-all duration-500 ${
+              scrolled 
+                ? "opacity-100 translate-y-0 pointer-events-auto" 
+                : "opacity-0 translate-y-4 pointer-events-none"
+            }`}
+          >
+            REEL
+          </a>
+        </Magnetic>
+        <Magnetic>
+          <a href="#work" className="hover:underline underline-offset-8 transition-all">WORK</a>
+        </Magnetic>
+        <Magnetic>
+          <Link href="/about" className="hover:underline underline-offset-8 transition-all">ABOUT</Link>
+        </Magnetic>
       </div>
     </nav>
   );

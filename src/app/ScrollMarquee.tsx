@@ -33,7 +33,7 @@ export default function ScrollMarquee({
       // We animate the inner wrapper from 0 to -50% of its width.
       // Since children are duplicated, -50% is a perfect loop point.
       gsap.to(wrapperRef.current, {
-        xPercent: -50 * direction,
+        xPercent: -25 * direction,
         ease: "none",
         scrollTrigger: {
           trigger: containerRef.current,
@@ -50,19 +50,12 @@ export default function ScrollMarquee({
   return (
     <div ref={containerRef} className={`marquee-container w-full overflow-hidden whitespace-nowrap py-12 md:py-20 border-b border-black/5 ${className}`}>
       <div ref={wrapperRef} className="flex w-max flex-nowrap items-center">
-        {/* We render children twice for a seamless infinite loop during the scrub */}
-        <div className="flex flex-nowrap items-center gap-8 md:gap-16 px-4 md:px-8">
-          {children}
-        </div>
-        <div className="flex flex-nowrap items-center gap-8 md:gap-16 px-4 md:px-8">
-          {children}
-        </div>
-        <div className="flex flex-nowrap items-center gap-8 md:gap-16 px-4 md:px-8">
-          {children}
-        </div>
-        <div className="flex flex-nowrap items-center gap-8 md:gap-16 px-4 md:px-8">
-          {children}
-        </div>
+        {/* We render children 8 times for a seamless infinite loop during the scrub */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="flex flex-nowrap items-center gap-8 md:gap-16 px-4 md:px-8">
+            {children}
+          </div>
+        ))}
       </div>
     </div>
   );

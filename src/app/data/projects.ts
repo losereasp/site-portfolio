@@ -6,7 +6,7 @@ export const PROJECTS_DATA = {
     heroImage: "/frost_core_featured.jpg",
     hoverVideo: "/frost_core_hover_tiny.mp4", // Using optimized video
     beforeImage: "/frost_core_before.webp", // Using optimized WebP
-    afterImage: "/frost_core_after.webp",   // Using optimized WebP
+    afterImage: "/frost_core_after.jpg",   // Restored high-quality JPG
     modelPath: "/generator_site_final.glb",
     assets: [
       "/frost_core_featured.jpg",

@@ -410,7 +410,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                               <video 
                                 src={asset} 
                                 autoPlay 
-                                muted 
+                                muted={isMuted} 
                                 loop 
                                 playsInline 
                                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 

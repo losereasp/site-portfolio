@@ -10,7 +10,7 @@ export const PROJECTS_DATA = {
     modelPath: "/generator_site_final.glb",
     assets: [
       "/frost_core_featured.jpg",
-      "/breakdown_character.mp4",
+      "/frost_core_hover.mp4",
       "/frost_core_detail_4.webp",
       "/frost_core_detail_1.webp",
       "/frost_core_detail_2.webp",

@@ -428,7 +428,10 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                             <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest translate-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
                               isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                             }`}>
-                              Detail Module #{globalIndex + 1}
+                              {asset.includes('detail_4') ? 'Unreal Engine UI' : 
+                               asset.includes('detail_1') ? 'After Effects Compositing' : 
+                               asset.includes('detail_2') ? 'Substance Painter Texturing' : 
+                               `Cinematic Module #${globalIndex + 1}`}
                             </div>
                           )}
 

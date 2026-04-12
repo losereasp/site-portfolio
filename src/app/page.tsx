@@ -125,12 +125,15 @@ const PROJECTS_DATA = {
     software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
     heroImage: "/frost_core_featured.jpg",
     hoverVideo: "/frost_core_hover.mp4",
-    beforeImage: "/cg_abstract_sim_1775891741500.png", // Use same as placeholder for now
-    afterImage: "/cg_abstract_sim_1775891741500.png",
+    beforeImage: "/frost_core_before.png",
+    afterImage: "/frost_core_after.png",
     modelPath: "/generator_site_final.glb",
     assets: [
       "/frost_core_featured.jpg",
       "/breakdown_character.mp4",
+      "/frost_core_detail_4.png",
+      "/frost_core_detail_1.png",
+      "/frost_core_detail_2.png",
       "/cg_nature_1775891782712.png",
       "/cg_scifi_mech_1775891765789.png",
       "/cg_environment_1775891723289.png"

@@ -66,16 +66,16 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
         />
         {/* Before Label */}
         <div className="absolute top-6 left-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest">
-          Wireframe / Clay
+          UNLIT RENDER
         </div>
       </div>
 
       {/* Slider Handle */}
       <div 
-        className="absolute top-0 bottom-0 w-[2px] bg-white z-20 pointer-events-none"
+        className="absolute top-0 bottom-0 w-[2px] bg-white z-30 pointer-events-none"
         style={{ left: `${sliderPosition}%` }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#FF5F1F] flex items-center justify-center border border-black group">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#FF5F1F] flex items-center justify-center border border-black shadow-[0_0_20px_rgba(255,95,31,0.4)]">
            <div className="flex gap-1">
              <div className="w-[1px] h-4 bg-black" />
              <div className="w-[1px] h-4 bg-black" />
@@ -85,8 +85,8 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
       </div>
 
       {/* After Label */}
-      <div className="absolute top-6 right-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest pointer-events-none">
-        Final Render
+      <div className="absolute top-6 right-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest pointer-events-none z-20">
+        LIT RENDER
       </div>
     </div>
   );

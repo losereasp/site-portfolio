@@ -27,7 +27,7 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     }
   };
 
@@ -46,11 +46,9 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
       className={`relative group overflow-hidden rounded-sm cursor-none ${className}`}
     >
       {/* Base Image */}
-      <Image
+      <img
         src={data.heroImage}
         alt={data.title}
-        fill
-        priority={isFeatured}
         className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
       />
 
@@ -163,27 +161,27 @@ export default function Home() {
         <div className="px-[18px] w-full flex flex-col gap-[2px]">
 
           {/* Block 1: Featured — 100% width */}
-          <ProjectCard 
-            id="frost-core" 
-            data={PROJECTS_DATA["frost-core"]} 
-            onClick={openProject} 
-            className="w-full h-[60vh] md:h-[80vh]" 
-            isFeatured 
+          <ProjectCard
+            id="frost-core"
+            data={PROJECTS_DATA["frost-core"]}
+            onClick={openProject}
+            className="w-full h-[60vh] md:h-[80vh]"
+            isFeatured
           />
 
           {/* Block 2 & 3: Secondary — 60/40 split */}
           <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
-            <ProjectCard 
-              id="cyber-alley" 
-              data={PROJECTS_DATA["cyber-alley"]} 
-              onClick={openProject} 
-              className="flex-[6] h-full" 
+            <ProjectCard
+              id="cyber-alley"
+              data={PROJECTS_DATA["cyber-alley"]}
+              onClick={openProject}
+              className="flex-[6] h-full"
             />
-            <ProjectCard 
-              id="mech-drone" 
-              data={PROJECTS_DATA["mech-drone"]} 
-              onClick={openProject} 
-              className="flex-[4] h-full" 
+            <ProjectCard
+              id="mech-drone"
+              data={PROJECTS_DATA["mech-drone"]}
+              onClick={openProject}
+              className="flex-[4] h-full"
             />
           </div>
         </div>
@@ -214,12 +212,7 @@ export default function Home() {
                 { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
               ].map((item, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer bg-black/5">
-                  <Image 
-                    src={item.src} 
-                    alt={item.label}
-                    fill
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} 
-                  />
+                  <img src={item.src} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} alt={item.label} />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="font-mono text-[9px] md:text-[10px] tracking-widest text-white/80 uppercase">{item.label}</p>

@@ -9,12 +9,11 @@ export const PROJECTS_DATA = {
     afterImage: "/frost_core_after.jpg",   // Restored high-quality JPG
     modelPath: "/generator_site_final.glb",
     assets: [
-      "/frost_core_after.jpg",
-      "/frost_core_hover.mp4",
-      "/breakdown_character.mp4",
-      "/frost_core_detail_4.webp",
-      "/frost_core_detail_1.webp",
-      "/frost_core_detail_2.webp",
+      "/frost_core_after.jpg",       // 0: Featured (Top)
+      "/breakdown_character.mp4",    // 1: Cascadeur (Grid Top Left)
+      "/frost_core_detail_4.webp",    // 2: Unreal Engine (Grid Top Right)
+      "/frost_core_detail_1.webp",    // 3: After Effects (Grid Bottom Left)
+      "/frost_core_detail_2.webp",    // 4: Substance Painter (Grid Bottom Right)
       "/wip_placeholder.png",
       "/wip_placeholder.png",
       "/wip_placeholder.png"

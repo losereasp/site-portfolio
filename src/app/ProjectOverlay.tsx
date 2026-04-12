@@ -420,19 +420,25 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                               <div className={`absolute top-4 left-4 z-20 pointer-events-none transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F]" />
-                                  <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">Processing Animation</span>
+                                  <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
+                                    {asset.includes('breakdown_character') ? 'Animation Core' : 'Processing Stream'}
+                                  </span>
                                 </div>
-                                <p className="font-mono text-[10px] text-white uppercase font-bold tracking-widest pl-3.5 drop-shadow-md">Cascadeur Character Animation</p>
+                                <p className="font-mono text-[10px] text-white uppercase font-bold tracking-widest pl-3.5 drop-shadow-md">
+                                  {asset.includes('breakdown_character') ? 'Cascadeur Technical Breakdown' : 'Technical Module'}
+                                </p>
                               </div>
                             </div>
                           ) : (
-                            <Image 
-                              src={asset} 
-                              alt={`Asset ${globalIndex+2}`} 
-                              fill
-                              sizes="(max-width: 768px) 100vw, 50vw"
-                              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
-                            />
+                            <div className="relative w-full h-full">
+                              <Image 
+                                src={asset} 
+                                alt={`Asset ${globalIndex+2}`} 
+                                fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                              />
+                            </div>
                           )}
                           
                           {/* Expand Affordance Overlay */}
@@ -449,16 +455,15 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                           
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 duration-500" />
                           
-                          {!isVideo && (
-                            <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest translate-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
-                              isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
-                            }`}>
-                              {asset.includes('detail_4') ? 'Unreal Engine UI' : 
-                               asset.includes('detail_1') ? 'After Effects Compositing' : 
-                               asset.includes('detail_2') ? 'Substance Painter Texturing' : 
-                               `Cinematic Module #${globalIndex + 1}`}
-                            </div>
-                          )}
+                          <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest transition-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
+                            isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
+                          }`}>
+                            {asset.includes('breakdown_character') ? 'Cascadeur Technical Breakdown' :
+                             asset.includes('detail_4') ? 'Unreal Engine Viewport' : 
+                             asset.includes('detail_1') ? 'After Effects Compositing' : 
+                             asset.includes('detail_2') ? 'Substance Painter Texturing' : 
+                             `Technical Analysis #${globalIndex + 1}`}
+                          </div>
 
                           {/* Expand/Contract Indicator (Small Corner) */}
                           <div className="absolute top-6 right-6 z-40">

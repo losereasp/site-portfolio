@@ -408,11 +408,13 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                           {isVideo ? (
                             <div className="relative w-full h-full">
                               <video 
+                                key={asset}
                                 src={asset} 
                                 autoPlay 
                                 muted={isMuted} 
                                 loop 
                                 playsInline 
+                                onCanPlay={(e) => e.currentTarget.play()}
                                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
                               />
                               {/* Video HUD Overlay with background shadow for readability */}

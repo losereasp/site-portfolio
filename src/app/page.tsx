@@ -134,39 +134,39 @@ const PROJECTS_DATA = {
       "/frost_core_detail_4.png",
       "/frost_core_detail_1.png",
       "/frost_core_detail_2.png",
-      "/cg_nature_1775891782712.png",
-      "/cg_scifi_mech_1775891765789.png",
-      "/cg_environment_1775891723289.png"
+      "/wip_placeholder.png",
+      "/wip_placeholder.png",
+      "/wip_placeholder.png"
     ]
   },
   "cyber-alley": {
-    title: "Frostpunk Environment",
-    category: "02 — Environment",
-    description: "A deep dive into procedural environment generation for a post-apocalyptic frozen landscape. Focus on volumetric shader work and high-fidelity asset scattering in Unreal Engine 5.",
-    software: ["UE5", "Blender", "Substance", "Houdini"],
-    heroImage: "/cg_environment_1775891723289.png",
-    beforeImage: "/cg_nature_1775891782712.png", // Wireframe mock
-    afterImage: "/cg_environment_1775891723289.png",
+    title: "DEV",
+    category: "PROJECT UNDER DEVELOPMENT",
+    description: "I'm currently preparing the case study and capturing final high-fidelity renders for this work. Detail breakdown and technical overview will be available soon.",
+    software: ["UE5", "Work in Progress"],
+    heroImage: "/wip_placeholder.png",
+    beforeImage: "/wip_placeholder.png", // Wireframe mock
+    afterImage: "/wip_placeholder.png",
     assets: [
-      "/cg_environment_1775891723289.png",
-      "/cg_scifi_mech_1775891765789.png",
-      "/cg_nature_1775891782712.png",
-      "/cg_abstract_sim_1775891741500.png"
+      "/wip_placeholder.png",
+      "/wip_placeholder.png",
+      "/wip_placeholder.png",
+      "/wip_placeholder.png"
     ]
   },
   "mech-drone": {
-    title: "Mech Drone",
-    category: "03 — Modeling",
-    description: "Hard-surface drone concept. Clean edge-flow modeling with PBR texturing and dramatic studio lighting for high-end cinematic production.",
-    software: ["C4D", "Octane", "Hard Surface", "PBR"],
-    heroImage: "/cg_scifi_mech_1775891765789.png",
-    beforeImage: "/cg_scifi_mech_1775891765789.png",
-    afterImage: "/cg_scifi_mech_1775891765789.png",
+    title: "DEV",
+    category: "PROJECT UNDER DEVELOPMENT",
+    description: "Asset modeling and look-development in progress. A full breakdown of the creation process, including topology and texturing, is coming soon.",
+    software: ["Modeling", "Work in Progress"],
+    heroImage: "/wip_placeholder.png",
+    beforeImage: "/wip_placeholder.png",
+    afterImage: "/wip_placeholder.png",
     assets: [
-      "/cg_scifi_mech_1775891765789.png",
-      "/cg_nature_1775891782712.png",
-      "/cg_abstract_sim_1775891741500.png",
-      "/cg_environment_1775891723289.png"
+      "/wip_placeholder.png",
+      "/wip_placeholder.png",
+      "/wip_placeholder.png",
+      "/wip_placeholder.png"
     ]
   }
 };
@@ -256,12 +256,12 @@ export default function Home() {
           <div className="w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-[2px]">
               {[
-                { src: "/cg_nature_1775891782712.png", label: "Lighting Study" },
-                { src: "/IMG_4117.jpg", label: "Portrait", extra: "grayscale hover:grayscale-0" },
-                { src: "/frost_core_featured.jpg", label: "Frost Core" },
-                { src: "/cg_environment_1775891723289.png", label: "Env. Sketch" },
-                { src: "/cg_scifi_mech_1775891765789.png", label: "Hard Surface" },
-                { src: "/cg_nature_1775891782712.png", label: "Atmosphere" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS", extra: "grayscale hover:grayscale-0" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
               ].map((item, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer bg-black/5">
                   <img src={item.src} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} alt={item.label} />

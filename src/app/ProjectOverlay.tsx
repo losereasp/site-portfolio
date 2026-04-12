@@ -356,11 +356,16 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
             
             {/* 1. PRIMARY FEATURED ASSET (Full Width 16:9) */}
             <div className="relative group overflow-hidden bg-white aspect-video w-full border-b border-black/10">
-              {project.modelPath ? (
+              {isOpen && project.modelPath ? (
                 <AssetViewer modelPath={project.modelPath} />
               ) : (
                 <>
-                  <img src={project.assets[0]} alt="Featured Asset" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image 
+                    src={project.heroImage} 
+                    alt="Featured Asset" 
+                    fill 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all shadow-[inset_0_0_120px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 duration-500" />
                   <div className="absolute bottom-8 left-8 font-mono text-[10px] md:text-[12px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all text-black bg-white px-4 py-1.5 z-10 shadow-xl">
                     Primary Component Structure

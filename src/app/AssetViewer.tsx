@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useLayoutEffect } from "react";
+import React, { Suspense, useLayoutEffect, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -55,6 +55,13 @@ function Loader() {
 }
 
 export default function AssetViewer({ modelPath }: AssetViewerProps) {
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+    return () => setHasMounted(false);
+  }, []);
+
   return (
     <div
       className="relative bg-[#0a0a0a] group/viewer overflow-hidden"
@@ -69,65 +76,67 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
         <p className="font-mono text-[8px] text-white/40 uppercase tracking-widest pl-4">Minimalist Geometry // Ambient Occlusion</p>
       </div>
 
-      <Canvas
-        shadows
-        dpr={[1, 2]}
-        gl={{ powerPreference: "high-performance", antialias: true }}
-        camera={{ position: [40, 50, 40], fov: 40 }}
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-      >
-        <Environment preset="city" />
-        <ambientLight intensity={0.25} />
-        <spotLight 
-          position={[30, 40, 30]} 
-          angle={0.35} 
-          penumbra={1} 
-          intensity={1.5} 
-          castShadow 
-          color="#d0e0ff" 
-          shadow-bias={-0.0001}
-        />
-        <directionalLight 
-          position={[-20, 10, -30]} 
-          intensity={3} 
-          color="#ffccaa" 
-        />
-        <gridHelper args={[100, 50, 0x222222, 0x111111]} position={[0, -0.01, 0]} />
-        <ContactShadows
-          position={[0, -0.02, 0]}
-          opacity={0.4}
-          scale={40}
-          blur={2.5}
-          far={10}
-          resolution={512}
-          color="#000000"
-        />
-        <Suspense fallback={<Loader />}>
-          <group scale={0.4} position={[0, 0, 0]}>
-            <Model url={modelPath} />
-          </group>
-        </Suspense>
-        <EffectComposer enableNormalPass={false} multisampling={8}>
-          <N8AO
-            intensity={1.2}
-            aoRadius={1.5}
-            color="#000000"
-            distanceFalloff={1}
+      {hasMounted && (
+        <Canvas
+          shadows
+          dpr={[1, 2]}
+          gl={{ powerPreference: "high-performance", antialias: true }}
+          camera={{ position: [40, 50, 40], fov: 40 }}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+        >
+          <Environment preset="city" />
+          <ambientLight intensity={0.25} />
+          <spotLight 
+            position={[30, 40, 30]} 
+            angle={0.35} 
+            penumbra={1} 
+            intensity={1.5} 
+            castShadow 
+            color="#d0e0ff" 
+            shadow-bias={-0.0001}
           />
-          <Bloom luminanceThreshold={1.2} intensity={0.2} levels={9} mipmapBlur />
-          <Vignette eskil={false} offset={0.1} darkness={1.1} />
-        </EffectComposer>
-        <OrbitControls
-          makeDefault
-          autoRotate
-          autoRotateSpeed={0.3}
-          minDistance={10}
-          maxDistance={400}
-          target={[0, 5, 0]} 
-          enableDamping={true}
-          dampingFactor={0.05}
-        />
-      </Canvas>
+          <directionalLight 
+            position={[-20, 10, -30]} 
+            intensity={3} 
+            color="#ffccaa" 
+          />
+          <gridHelper args={[100, 50, 0x222222, 0x111111]} position={[0, -0.01, 0]} />
+          <ContactShadows
+            position={[0, -0.02, 0]}
+            opacity={0.4}
+            scale={40}
+            blur={2.5}
+            far={10}
+            resolution={512}
+            color="#000000"
+          />
+          <Suspense fallback={<Loader />}>
+            <group scale={0.4} position={[0, 0, 0]}>
+              <Model url={modelPath} />
+            </group>
+          </Suspense>
+          <EffectComposer enableNormalPass={false} multisampling={8}>
+            <N8AO
+              intensity={1.2}
+              aoRadius={1.5}
+              color="#000000"
+              distanceFalloff={1}
+            />
+            <Bloom luminanceThreshold={1.2} intensity={0.2} levels={9} mipmapBlur />
+            <Vignette eskil={false} offset={0.1} darkness={1.1} />
+          </EffectComposer>
+          <OrbitControls
+            makeDefault
+            autoRotate
+            autoRotateSpeed={0.3}
+            minDistance={10}
+            maxDistance={400}
+            target={[0, 5, 0]} 
+            enableDamping={true}
+            dampingFactor={0.05}
+          />
+        </Canvas>
+      )}
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.9)]" />
     </div>
   );

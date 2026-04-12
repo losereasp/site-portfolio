@@ -426,9 +426,6 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                     {asset.includes('breakdown_character') ? 'Character animation' : 'Processing Stream'}
                                   </span>
                                 </div>
-                                <p className="font-mono text-[10px] text-white uppercase font-bold tracking-widest pl-3.5 drop-shadow-md">
-                                  {asset.includes('breakdown_character') ? 'Cascadeur Technical Breakdown' : 'Technical Module'}
-                                </p>
                               </div>
                             </div>
                           ) : (

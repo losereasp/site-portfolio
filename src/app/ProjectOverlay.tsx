@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import Magnetic from "./Magnetic";
@@ -30,6 +30,53 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [volume, setVolume] = useState(0.5);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  const assetRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const prevRects = useRef<Map<number, DOMRect>>(new Map());
+
+  // FLIP Animation Engine - Professional Layout transitions
+  useLayoutEffect(() => {
+    const items = assetRefs.current.filter(Boolean) as HTMLDivElement[];
+    items.forEach((item, i) => {
+      const first = prevRects.current.get(i);
+      if (!first) return;
+
+      const last = item.getBoundingClientRect();
+      
+      const deltaX = first.left - last.left;
+      const deltaY = first.top - last.top;
+      const deltaW = first.width / last.width;
+      const deltaH = first.height / last.height;
+
+      // Kill any current animations to prevent jitter
+      gsap.killTweensOf(item);
+
+      // Invert & Play
+      gsap.from(item, {
+        x: deltaX,
+        y: deltaY,
+        scaleX: deltaW,
+        scaleY: deltaH,
+        duration: 0.9,
+        ease: "expo.out",
+        clearProps: "transform",
+        overwrite: "auto",
+      });
+    });
+  }, [expandedIndex]);
+
+  const handleAssetClick = (i: number) => {
+    // 1. Capture "First" state for all items
+    const rects = new Map<number, DOMRect>();
+    assetRefs.current.forEach((ref, index) => {
+      if (ref) rects.set(index, ref.getBoundingClientRect());
+    });
+    prevRects.current = rects;
+
+    // 2. Update state to trigger re-layout
+    setExpandedIndex(expandedIndex === i ? null : i);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -290,33 +337,114 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
             <div className="flex-1 h-[2px] bg-black/10" />
           </div>
 
-          {/* Hybrid Bento Grid: 1 big, 3 small */}
-          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-[1px] bg-black/10 border border-black overflow-hidden">
-            {/* Big item (2x2) - Now 3D Viewer if available */}
-            <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-white border-r border-black/10 aspect-square">
+          {/* Cinematic Gallery Layout */}
+          <div className="flex flex-col gap-[1px] bg-black/10 border border-black overflow-hidden">
+            
+            {/* 1. PRIMARY FEATURED ASSET (Full Width 16:9) */}
+            <div className="relative group overflow-hidden bg-white aspect-video w-full border-b border-black/10">
               {project.modelPath ? (
                 <AssetViewer modelPath={project.modelPath} />
               ) : (
                 <>
-                  <img src={project.assets[0]} alt="Asset 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
-                  <div className="absolute bottom-6 left-6 font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all text-black bg-white px-3 py-1">
-                    Main Structure Module
+                  <img src={project.assets[0]} alt="Featured Asset" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all shadow-[inset_0_0_120px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 duration-500" />
+                  <div className="absolute bottom-8 left-8 font-mono text-[10px] md:text-[12px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all text-black bg-white px-4 py-1.5 z-10 shadow-xl">
+                    Primary Component Structure
                   </div>
                 </>
               )}
             </div>
             
-            {/* Small items */}
-            {project.assets.slice(1, 4).map((asset, i) => (
-              <div key={i} className="relative group overflow-hidden bg-white border-b border-black/10 aspect-square">
-                <img src={asset} alt={`Asset ${i+2}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
-                <div className="absolute bottom-4 left-4 font-mono text-[8px] md:text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all text-black bg-white px-2 py-0.5">
-                  Prop #{i + 2}
-                </div>
-              </div>
-            ))}
+            {/* 2. SECONDARY ASSETS GRID (Row-Grouped Expandable Accordion) */}
+            <div className="flex flex-col gap-[1px]">
+              {[0, 2].map((startIndex) => {
+                const rowAssets = project.assets.slice(1 + startIndex, 1 + startIndex + 2);
+                if (rowAssets.length === 0) return null;
+
+                return (
+                  <div key={startIndex} className="flex flex-wrap w-full gap-[1px]">
+                    {rowAssets.map((asset, subIndex) => {
+                      const globalIndex = startIndex + subIndex;
+                      const isVideo = asset.endsWith('.mp4') || asset.endsWith('.webm');
+                      const isExpanded = expandedIndex === globalIndex;
+                      const isDisplaced = expandedIndex !== null && !isExpanded;
+                      
+                      return (
+                        <div 
+                          key={globalIndex} 
+                          ref={el => { assetRefs.current[globalIndex] = el; }}
+                          className={`relative group overflow-hidden bg-white aspect-video border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden ${
+                            isExpanded ? 'w-full z-20 order-[-1]' : 'w-full md:w-[calc(50%-0.5px)] z-10 order-0'
+                          } ${isDisplaced ? 'opacity-40 grayscale-[0.5]' : 'opacity-100 grayscale-0'}`}
+                          onClick={() => handleAssetClick(globalIndex)}
+                          style={{ transformOrigin: "0 0" }}
+                        >
+                          {/* Scanner Effect (Video Only) */}
+                          {isVideo && !isExpanded && (
+                            <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none">
+                              <div className="animate-scan" />
+                            </div>
+                          )}
+
+                          {isVideo ? (
+                            <div className="relative w-full h-full">
+                              <video 
+                                src={asset} 
+                                autoPlay 
+                                muted 
+                                loop 
+                                playsInline 
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
+                              />
+                              {/* Video HUD Overlay with background shadow for readability */}
+                              <div className={`absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
+                              <div className={`absolute top-4 left-4 z-20 pointer-events-none transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
+                                <div className="flex items-center gap-2 mb-1">
+                                  <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F]" />
+                                  <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">Processing Animation</span>
+                                </div>
+                                <p className="font-mono text-[10px] text-white uppercase font-bold tracking-widest pl-3.5 drop-shadow-md">Cascadeur Character Animation</p>
+                              </div>
+                            </div>
+                          ) : (
+                            <img src={asset} alt={`Asset ${globalIndex+2}`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                          )}
+                          
+                          {/* Expand Affordance Overlay */}
+                          {!isExpanded && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 z-30">
+                              <div className="flex flex-col items-center gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <div className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center backdrop-blur-md bg-white/5">
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" className="w-6 h-6"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                                </div>
+                                <span className="font-mono text-[10px] text-white uppercase tracking-[0.4em] font-bold">[ Click to Expand ]</span>
+                              </div>
+                            </div>
+                          )}
+                          
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all shadow-[inset_0_0_80px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 duration-500" />
+                          
+                          {!isVideo && (
+                            <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest translate-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
+                              isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
+                            }`}>
+                              Detail Module #{globalIndex + 1}
+                            </div>
+                          )}
+
+                          {/* Expand/Contract Indicator (Small Corner) */}
+                          <div className="absolute top-6 right-6 z-40">
+                            <div className={`transition-all duration-500 border border-white/20 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center h-8 w-8 text-white ${isExpanded ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+                               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

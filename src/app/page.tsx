@@ -130,6 +130,7 @@ const PROJECTS_DATA = {
     modelPath: "/generator_site_final.glb",
     assets: [
       "/frost_core_featured.jpg",
+      "/breakdown_character.mp4",
       "/cg_nature_1775891782712.png",
       "/cg_scifi_mech_1775891765789.png",
       "/cg_environment_1775891723289.png"

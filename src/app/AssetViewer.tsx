@@ -113,7 +113,7 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
         {/* Rim Light - Warm/Orange tone for "volume" separation */}
         <directionalLight 
           position={[-20, 10, -30]} 
-          intensity={6} // Increased for a more dramatic pop
+          intensity={3} 
           color="#ffccaa" 
         />
 

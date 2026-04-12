@@ -9,7 +9,9 @@ import ViewCursor from "./ViewCursor";
 import ScrollToTop from "./ScrollToTop";
 import ScrollMarquee from "./ScrollMarquee";
 import ProjectOverlay from "./ProjectOverlay";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import Image from "next/image";
+import { PROJECTS_DATA } from "./data/projects";
 
 // --- Project Card Component ---
 interface ProjectCardProps {
@@ -44,9 +46,11 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
       className={`relative group overflow-hidden rounded-sm cursor-none ${className}`}
     >
       {/* Base Image */}
-      <img
+      <Image
         src={data.heroImage}
         alt={data.title}
+        fill
+        priority={isFeatured}
         className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
       />
 
@@ -116,60 +120,6 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
 }
 
 // --- End Project Card Component ---
-
-// Project Data mocking
-const PROJECTS_DATA = {
-  "frost-core": {
-    title: "FROST CORE",
-    description: "My debut project in Unreal Engine 5, created as part of my learning journey. The work is inspired by the grim atmosphere and aesthetic of Frostpunk. In this scene, I focused on building a dense cinematic environment and mastering high-contrast lighting.",
-    software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
-    heroImage: "/frost_core_featured.jpg",
-    hoverVideo: "/frost_core_hover.mp4",
-    beforeImage: "/frost_core_before.png",
-    afterImage: "/frost_core_after.png",
-    modelPath: "/generator_site_final.glb",
-    assets: [
-      "/frost_core_featured.jpg",
-      "/breakdown_character.mp4",
-      "/frost_core_detail_4.png",
-      "/frost_core_detail_1.png",
-      "/frost_core_detail_2.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
-    ]
-  },
-  "cyber-alley": {
-    title: "DEV",
-    category: "PROJECT UNDER DEVELOPMENT",
-    description: "I'm currently preparing the case study and capturing final high-fidelity renders for this work. Detail breakdown and technical overview will be available soon.",
-    software: ["UE5", "Work in Progress"],
-    heroImage: "/wip_placeholder.png",
-    beforeImage: "/wip_placeholder.png", // Wireframe mock
-    afterImage: "/wip_placeholder.png",
-    assets: [
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
-    ]
-  },
-  "mech-drone": {
-    title: "DEV",
-    category: "PROJECT UNDER DEVELOPMENT",
-    description: "Asset modeling and look-development in progress. A full breakdown of the creation process, including topology and texturing, is coming soon.",
-    software: ["Modeling", "Work in Progress"],
-    heroImage: "/wip_placeholder.png",
-    beforeImage: "/wip_placeholder.png",
-    afterImage: "/wip_placeholder.png",
-    assets: [
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
-    ]
-  }
-};
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -264,7 +214,12 @@ export default function Home() {
                 { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
               ].map((item, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer bg-black/5">
-                  <img src={item.src} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} alt={item.label} />
+                  <Image 
+                    src={item.src} 
+                    alt={item.label}
+                    fill
+                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} 
+                  />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <p className="font-mono text-[9px] md:text-[10px] tracking-widest text-white/80 uppercase">{item.label}</p>

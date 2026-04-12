@@ -4,7 +4,21 @@ import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import Magnetic from "./Magnetic";
-import AssetViewer from "./AssetViewer";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
+// Dynamically load the heavy 3D viewer only when the overlay opens
+const AssetViewer = dynamic(() => import("./AssetViewer"), { 
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm z-50">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-12 h-[2px] bg-[#FF5F1F] animate-pulse" />
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#FF5F1F]">Initializing 3D Core...</span>
+      </div>
+    </div>
+  )
+});
 
 interface ProjectOverlayProps {
   isOpen: boolean;
@@ -407,7 +421,13 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                               </div>
                             </div>
                           ) : (
-                            <img src={asset} alt={`Asset ${globalIndex+2}`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+                            <Image 
+                              src={asset} 
+                              alt={`Asset ${globalIndex+2}`} 
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                            />
                           )}
                           
                           {/* Expand Affordance Overlay */}

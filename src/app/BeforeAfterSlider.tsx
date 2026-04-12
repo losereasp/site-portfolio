@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -48,9 +48,12 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
       onTouchMove={onTouchMove}
     >
       {/* After Image (Background) */}
-      <img 
+      <Image 
         src={afterImage} 
         alt="After" 
+        fill
+        sizes="100vw"
+        priority
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
@@ -59,9 +62,12 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
         className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <img 
+        <Image 
           src={beforeImage} 
           alt="Before" 
+          fill
+          sizes="100vw"
+          priority
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Before Label */}

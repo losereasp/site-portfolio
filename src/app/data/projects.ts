@@ -9,7 +9,7 @@ export const PROJECTS_DATA = {
     afterImage: "/frost_core_after.jpg",   // Restored high-quality JPG
     modelPath: "/generator_site_final.glb",
     assets: [
-      "/frost_core_featured.jpg",
+      "/frost_core_after.jpg",
       "/frost_core_hover.mp4",
       "/frost_core_detail_4.webp",
       "/frost_core_detail_1.webp",

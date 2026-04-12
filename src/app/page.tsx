@@ -127,6 +127,7 @@ const PROJECTS_DATA = {
     hoverVideo: "/frost_core_hover.mp4",
     beforeImage: "/cg_abstract_sim_1775891741500.png", // Use same as placeholder for now
     afterImage: "/cg_abstract_sim_1775891741500.png",
+    modelPath: "/generator_site_final.glb",
     assets: [
       "/frost_core_featured.jpg",
       "/cg_nature_1775891782712.png",

@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import BeforeAfterSlider from "./BeforeAfterSlider";
 import Magnetic from "./Magnetic";
+import AssetViewer from "./AssetViewer";
 
 interface ProjectOverlayProps {
   isOpen: boolean;
@@ -17,6 +18,7 @@ interface ProjectOverlayProps {
     afterImage: string;
     assets: string[];
     hoverVideo?: string;
+    modelPath?: string;
   };
 }
 
@@ -281,7 +283,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
       </section>
 
       {/* 4. ASSETS BLOCK (Bento) */}
-      <section className="w-full bg-[#F0F0EE] py-24 md:py-40 px-6 md:px-12">
+      <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
         <div className="flex flex-col gap-12">
           <div className="flex items-center gap-6">
             <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Asset Breakdown</h2>
@@ -290,13 +292,19 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
 
           {/* Hybrid Bento Grid: 1 big, 3 small */}
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-[1px] bg-black/10 border border-black overflow-hidden">
-            {/* Big item (2x2) */}
+            {/* Big item (2x2) - Now 3D Viewer if available */}
             <div className="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-white border-r border-black/10 aspect-square">
-              <img src={project.assets[0]} alt="Asset 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
-              <div className="absolute bottom-6 left-6 font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all text-black bg-white px-3 py-1">
-                Main Structure Module
-              </div>
+              {project.modelPath ? (
+                <AssetViewer modelPath={project.modelPath} />
+              ) : (
+                <>
+                  <img src={project.assets[0]} alt="Asset 1" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
+                  <div className="absolute bottom-6 left-6 font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all text-black bg-white px-3 py-1">
+                    Main Structure Module
+                  </div>
+                </>
+              )}
             </div>
             
             {/* Small items */}
@@ -312,18 +320,6 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
           </div>
         </div>
       </section>
-
-      {/* Footer Spacer inside overlay */}
-      <div className="w-full py-20 text-center border-t border-black/5">
-        <Magnetic>
-          <button 
-            onClick={onClose}
-            className="font-primary text-4xl md:text-6xl hover:text-[#FF5F1F] transition-colors uppercase cursor-pointer px-8 py-4"
-          >
-            Close Case Study
-          </button>
-        </Magnetic>
-      </div>
     </div>
   </div>
 );

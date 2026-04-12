@@ -53,7 +53,7 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           </a>
         </Magnetic>
         <Magnetic>
-          <a href="#work" className="hover:underline underline-offset-8 transition-all">WORK</a>
+          <a href="/#work" className="hover:underline underline-offset-8 transition-all">WORK</a>
         </Magnetic>
         <Magnetic>
           <Link href="/about" className="hover:underline underline-offset-8 transition-all">ABOUT</Link>

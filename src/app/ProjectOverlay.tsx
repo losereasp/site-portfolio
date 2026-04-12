@@ -421,7 +421,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                               <div className={`absolute top-0 left-0 right-0 h-1/3 bg-gradient-to-b from-black/80 via-black/20 to-transparent pointer-events-none transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`} />
                               <div className={`absolute top-4 left-4 z-20 pointer-events-none transition-opacity duration-500 ${isExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
                                 <div className="flex items-center gap-2 mb-1">
-                                  <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[0.5px]" />
+                                  <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
                                     {asset.includes('breakdown_character') ? 'Character animation' : 'Processing Stream'}
                                   </span>

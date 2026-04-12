@@ -90,6 +90,13 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
       <Canvas
         shadows
         dpr={[1, 2]}
+        gl={{ 
+          powerPreference: "high-performance",
+          alpha: true,
+          antialias: true,
+          stencil: false,
+          depth: true
+        }}
         camera={{ position: [40, 50, 40], fov: 40 }}
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
       >

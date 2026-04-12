@@ -11,9 +11,9 @@ export const PROJECTS_DATA = {
     assets: [
       "/frost_core_featured.jpg",
       "/breakdown_character.mp4",
-      "/frost_core_detail_4.png",
-      "/frost_core_detail_1.png",
-      "/frost_core_detail_2.png",
+      "/frost_core_detail_4.webp",
+      "/frost_core_detail_1.webp",
+      "/frost_core_detail_2.webp",
       "/wip_placeholder.png",
       "/wip_placeholder.png",
       "/wip_placeholder.png"

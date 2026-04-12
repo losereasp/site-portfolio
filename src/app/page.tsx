@@ -96,15 +96,15 @@ export default function Home() {
 
         {/* Bento Grid Container - Precision side gaps */}
         <div className="px-[18px] w-full flex flex-col gap-[2px]">
-          
+
           {/* Block 1: Featured — 100% width */}
-          <div 
-            data-view-cursor 
+          <div
+            data-view-cursor
             onClick={() => openProject("abstract-fluid")}
             className="relative w-full h-[60vh] md:h-[80vh] cursor-none group overflow-hidden rounded-sm"
           >
             <img src="/cg_abstract_sim_1775891741500.png" alt="Abstract Fluid" className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" />
-            
+
             <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-10 transition-opacity duration-300 group-hover:opacity-0">
               <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2">01 — Featured</p>
               <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white">Abstract Fluid</h3>
@@ -129,10 +129,10 @@ export default function Home() {
           </div>
 
           {/* Block 2 & 3: Secondary — 60/40 split */}
-          <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{height: "clamp(400px, 70vh, 800px)"}}>
+          <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
             {/* 60% */}
-            <div 
-              data-view-cursor 
+            <div
+              data-view-cursor
               onClick={() => openProject("cyber-alley")}
               className="relative flex-[6] h-full cursor-none group overflow-hidden rounded-sm"
             >
@@ -162,8 +162,8 @@ export default function Home() {
             </div>
 
             {/* 40% */}
-            <div 
-              data-view-cursor 
+            <div
+              data-view-cursor
               onClick={() => openProject("mech-drone")}
               className="relative flex-[4] h-full cursor-none group overflow-hidden rounded-sm"
             >
@@ -240,10 +240,10 @@ export default function Home() {
       <Footer />
 
       {/* Case Study Overlay */}
-      <ProjectOverlay 
-        isOpen={!!selectedProject} 
-        onClose={closeProject} 
-        project={selectedProject || activeData || PROJECTS_DATA["abstract-fluid"]} 
+      <ProjectOverlay
+        isOpen={!!selectedProject}
+        onClose={closeProject}
+        project={selectedProject || activeData || PROJECTS_DATA["abstract-fluid"]}
       />
     </main>
   );

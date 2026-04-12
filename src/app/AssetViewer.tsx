@@ -94,7 +94,7 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
       >
         {/* Environment for soft fill */}
-        <Environment preset="city" intensity={0.1} />
+        <Environment preset="city" />
         
         {/* Cinematic Dual-Tone Lighting */}
         <ambientLight intensity={0.25} />
@@ -137,10 +137,10 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
         </Suspense>
 
         {/* Post-Processing Effects - Balanced Depth */}
-        <EffectComposer disableNormalPass multisampling={8}>
+        <EffectComposer enableNormalPass={false} multisampling={8}>
           <N8AO
             intensity={1.2}
-            radius={1.5}
+            aoRadius={1.5}
             color="#000000"
             distanceFalloff={1}
           />

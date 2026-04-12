@@ -122,7 +122,7 @@ const PROJECTS_DATA = {
   "frost-core": {
     title: "FROST CORE",
     description: "My debut project in Unreal Engine 5, created as part of my learning journey. The work is inspired by the grim atmosphere and aesthetic of Frostpunk. In this scene, I focused on building a dense cinematic environment and mastering high-contrast lighting.",
-    software: ["Unreal Engine"],
+    software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
     heroImage: "/frost_core_featured.jpg",
     hoverVideo: "/frost_core_hover.mp4",
     beforeImage: "/cg_abstract_sim_1775891741500.png", // Use same as placeholder for now

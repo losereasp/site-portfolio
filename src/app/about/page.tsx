@@ -60,8 +60,12 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Contacts & CTA Row */}
-          <div className="mt-auto flex flex-col gap-8">
+            <div className="flex flex-col gap-2 mb-8">
+              <p className="font-mono text-black/50 tracking-widest text-[10px] uppercase font-bold">Direct Contact</p>
+              <a href="mailto:losereasp@gmail.com" className="font-mono text-xl md:text-2xl text-[#FF5F1F] hover:underline underline-offset-8 transition-all">
+                losereasp@gmail.com
+              </a>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4 items-start">
               <Magnetic>
@@ -70,11 +74,11 @@ export default function AboutPage() {
                 </a>
               </Magnetic>
 
-              <Magnetic>
-                <a href="/resume.pdf" target="_blank" className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/20 text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:bg-[#111111] hover:text-white hover:border-[#111111] rounded-[3px] w-full sm:w-auto">
-                  DOWNLOAD RESUME (PDF)
-                </a>
-              </Magnetic>
+              <div className="relative group/resume w-full sm:w-auto">
+                <div className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/10 text-black/30 font-mono text-base md:text-lg font-bold uppercase cursor-not-allowed rounded-[3px] w-full sm:w-auto whitespace-nowrap">
+                  DOWNLOAD RESUME (COMING SOON)
+                </div>
+              </div>
             </div>
             
             <div className="flex gap-6 md:gap-8">

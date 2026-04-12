@@ -4,7 +4,7 @@ export const PROJECTS_DATA = {
     description: "My debut project in Unreal Engine 5, created as part of my learning journey. The work is inspired by the grim atmosphere and aesthetic of Frostpunk. In this scene, I focused on building a dense cinematic environment and mastering high-contrast lighting.",
     software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
     heroImage: "/frost_core_after.jpg",
-    hoverVideo: "/frost_core_hover_tiny.mp4", // Using optimized video
+    hoverVideo: "/frost_core_hover.mp4", // Restored original with sound
     beforeImage: "/frost_core_before.webp", // Using optimized WebP
     afterImage: "/frost_core_after.jpg",   // Restored high-quality JPG
     modelPath: "/generator_site_final.glb",

@@ -60,13 +60,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 mb-8">
-            <p className="font-mono text-black/50 tracking-widest text-[10px] uppercase font-bold">Direct Contact</p>
-            <a href="mailto:losereasp@gmail.com" className="font-mono text-xl md:text-2xl text-[#FF5F1F] hover:underline underline-offset-8 transition-all">
-              losereasp@gmail.com
-            </a>
-          </div>
-          
           <div className="flex flex-col sm:flex-row gap-4 items-start mb-8">
             <Magnetic>
               <a href="mailto:losereasp@gmail.com" className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#FF5F1F] bg-[#FF5F1F] text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-[#FF5F1F] rounded-[3px] w-full sm:w-auto">

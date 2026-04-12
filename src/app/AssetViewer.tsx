@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useLayoutEffect, useState, useEffect } from "react";
+import React, { Suspense, useLayoutEffect, useState, useEffect, memo } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
   OrbitControls,
@@ -54,7 +54,9 @@ function Loader() {
   );
 }
 
-export default function AssetViewer({ modelPath }: AssetViewerProps) {
+// 1. We wrap the entire component in React.memo
+// This prevents re-renders when the parent (ProjectOverlay) state changes (like sound/volume)
+const AssetViewer = memo(function AssetViewer({ modelPath }: AssetViewerProps) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -78,9 +80,15 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
 
       {hasMounted && (
         <Canvas
+          key={modelPath} // Static key ensures the canvas is strictly tied to the model
           shadows
           dpr={[1, 2]}
-          gl={{ powerPreference: "high-performance", antialias: true }}
+          gl={{ 
+            powerPreference: "high-performance", 
+            antialias: true,
+            preserveDrawingBuffer: false, // Helps with memory/context recovery
+            alpha: true 
+          }}
           camera={{ position: [40, 50, 40], fov: 40 }}
           style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
         >
@@ -140,4 +148,9 @@ export default function AssetViewer({ modelPath }: AssetViewerProps) {
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.9)]" />
     </div>
   );
-}
+}, (prevProps, nextProps) => {
+  // Only re-render if the model path itself changes
+  return prevProps.modelPath === nextProps.modelPath;
+});
+
+export default AssetViewer;

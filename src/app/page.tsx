@@ -12,15 +12,15 @@ import ProjectOverlay from "./ProjectOverlay";
 
 // Project Data mocking
 const PROJECTS_DATA = {
-  "abstract-fluid": {
-    title: "Abstract Fluid",
+  "frost-core": {
+    title: "The Frost Core",
     description: "Procedural fluid & glass simulation with hyper-realistic dispersion. Full lookdev pipeline from geometry to final comp using custom Houdini solvers.",
-    software: ["Houdini", "Redshift", "LookDev", "Compositing"],
-    heroImage: "/cg_abstract_sim_1775891741500.png",
+    software: ["Unreal Engine"],
+    heroImage: "/frost_core_featured.jpg",
     beforeImage: "/cg_abstract_sim_1775891741500.png", // Use same as placeholder for now
     afterImage: "/cg_abstract_sim_1775891741500.png",
     assets: [
-      "/cg_abstract_sim_1775891741500.png",
+      "/frost_core_featured.jpg",
       "/cg_nature_1775891782712.png",
       "/cg_scifi_mech_1775891765789.png",
       "/cg_environment_1775891723289.png"
@@ -100,25 +100,25 @@ export default function Home() {
           {/* Block 1: Featured — 100% width */}
           <div
             data-view-cursor
-            onClick={() => openProject("abstract-fluid")}
+            onClick={() => openProject("frost-core")}
             className="relative w-full h-[60vh] md:h-[80vh] cursor-none group overflow-hidden rounded-sm"
           >
-            <img src="/cg_abstract_sim_1775891741500.png" alt="Abstract Fluid" className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" />
+            <img src="/frost_core_featured.jpg" alt="The Frost Core" className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" />
 
             <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-10 transition-opacity duration-300 group-hover:opacity-0">
               <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2">01 — Featured</p>
-              <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white">Abstract Fluid</h3>
+              <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white">The Frost Core</h3>
             </div>
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-12">
               <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#FF5F1F] mb-3">01 — Featured</p>
-                <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white mb-4">Abstract Fluid</h3>
+                <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white mb-4">The Frost Core</h3>
                 <p className="font-mono text-sm leading-relaxed text-white/60 max-w-lg mb-6">
                   Procedural fluid & glass simulation with hyper-realistic dispersion. Full lookdev pipeline from geometry to final comp.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Houdini", "Redshift", "LookDev", "Compositing"].map(tag => (
+                  {["Unreal Engine"].map(tag => (
                     <span key={tag} className="font-mono text-[10px] tracking-widest uppercase px-3 py-1 border border-white/30 text-white/70 rounded-full">
                       {tag}
                     </span>
@@ -214,7 +214,7 @@ export default function Home() {
               {[
                 { src: "/cg_nature_1775891782712.png", label: "Lighting Study" },
                 { src: "/IMG_4117.jpg", label: "Portrait", extra: "grayscale hover:grayscale-0" },
-                { src: "/cg_abstract_sim_1775891741500.png", label: "Fluid Sim" },
+                { src: "/frost_core_featured.jpg", label: "Frost Core" },
                 { src: "/cg_environment_1775891723289.png", label: "Env. Sketch" },
                 { src: "/cg_scifi_mech_1775891765789.png", label: "Hard Surface" },
                 { src: "/cg_nature_1775891782712.png", label: "Atmosphere" },
@@ -243,7 +243,7 @@ export default function Home() {
       <ProjectOverlay
         isOpen={!!selectedProject}
         onClose={closeProject}
-        project={selectedProject || activeData || PROJECTS_DATA["abstract-fluid"]}
+        project={selectedProject || activeData || PROJECTS_DATA["frost-core"]}
       />
     </main>
   );

@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function HeroVideo() {
-  const [opacity, setOpacity] = useState(0.6); // Начальная opacity 0.6 как было в вашем коде
+  const [opacity, setOpacity] = useState(0.6);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,19 @@ export default function HeroVideo() {
       const newOpacity = 0.6 - (progress * 0.6);
       
       setOpacity(newOpacity);
+
+      // Оптимизация производительности: останавливаем декодирование видео, когда оно скрыто из виду
+      if (videoRef.current) {
+        if (scrollY >= vh) {
+          if (!videoRef.current.paused) {
+            videoRef.current.pause();
+          }
+        } else {
+          if (videoRef.current.paused) {
+            videoRef.current.play().catch(() => {});
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -28,6 +42,7 @@ export default function HeroVideo() {
   return (
     <div className="fixed top-0 left-0 w-full h-screen -z-10 bg-black">
       <video 
+        ref={videoRef}
         autoPlay 
         loop 
         muted 

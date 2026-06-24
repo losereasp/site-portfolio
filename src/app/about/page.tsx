@@ -16,7 +16,7 @@ export default function AboutPage() {
         <div className="w-full lg:w-[45%] lg:pt-[25px]">
           <div className="relative w-full aspect-[4/5] rounded-none overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
             <img 
-              src="/IMG_4117.jpg" 
+              src="/IMG_4117.webp" 
               alt="Iaroslav Losereasp" 
               className="object-cover w-full h-full"
             />

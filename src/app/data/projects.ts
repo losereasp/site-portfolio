@@ -15,9 +15,9 @@ export const PROJECTS_DATA = {
       "/frost_core_detail_4.webp",    // 2: Unreal Engine (Grid Top Right)
       "/frost_core_detail_1.webp",    // 3: After Effects (Grid Bottom Left)
       "/frost_core_detail_2.webp",    // 4: Substance Painter (Grid Bottom Right)
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
+      "/wip_placeholder.webp",
+      "/wip_placeholder.webp",
+      "/wip_placeholder.webp"
     ]
   },
   "stanley-bottle": {
@@ -25,7 +25,7 @@ export const PROJECTS_DATA = {
     category: "CGI & 3D MOTION",
     description: "A product visualization and look-development study of the iconic Stanley Tumbler. This project highlights premium material design, high-fidelity light play, and detailed product cinematography.",
     software: ["Cinema 4D", "Redshift", "After Effects"],
-    heroImage: "/stanley_hero.png",
+    heroImage: "/stanley_hero.webp",
     hoverVideo: "/stanley_bottle_showcase.mp4",
     assets: [
       "/breakdown/3.gif",
@@ -39,14 +39,14 @@ export const PROJECTS_DATA = {
       "/breakdown/Screenshot_1.png"
     ],
     styleframes: [
-      "/styleframes/scene_1.jpg",
-      "/styleframes/scene_2.png",
-      "/styleframes/scene_6.png",
-      "/styleframes/scene_7.jpg",
-      "/styleframes/scene_3.png",
-      "/styleframes/scene_8.jpg",
-      "/styleframes/scene_4.png",
-      "/styleframes/scene_5.png"
+      "/styleframes/scene_1.webp",
+      "/styleframes/scene_2.webp",
+      "/styleframes/scene_6.webp",
+      "/styleframes/scene_7.webp",
+      "/styleframes/scene_3.webp",
+      "/styleframes/scene_8.webp",
+      "/styleframes/scene_4.webp",
+      "/styleframes/scene_5.webp"
     ],
     storyboardImage: "/stanley_storyboard.webp"
   },
@@ -55,14 +55,14 @@ export const PROJECTS_DATA = {
     category: "PROJECT UNDER DEVELOPMENT",
     description: "Asset modeling and look-development in progress. A full breakdown of the creation process, including topology and texturing, is coming soon.",
     software: ["Modeling", "Work in Progress"],
-    heroImage: "/wip_placeholder.png",
-    beforeImage: "/wip_placeholder.png",
-    afterImage: "/wip_placeholder.png",
+    heroImage: "/wip_placeholder.webp",
+    beforeImage: "/wip_placeholder.webp",
+    afterImage: "/wip_placeholder.webp",
     assets: [
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
+      "/wip_placeholder.webp",
+      "/wip_placeholder.webp",
+      "/wip_placeholder.webp",
+      "/wip_placeholder.webp"
     ]
   }
 };

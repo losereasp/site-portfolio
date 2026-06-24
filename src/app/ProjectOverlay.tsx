@@ -294,6 +294,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
             <video 
               ref={videoPlayerRef}
               autoPlay 
+              preload="metadata"
               loop 
               muted={isMuted}
               playsInline 
@@ -491,6 +492,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                 key={asset}
                                 src={asset} 
                                 autoPlay 
+                                preload="metadata"
                                 muted={isMuted} 
                                 loop 
                                 playsInline 

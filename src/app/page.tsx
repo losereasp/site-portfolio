@@ -204,12 +204,12 @@ export default function Home() {
           <div className="w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-[2px]">
               {[
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS", extra: "grayscale hover:grayscale-0" },
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.png", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS", extra: "grayscale hover:grayscale-0" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
+                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
               ].map((item, i) => (
                 <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer bg-black/5">
                   <img src={item.src} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} alt={item.label} />

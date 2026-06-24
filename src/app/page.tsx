@@ -172,8 +172,8 @@ export default function Home() {
           {/* Block 2 & 3: Secondary — 60/40 split */}
           <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
             <ProjectCard
-              id="cyber-alley"
-              data={PROJECTS_DATA["cyber-alley"]}
+              id="stanley-bottle"
+              data={PROJECTS_DATA["stanley-bottle"]}
               onClick={openProject}
               className="flex-[6] h-full"
             />

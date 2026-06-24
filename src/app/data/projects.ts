@@ -1,6 +1,7 @@
 export const PROJECTS_DATA = {
   "frost-core": {
     title: "FROST CORE",
+    thematicHeader: "Climate Shift",
     description: "My debut project in Unreal Engine 5, created as part of my learning journey. The work is inspired by the grim atmosphere and aesthetic of Frostpunk. In this scene, I focused on building a dense cinematic environment and mastering high-contrast lighting.",
     software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
     heroImage: "/frost_core_after.jpg",
@@ -19,20 +20,35 @@ export const PROJECTS_DATA = {
       "/wip_placeholder.png"
     ]
   },
-  "cyber-alley": {
-    title: "DEV",
-    category: "PROJECT UNDER DEVELOPMENT",
-    description: "I'm currently preparing the case study and capturing final high-fidelity renders for this work. Detail breakdown and technical overview will be available soon.",
-    software: ["UE5", "Work in Progress"],
-    heroImage: "/wip_placeholder.png",
-    beforeImage: "/wip_placeholder.png",
-    afterImage: "/wip_placeholder.png",
+  "stanley-bottle": {
+    title: "STANLEY BOTTLE",
+    category: "CGI & 3D MOTION",
+    description: "A product visualization and look-development study of the iconic Stanley Tumbler. This project highlights premium material design, high-fidelity light play, and detailed product cinematography.",
+    software: ["Cinema 4D", "Redshift", "After Effects"],
+    heroImage: "/stanley_hero.png",
+    hoverVideo: "/stanley_bottle_showcase.mp4",
     assets: [
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png",
-      "/wip_placeholder.png"
-    ]
+      "/breakdown/3.gif",
+      "/breakdown/4.png",
+      "/breakdown/scene_1_collect.gif",
+      "/breakdown/scene_2_collect+.mp4",
+      "/breakdown/scene_2_collect.mp4",
+      "/breakdown/scene_4_collect.mp4",
+      "/breakdown/scene_5_collect_+1+.mp4",
+      "/breakdown/scene_5_collect_+1.mp4",
+      "/breakdown/Screenshot_1.png"
+    ],
+    styleframes: [
+      "/styleframes/scene_1.jpg",
+      "/styleframes/scene_2.png",
+      "/styleframes/scene_6.png",
+      "/styleframes/scene_7.jpg",
+      "/styleframes/scene_3.png",
+      "/styleframes/scene_8.jpg",
+      "/styleframes/scene_4.png",
+      "/styleframes/scene_5.png"
+    ],
+    storyboardImage: "/stanley_storyboard.webp"
   },
   "mech-drone": {
     title: "DEV",

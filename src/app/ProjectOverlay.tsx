@@ -28,11 +28,15 @@ interface ProjectOverlayProps {
     description: string;
     software: string[];
     heroImage: string;
-    beforeImage: string;
-    afterImage: string;
+    beforeImage?: string;
+    afterImage?: string;
     assets: string[];
     hoverVideo?: string;
     modelPath?: string;
+    styleframes?: string[];
+    storyboardImage?: string;
+    thematicHeader?: string;
+    category?: string;
   };
 }
 
@@ -196,8 +200,14 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
         <img 
           src={project.heroImage} 
           alt={project.title} 
-          className="w-full h-full object-cover opacity-80"
+          className="w-full h-full object-cover opacity-75"
         />
+        
+        {/* Top shadow gradient for header readability */}
+        <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-black/75 to-transparent pointer-events-none z-10" />
+        
+        {/* Bottom shadow gradient for title readability */}
+        <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none z-10" />
         
         {/* Absolute Header Overlay */}
         <div className="absolute top-0 left-0 right-0 p-6 md:p-12 flex justify-end items-center z-20">
@@ -226,7 +236,13 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
           {/* Left: Huge H2 */}
           <div className="md:col-span-12 lg:col-span-7">
             <h2 className="font-primary text-5xl md:text-8xl leading-[0.9] uppercase text-black tracking-normal">
-              Climate Shift:<br />{project.title}
+              {project.thematicHeader ? (
+                <>
+                  {project.thematicHeader}:<br />{project.title}
+                </>
+              ) : (
+                project.category || project.title
+              )}
             </h2>
           </div>
           
@@ -247,6 +263,26 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
           </div>
         </div>
       </section>
+
+      {/* 2.2. STORYBOARD & MOODBOARD BLOCK */}
+      {project.storyboardImage && (
+        <section className="w-full bg-[#F0F0EE] pb-24 px-6 md:px-12">
+          <div className="flex flex-col gap-12">
+            <div className="flex items-center gap-6">
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Storyboard & Moodboard</h2>
+              <div className="flex-1 h-[2px] bg-black/10" />
+            </div>
+            
+            <div className="w-full max-w-[1700px] mx-auto bg-white border border-black/10 shadow-sm rounded-sm overflow-hidden">
+              <img 
+                src={project.storyboardImage} 
+                alt="Storyboard & Moodboard" 
+                className="w-full h-auto object-contain block transition-transform duration-700 hover:scale-[1.01]"
+              />
+            </div>
+          </div>
+        </section>
+      )}
       
       {/* 2.5 CINEMATIC SHOWCASE (UPDATED) */}
       {project.hoverVideo && (
@@ -334,14 +370,64 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
       )}
 
       {/* 3. BREAKDOWN BLOCK (Slider) */}
-      <section className="w-full bg-black">
-        <div className="max-w-[1800px] mx-auto">
-          <BeforeAfterSlider 
-            beforeImage={project.beforeImage}
-            afterImage={project.afterImage}
-          />
-        </div>
-      </section>
+      {project.beforeImage && project.afterImage && (
+        <section className="w-full bg-black">
+          <div className="max-w-[1800px] mx-auto">
+            <BeforeAfterSlider 
+              beforeImage={project.beforeImage}
+              afterImage={project.afterImage}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* 3.5. STYLEFRAMES BLOCK */}
+      {project.styleframes && project.styleframes.length > 0 && (
+        <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 px-6 md:px-12">
+          <div className="flex flex-col gap-12">
+            <div className="flex items-center gap-6">
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Style Frames</h2>
+              <div className="flex-1 h-[2px] bg-black/10" />
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+              {project.styleframes.map((sf, index) => {
+                const isPortrait = sf.includes('scene_9');
+                
+                // Determine label based on file name/path
+                let label = `Scene ${index + 1} Frame`;
+                if (sf.includes('scene_1')) label = 'Scene 1 Frame';
+                else if (sf.includes('scene_2')) label = 'Scene 2 Frame';
+                else if (sf.includes('scene_6')) label = 'Scene 2 Detail Frame';
+                else if (sf.includes('scene_7')) label = 'Scene 2 Detail Frame';
+                else if (sf.includes('scene_3')) label = 'Scene 3 Frame';
+                else if (sf.includes('scene_8')) label = 'Scene 3 Detail Frame';
+                else if (sf.includes('scene_4')) label = 'Scene 4 Frame';
+                else if (sf.includes('scene_5')) label = 'Scene 5 Frame';
+
+                return (
+                  <div 
+                    key={index}
+                    className={`relative group overflow-hidden bg-white ${isPortrait ? 'aspect-[5/8]' : 'aspect-video'} border border-black/10 shadow-sm rounded-sm`}
+                  >
+                    <Image 
+                      src={sf} 
+                      alt={label} 
+                      fill 
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105" 
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                    <div className="absolute bottom-4 left-4 font-mono text-[9px] uppercase tracking-widest text-black bg-white px-2.5 py-1 shadow-md z-10">
+                      {label}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 4. ASSETS BLOCK (Bento) */}
       <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
@@ -354,31 +440,24 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
           {/* Cinematic Gallery Layout */}
           <div className="flex flex-col gap-[1px] bg-black/10 border border-black overflow-hidden">
             
-            {/* 1. PRIMARY FEATURED ASSET (Full Width 16:9) */}
-            <div className="relative group overflow-hidden bg-white aspect-video w-full border-b border-black/10">
-              {isOpen && project.modelPath ? (
+            {/* 1. PRIMARY FEATURED ASSET (Full Width 16:9) — Only rendered if 3D model is present */}
+            {isOpen && project.modelPath && (
+              <div className="relative group overflow-hidden bg-white aspect-video w-full border-b border-black/10">
                 <AssetViewer modelPath={project.modelPath} />
-              ) : (
-                <>
-                  <Image 
-                    src={project.heroImage} 
-                    alt="Featured Asset" 
-                    fill 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-                  />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all shadow-[inset_0_0_120px_rgba(0,0,0,0.1)] opacity-0 group-hover:opacity-100 duration-500" />
-                  <div className="absolute bottom-8 left-8 font-mono text-[10px] md:text-[12px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all text-black bg-white px-4 py-1.5 z-10 shadow-xl">
-                    Primary Component Structure
-                  </div>
-                </>
-              )}
-            </div>
+              </div>
+            )}
             
             {/* 2. SECONDARY ASSETS GRID (Row-Grouped Expandable Accordion) */}
             <div className="flex flex-col gap-[1px]">
-              {[0, 2].map((startIndex) => {
-                const rowAssets = project.assets.slice(1 + startIndex, 1 + startIndex + 2);
-                if (rowAssets.length === 0) return null;
+              {(() => {
+                const sliceStart = project.modelPath ? 1 : 0;
+                const assetsToRender = project.assets.slice(sliceStart);
+                const rowsCount = Math.ceil(assetsToRender.length / 2);
+                
+                return Array.from({ length: rowsCount }).map((_, rowIndex) => {
+                  const startIndex = rowIndex * 2;
+                  const rowAssets = assetsToRender.slice(startIndex, startIndex + 2);
+                  if (rowAssets.length === 0) return null;
 
                 return (
                   <div key={startIndex} className="flex flex-wrap w-full gap-[1px]">
@@ -387,13 +466,14 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                       const isVideo = asset.endsWith('.mp4') || asset.endsWith('.webm');
                       const isExpanded = expandedIndex === globalIndex;
                       const isDisplaced = expandedIndex !== null && !isExpanded;
+                      const isSolo = rowAssets.length === 1;
                       
                       return (
                         <div 
                           key={globalIndex} 
                           ref={el => { assetRefs.current[globalIndex] = el; }}
                           className={`relative group overflow-hidden bg-white aspect-video border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden ${
-                            isExpanded ? 'w-full z-20 order-[-1]' : 'w-full md:w-[calc(50%-0.5px)] z-10 order-0'
+                            isExpanded ? 'w-full z-20 order-[-1]' : isSolo ? 'w-full z-10 order-0' : 'w-full md:w-[calc(50%-0.5px)] z-10 order-0'
                           } ${isDisplaced ? 'opacity-40 grayscale-[0.5]' : 'opacity-100 grayscale-0'}`}
                           onClick={() => handleAssetClick(globalIndex)}
                           style={{ transformOrigin: "0 0" }}
@@ -423,7 +503,8 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
-                                    {asset.includes('breakdown_character') ? 'Character animation' : 'Processing Stream'}
+                                    {asset.includes('breakdown_character') ? 'Character animation' :
+                                     asset.includes('scene_') ? 'C4D Simulation Render' : 'Processing Stream'}
                                   </span>
                                 </div>
                               </div>
@@ -461,6 +542,15 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                              asset.includes('detail_4') ? 'Unreal Engine Viewport' : 
                              asset.includes('detail_1') ? 'After Effects Compositing' : 
                              asset.includes('detail_2') ? 'Substance Painter Texturing' : 
+                             asset.includes('3.gif') ? 'Material macro look-dev loop' :
+                             asset.includes('4.png') ? 'Studio lighting styleframe' :
+                             asset.includes('scene_1_collect') ? 'Scene assembly loop' :
+                             asset.includes('scene_2_collect+') ? 'Motion & camera layout' :
+                             asset.includes('scene_2_collect') ? 'Simulation dynamics' :
+                             asset.includes('scene_4_collect') ? 'Reflection details' :
+                             asset.includes('scene_5_collect_+1+') ? 'Final compositing breakdown' :
+                             asset.includes('scene_5_collect_+1') ? 'Post-processing pass' :
+                             asset.includes('Screenshot_1.png') ? 'Cinema 4D layout snapshot' :
                              `Technical Analysis #${globalIndex + 1}`}
                           </div>
 
@@ -475,7 +565,8 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                     })}
                   </div>
                 );
-              })}
+              })
+              })()}
             </div>
           </div>
         </div>

@@ -14,10 +14,7 @@ export const PROJECTS_DATA = {
       "/breakdown_character.mp4",    // 1: Cascadeur (Grid Top Left)
       "/frost_core_detail_4.webp",    // 2: Unreal Engine (Grid Top Right)
       "/frost_core_detail_1.webp",    // 3: After Effects (Grid Bottom Left)
-      "/frost_core_detail_2.webp",    // 4: Substance Painter (Grid Bottom Right)
-      "/wip_placeholder.webp",
-      "/wip_placeholder.webp",
-      "/wip_placeholder.webp"
+      "/frost_core_detail_2.webp"     // 4: Substance Painter (Grid Bottom Right)
     ]
   },
   "stanley-bottle": {

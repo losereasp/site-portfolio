@@ -49,6 +49,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
   const [isMuted, setIsMuted] = useState(true);
   const [volume, setVolume] = useState(0.5);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [activeLightbox, setActiveLightbox] = useState<string | null>(null);
 
   const assetRefs = useRef<(HTMLDivElement | null)[]>([]);
   const prevRects = useRef<Map<number, DOMRect>>(new Map());
@@ -83,6 +84,17 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
       });
     });
   }, [expandedIndex]);
+
+  // Listen for Escape key to close Lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveLightbox(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const handleAssetClick = (i: number) => {
     // 1. Capture "First" state for all items
@@ -409,7 +421,8 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                 return (
                   <div 
                     key={index}
-                    className={`relative group overflow-hidden bg-white ${isPortrait ? 'aspect-[5/8]' : 'aspect-video'} border border-black/10 shadow-sm rounded-sm`}
+                    className={`relative group overflow-hidden bg-white ${isPortrait ? 'aspect-[5/8]' : 'aspect-video'} border border-black/10 shadow-sm rounded-sm cursor-zoom-in`}
+                    onClick={() => setActiveLightbox(sf)}
                   >
                     <Image 
                       src={sf} 
@@ -574,6 +587,37 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
         </div>
       </section>
     </div>
+
+    {/* Lightbox Fullscreen Modal */}
+    {activeLightbox && (
+      <div 
+        className="fixed inset-0 bg-black/95 backdrop-blur-md z-[100] flex items-center justify-center cursor-zoom-out select-none"
+        onClick={() => setActiveLightbox(null)}
+      >
+        {/* Close Button */}
+        <button 
+          className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors cursor-pointer p-2 z-[110]"
+          onClick={() => setActiveLightbox(null)}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-8 h-8">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        {/* Image Container */}
+        <div 
+          className="relative w-full h-full max-w-[92vw] max-h-[92vh] flex items-center justify-center animate-lightbox"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <img 
+            src={activeLightbox} 
+            alt="Style Frame Fullscreen" 
+            className="max-w-full max-h-full object-contain shadow-2xl border border-white/5" 
+          />
+        </div>
+      </div>
+    )}
   </div>
 );
 }

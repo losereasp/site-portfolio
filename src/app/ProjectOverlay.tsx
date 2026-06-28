@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import BeforeAfterSlider from "./BeforeAfterSlider";
+import BeforeAfterVideoSlider from "./BeforeAfterVideoSlider";
 import Magnetic from "./Magnetic";
 import Image from "next/image";
 import dynamic from "next/dynamic";
@@ -30,6 +31,8 @@ interface ProjectOverlayProps {
     heroImage: string;
     beforeImage?: string;
     afterImage?: string;
+    beforeVideo?: string;
+    afterVideo?: string;
     assets: string[];
     hoverVideo?: string;
     modelPath?: string;
@@ -131,14 +134,14 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
       gsap.set(overlayRef.current, { visibility: "visible" });
 
     } else {
-      // Content slide down
+      if (!contentRef.current || !backdropRef.current || !overlayRef.current) return;
+
       gsap.to(contentRef.current, {
         y: "100%",
         duration: 0.6,
         ease: "expo.in",
       });
 
-      // Backdrop fade out
       gsap.to(backdropRef.current, {
         opacity: 0,
         duration: 0.4,
@@ -384,11 +387,33 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
 
       {/* 3. BREAKDOWN BLOCK (Slider) */}
       {project.beforeImage && project.afterImage && (
-        <section className="w-full bg-black">
-          <div className="max-w-[1800px] mx-auto">
-            <BeforeAfterSlider 
+        <section className="w-full">
+          <div className="bg-[#F0F0EE] px-6 md:px-12 pt-24 md:pt-40 pb-12">
+            <div className="flex items-center gap-6">
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">Render Comparison</h2>
+              <div className="flex-1 h-[2px] bg-black/10" />
+            </div>
+          </div>
+          <div className="bg-black max-w-[1800px] mx-auto">
+            <BeforeAfterSlider
               beforeImage={project.beforeImage}
               afterImage={project.afterImage}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* 3.2. VIDEO BEFORE/AFTER SLIDER */}
+      {project.beforeVideo && project.afterVideo && (
+        <section className="w-full bg-[#F0F0EE] px-6 md:px-12 pt-24 md:pt-40 pb-0">
+          <div className="flex items-center gap-6 mb-12">
+            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">Render Comparison</h2>
+            <div className="flex-1 h-[2px] bg-black/10" />
+          </div>
+          <div className="max-w-[1800px] mx-auto">
+            <BeforeAfterVideoSlider
+              beforeVideo={project.beforeVideo}
+              afterVideo={project.afterVideo}
             />
           </div>
         </section>
@@ -519,7 +544,8 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
                                     {asset.includes('breakdown_character') ? 'Character animation' :
-                                     asset.includes('scene_') ? 'C4D Simulation Render' : 'Processing Stream'}
+                                     asset.includes('scene_') ? 'C4D Simulation Render' :
+                                     asset.includes('light_layers') ? 'Lighting Layers' : 'Processing Stream'}
                                   </span>
                                 </div>
                               </div>
@@ -566,6 +592,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                              asset.includes('scene_5_collect_+1+') ? 'Final compositing breakdown' :
                              asset.includes('scene_5_collect_+1') ? 'Post-processing pass' :
                              asset.includes('Screenshot_1.png') ? 'Cinema 4D layout snapshot' :
+                             asset.includes('light_layers') ? 'Light Layer Composition' :
                              `Technical Analysis #${globalIndex + 1}`}
                           </div>
 

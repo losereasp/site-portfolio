@@ -91,9 +91,14 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
         </div>
       </div>
 
-      {/* After Label */}
-      <div className="absolute top-6 right-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest pointer-events-none z-20">
-        LIT RENDER
+      {/* After Label (Clipped to the right side of the slider) */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none z-20"
+        style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
+      >
+        <div className="absolute top-6 right-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest">
+          LIT RENDER
+        </div>
       </div>
     </div>
   );

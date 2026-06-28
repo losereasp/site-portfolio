@@ -9,7 +9,7 @@ import ViewCursor from "./ViewCursor";
 import ScrollToTop from "./ScrollToTop";
 import ScrollMarquee from "./ScrollMarquee";
 import ProjectOverlay from "./ProjectOverlay";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, type CSSProperties } from "react";
 import Image from "next/image";
 import { PROJECTS_DATA } from "./data/projects";
 
@@ -69,14 +69,14 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
         <>
           {/* Static Title (fades on hover) */}
           <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-10 transition-opacity duration-300 group-hover:opacity-0">
-            <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2">01 — Featured</p>
+            <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2">{data.category || "Featured"}</p>
             <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white">{data.title}</h3>
           </div>
 
           {/* Hover Content */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-12">
             <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#FF5F1F] mb-3">01 — Featured</p>
+              <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#FF5F1F] mb-3">{data.category || "Featured"}</p>
               <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white mb-4">{data.title}</h3>
               <p className="font-mono text-sm leading-relaxed text-white/60 max-w-lg mb-6">{data.description}</p>
               <div className="flex flex-wrap gap-2">
@@ -118,6 +118,38 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
 }
 
 // --- End Project Card Component ---
+
+function SketchCard({ video, label, poster, className = '', style }: {
+  video: string;
+  label: string;
+  poster?: string;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  return (
+    <div
+      className={`relative overflow-hidden bg-black ${className}`}
+      style={style}
+      onMouseEnter={() => videoRef.current?.play()}
+      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.load(); } }}
+    >
+      <video
+        ref={videoRef}
+        src={video}
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
+        <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/40">{label}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -172,14 +204,14 @@ export default function Home() {
           {/* Block 2 & 3: Secondary — 60/40 split */}
           <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
             <ProjectCard
-              id="stanley-bottle"
-              data={PROJECTS_DATA["stanley-bottle"]}
+              id="the-visit"
+              data={PROJECTS_DATA["the-visit"]}
               onClick={openProject}
               className="flex-[6] h-full"
             />
             <ProjectCard
-              id="mech-drone"
-              data={PROJECTS_DATA["mech-drone"]}
+              id="stanley-bottle"
+              data={PROJECTS_DATA["stanley-bottle"]}
               onClick={openProject}
               className="flex-[4] h-full"
             />
@@ -201,26 +233,34 @@ export default function Home() {
         </ScrollMarquee>
 
         <div className="px-[18px] pb-16">
-          <div className="w-full">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-[2px]">
-              {[
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS", extra: "grayscale hover:grayscale-0" },
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
-                { src: "/wip_placeholder.webp", label: "R&D // IN PROGRESS" },
-              ].map((item, i) => (
-                <div key={i} className="relative aspect-square overflow-hidden group cursor-pointer bg-black/5">
-                  <img src={item.src} className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${item.extra ?? ""}`} alt={item.label} />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="font-mono text-[9px] md:text-[10px] tracking-widest text-white/80 uppercase">{item.label}</p>
-                  </div>
-                </div>
-              ))}
+
+          {/* Mobile: 2-col uniform grid */}
+          <div className="grid grid-cols-2 gap-[2px] md:hidden">
+            <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" poster="/sketches_01_poster.jpg" className="aspect-video" />
+            <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-video" />
+            <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
+            <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-video" />
+            <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="col-span-2 aspect-video" />
+          </div>
+
+          {/* Desktop: 3-column natural-ratio masonry, ascending height L→R */}
+          <div className="hidden md:flex gap-[2px]">
+            {/* Col 1: APOLLO 16:9 + RACKET 1:1 ≈ 750px */}
+            <div className="flex-1 flex flex-col gap-[2px]">
+              <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" poster="/sketches_01_poster.jpg" className="aspect-video" />
+              <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-square" />
+            </div>
+            {/* Col 2: BRAINPOP 9:16 portrait ≈ 853px */}
+            <div className="flex-1">
+              <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-[9/16]" />
+            </div>
+            {/* Col 3: PING-PONG 16:9 + PAETOCHKI 4:5 ≈ 870px */}
+            <div className="flex-1 flex flex-col gap-[2px]">
+              <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
+              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-[4/5]" />
             </div>
           </div>
+
         </div>
 
       </section>

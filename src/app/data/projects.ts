@@ -1,9 +1,10 @@
 export const PROJECTS_DATA = {
   "frost-core": {
     title: "FROST CORE",
+    category: "REAL-TIME ENVIRONMENT",
     thematicHeader: "Climate Shift",
     description: "My debut project in Unreal Engine 5, created as part of my learning journey. The work is inspired by the grim atmosphere and aesthetic of Frostpunk. In this scene, I focused on building a dense cinematic environment and mastering high-contrast lighting.",
-    software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter"],
+    software: ["Unreal Engine", "Blender", "Cascadeur", "Substance Painter", "After Effects"],
     heroImage: "/frost_core_after.jpg",
     hoverVideo: "/frost_core_hover.mp4", // Restored original with sound
     beforeImage: "/frost_core_before.webp", // Using optimized WebP
@@ -47,19 +48,17 @@ export const PROJECTS_DATA = {
     ],
     storyboardImage: "/stanley_storyboard.webp"
   },
-  "mech-drone": {
-    title: "DEV",
-    category: "PROJECT UNDER DEVELOPMENT",
-    description: "Asset modeling and look-development in progress. A full breakdown of the creation process, including topology and texturing, is coming soon.",
-    software: ["Modeling", "Work in Progress"],
-    heroImage: "/wip_placeholder.webp",
-    beforeImage: "/wip_placeholder.webp",
-    afterImage: "/wip_placeholder.webp",
+  "the-visit": {
+    title: "THE VISIT",
+    category: "ENVIRONMENT & STORYTELLING",
+    description: "A personal project exploring winter atmosphere and storytelling. My goal was to capture the nostalgic feeling of New Year's Eve in a village — a sleigh arriving at a warm-lit izba, snow falling softly, the quiet of a winter night.",
+    software: ["Blender", "Cycles", "After Effects"],
+    heroImage: "/newyear_hero.webp",
+    hoverVideo: "/newyear_showcase.mp4",
+    beforeVideo: "/newyear_sermo.mp4",
+    afterVideo: "/newyear_showcase.mp4",
     assets: [
-      "/wip_placeholder.webp",
-      "/wip_placeholder.webp",
-      "/wip_placeholder.webp",
-      "/wip_placeholder.webp"
+      "/newyear_light_layers.mp4"
     ]
   }
 };

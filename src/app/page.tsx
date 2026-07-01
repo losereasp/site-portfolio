@@ -1,16 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useRef, useEffect, type CSSProperties, type MouseEvent } from "react";
 import MainNavbar from "./MainNavbar";
 import Footer from "./Footer";
 import HeroSection from "./HeroSection";
+import LoadingScreen from "./LoadingScreen";
 import ViewCursor from "./ViewCursor";
 import ScrollToTop from "./ScrollToTop";
 import ScrollMarquee from "./ScrollMarquee";
 import ProjectOverlay from "./ProjectOverlay";
-import { useRef, useEffect, type CSSProperties } from "react";
-import Image from "next/image";
 import { PROJECTS_DATA } from "./data/projects";
 
 // --- Project Card Component ---
@@ -119,42 +117,95 @@ function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: 
 
 // --- End Project Card Component ---
 
-function SketchCard({ video, label, poster, className = '', style }: {
+function SketchCard({ video, label, poster, className = '', style, cropPx = 0, cropX, posterTime }: {
   video: string;
   label: string;
   poster?: string;
   className?: string;
   style?: CSSProperties;
+  cropPx?: number;
+  cropX?: number;
+  posterTime?: number;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (posterTime !== undefined && videoRef.current) {
+      videoRef.current.currentTime = posterTime;
+    }
+  }, [posterTime]);
+
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    const inner = innerRef.current;
+    if (!card || !inner) return;
+    const rect = card.getBoundingClientRect();
+    const dx = (e.clientX - rect.left) / rect.width - 0.5;
+    const dy = (e.clientY - rect.top) / rect.height - 0.5;
+    inner.style.transition = 'transform 0.2s ease-out';
+    inner.style.transform = `translate(${dx * 12}px, ${dy * 12}px) scale(1.03)`;
+  };
+
+  const handleMouseLeave = () => {
+    const inner = innerRef.current;
+    if (inner) {
+      inner.style.transition = 'transform 0.6s ease-out';
+      inner.style.transform = '';
+    }
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = posterTime ?? 0;
+    }
+  };
+
   return (
     <div
-      className={`relative overflow-hidden bg-black ${className}`}
+      ref={cardRef}
+      className={`group relative overflow-hidden bg-black ${className}`}
       style={style}
+      onMouseMove={handleMouseMove}
       onMouseEnter={() => videoRef.current?.play()}
-      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.load(); } }}
+      onMouseLeave={handleMouseLeave}
     >
-      <video
-        ref={videoRef}
-        src={video}
-        poster={poster}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <div ref={innerRef} className="absolute" style={{ top: -cropPx, left: -(cropX ?? cropPx), right: -(cropX ?? cropPx), bottom: 0, willChange: 'transform' }}>
+        <video
+          ref={videoRef}
+          src={video}
+          poster={poster}
+          muted
+          loop
+          playsInline
+          preload={posterTime !== undefined ? "auto" : "metadata"}
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
-        <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/40">{label}</p>
+        <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/30 group-hover:text-white/70 transition-colors duration-300">
+          <span className="text-[#FF5F1F]/40 group-hover:text-[#FF5F1F]/80 transition-colors duration-300 mr-1.5">⬡</span>{label}
+        </p>
       </div>
     </div>
   );
 }
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+}
+
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
-
+  const isMobile = useIsMobile();
   const openProject = (id: string) => {
     const data = (PROJECTS_DATA as any)[id];
     setActiveData(data);
@@ -171,6 +222,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen selection:bg-[#FF5F1F] selection:text-white">
+      <LoadingScreen />
       <ViewCursor />
       <ScrollToTop />
       <MainNavbar />
@@ -233,34 +285,29 @@ export default function Home() {
         </ScrollMarquee>
 
         <div className="px-[18px] pb-16">
-
-          {/* Mobile: 2-col uniform grid */}
-          <div className="grid grid-cols-2 gap-[2px] md:hidden">
-            <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" poster="/sketches_01_poster.jpg" className="aspect-video" />
-            <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-video" />
-            <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
-            <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-video" />
-            <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="col-span-2 aspect-video" />
-          </div>
-
-          {/* Desktop: 3-column natural-ratio masonry, ascending height L→R */}
-          <div className="hidden md:flex gap-[2px]">
-            {/* Col 1: APOLLO 16:9 + RACKET 1:1 ≈ 750px */}
-            <div className="flex-1 flex flex-col gap-[2px]">
-              <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" poster="/sketches_01_poster.jpg" className="aspect-video" />
-              <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-square" />
-            </div>
-            {/* Col 2: BRAINPOP 9:16 portrait ≈ 853px */}
-            <div className="flex-1">
-              <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-[9/16]" />
-            </div>
-            {/* Col 3: PING-PONG 16:9 + PAETOCHKI 4:5 ≈ 870px */}
-            <div className="flex-1 flex flex-col gap-[2px]">
+          {isMobile ? (
+            <div className="grid grid-cols-2 gap-[2px]">
+              <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" className="aspect-video" posterTime={1.5} />
+              <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-video" />
               <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
-              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-[4/5]" />
+              <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-video" />
+              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="col-span-2 aspect-video" />
             </div>
-          </div>
-
+          ) : (
+            <div className="flex gap-[2px]">
+              <div className="flex-1 flex flex-col gap-[2px]">
+                <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" className="aspect-video" posterTime={1.5} />
+                <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-square" />
+              </div>
+              <div className="flex-1">
+                <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-[9/16]" cropPx={28} cropX={55} />
+              </div>
+              <div className="flex-1 flex flex-col gap-[2px]">
+                <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
+                <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-[4/5]" />
+              </div>
+            </div>
+          )}
         </div>
 
       </section>

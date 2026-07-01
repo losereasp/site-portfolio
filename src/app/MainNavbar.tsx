@@ -37,15 +37,15 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           LSRSP
         </Link>
       </Magnetic>
-      <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight text-[#FF5F1F]">
+      <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight">
         <Magnetic>
-          <a 
-            href="https://vimeo.com/1175696148" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className={`hover:underline underline-offset-8 transition-all duration-500 ${
-              scrolled 
-                ? "opacity-100 translate-y-0 pointer-events-auto" 
+          <a
+            href="https://vimeo.com/1175696148"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-500 ${
+              scrolled
+                ? "opacity-100 translate-y-0 pointer-events-auto"
                 : "opacity-0 translate-y-4 pointer-events-none"
             }`}
           >
@@ -53,10 +53,10 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           </a>
         </Magnetic>
         <Magnetic>
-          <a href="/#work" className="hover:underline underline-offset-8 transition-all">WORK</a>
+          <a href="/#work" className="text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300">WORK</a>
         </Magnetic>
         <Magnetic>
-          <Link href="/about" className="hover:underline underline-offset-8 transition-all">ABOUT</Link>
+          <Link href="/about" className="text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300">ABOUT</Link>
         </Magnetic>
       </div>
     </nav>

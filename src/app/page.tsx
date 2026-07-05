@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, type CSSProperties, type MouseEvent } from "react";
+import { useState, useRef, useEffect, type MouseEvent } from "react";
 import Link from "next/link";
 import MainNavbar from "./MainNavbar";
 import Footer from "./Footer";
@@ -14,17 +14,14 @@ import ProjectCard from "./ProjectCard";
 import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
 
-function SketchCard({ video, label, poster, className = '', style, cropPx = 0, cropX, posterTime, isImage, image }: {
+function SketchCard({ video, label, poster, posterTime, isImage, image, aspect }: {
   video?: string;
   isImage?: boolean;
   image?: string;
   label: string;
   poster?: string;
-  className?: string;
-  style?: CSSProperties;
-  cropPx?: number;
-  cropX?: number;
   posterTime?: number;
+  aspect: number;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -62,13 +59,13 @@ function SketchCard({ video, label, poster, className = '', style, cropPx = 0, c
   return (
     <div
       ref={cardRef}
-      className={`group relative overflow-hidden bg-black ${className}`}
-      style={style}
+      className="group relative overflow-hidden bg-black"
+      style={{ flex: aspect }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => !isImage && videoRef.current?.play()}
       onMouseLeave={handleMouseLeave}
     >
-      <div ref={innerRef} className="absolute" style={{ top: -cropPx, left: -(cropX ?? cropPx), right: -(cropX ?? cropPx), bottom: 0, willChange: 'transform' }}>
+      <div ref={innerRef} className="absolute inset-0 scale-[1.01] will-change-transform">
         {isImage ? (
           <img
             src={image}
@@ -108,6 +105,25 @@ function useIsMobile() {
   }, []);
   return isMobile;
 }
+
+const SKETCHES = [
+  { id: "apollo",       video: "/sketches_01.mp4",          label: "Houdini // APOLLO",              aspect: 16 / 9, posterTime: 1.5 },
+  { id: "brainpop",     video: "/sketches_brainpop.mp4",    label: "Houdini // BRAINPOP",            aspect: 9 / 16 },
+  { id: "pingpong",     video: "/sketches_03.mp4",          label: "Houdini // PING-PONG",           aspect: 16 / 9 },
+  { id: "racket",       video: "/sketches_racket.mp4",      label: "Houdini // PING-PONG ALGORITHM", aspect: 1 / 1 },
+  { id: "paetochki",    video: "/sketches_paetochki.mp4",   label: "Houdini // PAETOCHKI",           aspect: 4 / 5 },
+  { id: "skull",        video: "/sketches_skull.mp4",       label: "C4D // SKULL COLLAB",            aspect: 9 / 16 },
+  { id: "statue",       video: "/sketches_statue.mp4",      label: "C4D // STATUE COLLAB",           aspect: 9 / 16,  poster: "/sketches_statue_poster.png" },
+  { id: "plastic_cube", isImage: true, image: "/sketches_plastic_cube.png", label: "C4D // CUBE³ WALLPAPER", aspect: 9 / 16 },
+  { id: "phone_pillow", video: "/sketches_phone_pillow.mp4",label: "C4D // PHONE PILLOW",            aspect: 16 / 9 },
+  { id: "trans_cube",   video: "/sketches_trans_cube.mp4",  label: "C4D // TRANS CUBE",              aspect: 4 / 5,   poster: "/sketches_trans_cube_poster.png" },
+];
+
+// Row groupings: each sub-array fills its row completely via flex:aspect
+// Desktop: 3 rows — Row 1 wide/narrow/wide, Row 2 mixed, Row 3 portrait+wide+portrait
+// Mobile: 5 rows of 2
+const DESKTOP_ROWS = [[0, 1, 2], [3, 4, 5, 6], [7, 8, 9]];
+const MOBILE_ROWS  = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]];
 
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
@@ -207,43 +223,30 @@ export default function Home() {
           </div>
         </ScrollMarquee>
 
-        <div className="px-[18px] pb-16">
-          {isMobile ? (
-            <div className="grid grid-cols-2 gap-[2px]">
-              <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" className="aspect-video" posterTime={1.5} />
-              <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-video" />
-              <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
-              <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-video" />
-              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-video" />
-              <SketchCard video="/sketches_skull.mp4" label="C4D // SKULL COLLAB" className="aspect-video" />
-              <SketchCard video="/sketches_statue.mp4" poster="/sketches_statue_poster.png" label="C4D // STATUE COLLAB" className="aspect-video" />
-              <SketchCard isImage image="/sketches_plastic_cube.png" label="C4D // CUBE³ WALLPAPER" className="aspect-video" />
-              <SketchCard video="/sketches_phone_pillow.mp4" label="C4D // PHONE PILLOW" className="aspect-video" />
-              <SketchCard video="/sketches_trans_cube.mp4" poster="/sketches_trans_cube_poster.png" label="C4D // TRANS CUBE" className="col-span-2 aspect-video" />
+        <div className="px-[18px] pb-16 flex flex-col gap-[2px]">
+          {(isMobile ? MOBILE_ROWS : DESKTOP_ROWS).map((indices, ri) => (
+            <div
+              key={ri}
+              className="flex gap-[2px] w-full overflow-hidden"
+              style={{ height: isMobile ? 160 : 300 }}
+            >
+              {indices.map(i => {
+                const s = SKETCHES[i];
+                return (
+                  <SketchCard
+                    key={s.id}
+                    video={s.video}
+                    isImage={s.isImage}
+                    image={s.image}
+                    label={s.label}
+                    poster={s.poster}
+                    posterTime={s.posterTime}
+                    aspect={s.aspect}
+                  />
+                );
+              })}
             </div>
-          ) : (
-            <div className="flex gap-[2px]">
-              {/* Column 1 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" className="aspect-video" posterTime={1.5} />
-                <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-square" />
-                <SketchCard video="/sketches_skull.mp4" label="C4D // SKULL COLLAB" className="aspect-[9/16]" />
-              </div>
-              {/* Column 2 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-[9/16]" cropPx={28} cropX={55} />
-                <SketchCard video="/sketches_statue.mp4" poster="/sketches_statue_poster.png" label="C4D // STATUE COLLAB" className="aspect-[9/16]" />
-                <SketchCard video="/sketches_trans_cube.mp4" poster="/sketches_trans_cube_poster.png" label="C4D // TRANS CUBE" className="aspect-[4/5]" />
-              </div>
-              {/* Column 3 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
-                <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-[4/5]" />
-                <SketchCard isImage image="/sketches_plastic_cube.png" label="C4D // CUBE³ WALLPAPER" className="aspect-[9/16]" />
-                <SketchCard video="/sketches_phone_pillow.mp4" label="C4D // PHONE PILLOW" className="aspect-video" />
-              </div>
-            </div>
-          )}
+          ))}
         </div>
 
       </section>

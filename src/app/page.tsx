@@ -14,8 +14,10 @@ import ProjectCard from "./ProjectCard";
 import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
 
-function SketchCard({ video, label, poster, className = '', style, cropPx = 0, cropX, posterTime }: {
-  video: string;
+function SketchCard({ video, label, poster, className = '', style, cropPx = 0, cropX, posterTime, isImage, image }: {
+  video?: string;
+  isImage?: boolean;
+  image?: string;
   label: string;
   poster?: string;
   className?: string;
@@ -63,20 +65,28 @@ function SketchCard({ video, label, poster, className = '', style, cropPx = 0, c
       className={`group relative overflow-hidden bg-black ${className}`}
       style={style}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => videoRef.current?.play()}
+      onMouseEnter={() => !isImage && videoRef.current?.play()}
       onMouseLeave={handleMouseLeave}
     >
       <div ref={innerRef} className="absolute" style={{ top: -cropPx, left: -(cropX ?? cropPx), right: -(cropX ?? cropPx), bottom: 0, willChange: 'transform' }}>
-        <video
-          ref={videoRef}
-          src={video}
-          poster={poster}
-          muted
-          loop
-          playsInline
-          preload={posterTime !== undefined ? "auto" : "metadata"}
-          className="w-full h-full object-cover"
-        />
+        {isImage ? (
+          <img
+            src={image}
+            alt={label}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={video}
+            poster={poster}
+            muted
+            loop
+            playsInline
+            preload={posterTime !== undefined ? "auto" : "metadata"}
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
       <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
         <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/30 group-hover:text-white/70 transition-colors duration-300">
@@ -204,20 +214,33 @@ export default function Home() {
               <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-video" />
               <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
               <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-video" />
-              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="col-span-2 aspect-video" />
+              <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-video" />
+              <SketchCard video="/sketches_skull.mp4" label="C4D // SKULL COLLAB" className="aspect-video" />
+              <SketchCard video="/sketches_statue.mp4" poster="/sketches_statue_poster.png" label="C4D // STATUE COLLAB" className="aspect-video" />
+              <SketchCard isImage image="/sketches_plastic_cube.png" label="C4D // CUBE³ WALLPAPER" className="aspect-video" />
+              <SketchCard video="/sketches_phone_pillow.mp4" label="C4D // PHONE PILLOW" className="aspect-video" />
+              <SketchCard video="/sketches_trans_cube.mp4" poster="/sketches_trans_cube_poster.png" label="C4D // TRANS CUBE" className="col-span-2 aspect-video" />
             </div>
           ) : (
             <div className="flex gap-[2px]">
+              {/* Column 1 */}
               <div className="flex-1 flex flex-col gap-[2px]">
                 <SketchCard video="/sketches_01.mp4" label="Houdini // APOLLO" className="aspect-video" posterTime={1.5} />
                 <SketchCard video="/sketches_racket.mp4" label="Houdini // PING-PONG ALGORITHM" className="aspect-square" />
+                <SketchCard video="/sketches_skull.mp4" label="C4D // SKULL COLLAB" className="aspect-[9/16]" />
               </div>
-              <div className="flex-1">
+              {/* Column 2 */}
+              <div className="flex-1 flex flex-col gap-[2px]">
                 <SketchCard video="/sketches_brainpop.mp4" label="Houdini // BRAINPOP" className="aspect-[9/16]" cropPx={28} cropX={55} />
+                <SketchCard video="/sketches_statue.mp4" poster="/sketches_statue_poster.png" label="C4D // STATUE COLLAB" className="aspect-[9/16]" />
+                <SketchCard video="/sketches_trans_cube.mp4" poster="/sketches_trans_cube_poster.png" label="C4D // TRANS CUBE" className="aspect-[4/5]" />
               </div>
+              {/* Column 3 */}
               <div className="flex-1 flex flex-col gap-[2px]">
                 <SketchCard video="/sketches_03.mp4" label="Houdini // PING-PONG" className="aspect-video" />
                 <SketchCard video="/sketches_paetochki.mp4" label="Houdini // PAETOCHKI" className="aspect-[4/5]" />
+                <SketchCard isImage image="/sketches_plastic_cube.png" label="C4D // CUBE³ WALLPAPER" className="aspect-[9/16]" />
+                <SketchCard video="/sketches_phone_pillow.mp4" label="C4D // PHONE PILLOW" className="aspect-video" />
               </div>
             </div>
           )}

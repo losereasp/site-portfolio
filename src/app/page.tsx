@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, type CSSProperties, type MouseEvent } from "react";
+import Link from "next/link";
 import MainNavbar from "./MainNavbar";
 import Footer from "./Footer";
 import HeroSection from "./HeroSection";
@@ -9,113 +10,9 @@ import ViewCursor from "./ViewCursor";
 import ScrollToTop from "./ScrollToTop";
 import ScrollMarquee from "./ScrollMarquee";
 import ProjectOverlay from "./ProjectOverlay";
+import ProjectCard from "./ProjectCard";
+import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
-
-// --- Project Card Component ---
-interface ProjectCardProps {
-  id: string;
-  data: any;
-  onClick: (id: string) => void;
-  className?: string;
-  isFeatured?: boolean;
-}
-
-function ProjectCard({ id, data, onClick, className = "", isFeatured = false }: ProjectCardProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleMouseEnter = () => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => { });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
-
-  return (
-    <div
-      data-view-cursor
-      onClick={() => onClick(id)}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative group overflow-hidden rounded-sm cursor-none ${className}`}
-    >
-      {/* Base Image */}
-      <img
-        src={data.heroImage}
-        alt={data.title}
-        className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
-      />
-
-      {/* Hover Video */}
-      {data.hoverVideo && (
-        <video
-          ref={videoRef}
-          src={data.hoverVideo}
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        />
-      )}
-
-      {/* Overlay Content */}
-      {isFeatured ? (
-        <>
-          {/* Static Title (fades on hover) */}
-          <div className="absolute bottom-6 left-6 md:bottom-12 md:left-12 z-10 transition-opacity duration-300 group-hover:opacity-0">
-            <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-2">{data.category || "Featured"}</p>
-            <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white">{data.title}</h3>
-          </div>
-
-          {/* Hover Content */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-12">
-            <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#FF5F1F] mb-3">{data.category || "Featured"}</p>
-              <h3 className="font-primary text-4xl md:text-7xl uppercase leading-none text-white mb-4">{data.title}</h3>
-              <p className="font-mono text-sm leading-relaxed text-white/60 max-w-lg mb-6">{data.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {data.software.map((tag: string) => (
-                  <span key={tag} className="font-mono text-[10px] tracking-widest uppercase px-3 py-1 border border-white/30 text-white/70 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          {/* Default Overlay Content (Small Cards) */}
-          <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-10 transition-opacity duration-300 group-hover:opacity-0">
-            <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/40 mb-1">{data.category || "Project"}</p>
-            <h3 className="font-primary text-3xl md:text-5xl uppercase leading-none text-white">{data.title}</h3>
-          </div>
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 md:p-10">
-            <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-              <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-[#FF5F1F] mb-2">{data.category || "Project"}</p>
-              <h3 className="font-primary text-3xl md:text-5xl uppercase leading-none text-white mb-3">{data.title}</h3>
-              <p className="font-mono text-xs leading-relaxed text-white/60 max-w-md mb-5">{data.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {data.software.map((tag: string) => (
-                  <span key={tag} className="font-mono text-[10px] tracking-widest uppercase px-3 py-1 border border-white/30 text-white/70 rounded-full">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
-
-// --- End Project Card Component ---
 
 function SketchCard({ video, label, poster, className = '', style, cropPx = 0, cropX, posterTime }: {
   video: string;
@@ -242,7 +139,7 @@ export default function Home() {
         </ScrollMarquee>
 
         {/* Bento Grid Container - Precision side gaps */}
-        <div className="px-[18px] w-full flex flex-col gap-[2px]">
+        <div className="px-[18px] w-full flex flex-col gap-[2px] bg-[#F0F0EE]">
 
           {/* Block 1: Featured — 100% width */}
           <ProjectCard
@@ -256,22 +153,38 @@ export default function Home() {
           {/* Block 2 & 3: Secondary — 60/40 split */}
           <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
             <ProjectCard
-              id="the-visit"
-              data={PROJECTS_DATA["the-visit"]}
+              id="rampage-rally"
+              data={PROJECTS_DATA["rampage-rally"]}
               onClick={openProject}
               className="flex-[6] h-full"
             />
             <ProjectCard
-              id="stanley-bottle"
-              data={PROJECTS_DATA["stanley-bottle"]}
+              id="the-visit"
+              data={PROJECTS_DATA["the-visit"]}
               onClick={openProject}
               className="flex-[4] h-full"
             />
           </div>
+
+          {/* Block 4: Clean Tech/Utility Archive Link */}
+          <div className="w-full mt-8 mb-6 font-mono text-[10px] md:text-xs select-none flex justify-end items-center">
+            <Magnetic>
+              <Link
+                href="/work"
+                className="group flex items-center gap-2 text-black hover:text-[#FF5F1F] font-bold tracking-[0.3em] transition-colors duration-300 cursor-none"
+                data-normal-cursor
+              >
+                <span>VIEW ARCHIVE</span>
+                <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">[→]</span>
+              </Link>
+            </Magnetic>
+          </div>
+
+
         </div>
 
         {/* PERSONAL SKETCHES Marquee Header - GSAP Scroll-Linked */}
-        <ScrollMarquee className="!border-t !border-b !border-black/5" speed={1.5}>
+        <ScrollMarquee className="!border-b !border-black/5" speed={1.5}>
           <div className="flex items-center gap-8 md:gap-16 font-mono text-5xl md:text-8xl uppercase font-black text-[#111111]">
             <span>Personal Sketches</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />

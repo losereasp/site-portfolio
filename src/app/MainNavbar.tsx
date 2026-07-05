@@ -22,13 +22,16 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const textColor = lightMode && !scrolled ? "text-[#111111]" : "text-white";
+  const isLight = lightMode && !scrolled;
+  const linkBase = isLight
+    ? "text-black/50 hover:text-black hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300"
+    : "text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300";
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 w-full px-8 md:px-16 flex justify-between items-center z-[100] transition-all duration-700 ease-out border-b-[3px] ${textColor} ${
-        scrolled 
-          ? "bg-[#000000] py-4 border-[#FF5F1F] shadow-[0_20px_50px_rgba(0,0,0,0.8)]" 
+    <nav
+      className={`fixed top-0 left-0 w-full px-8 md:px-16 flex justify-between items-center z-[100] transition-all duration-700 ease-out border-b-[3px] ${
+        scrolled
+          ? "bg-[#000000] py-4 border-[#FF5F1F] shadow-[0_20px_50px_rgba(0,0,0,0.8)] text-white"
           : "bg-transparent py-8 border-transparent shadow-none"
       }`}
     >
@@ -43,7 +46,7 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
             href="https://vimeo.com/1175696148"
             target="_blank"
             rel="noopener noreferrer"
-            className={`text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-500 ${
+            className={`${linkBase} ${
               scrolled
                 ? "opacity-100 translate-y-0 pointer-events-auto"
                 : "opacity-0 translate-y-4 pointer-events-none"
@@ -53,10 +56,10 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           </a>
         </Magnetic>
         <Magnetic>
-          <a href="/#work" className="text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300">WORK</a>
+          <a href="/#work" className={linkBase}>WORK</a>
         </Magnetic>
         <Magnetic>
-          <Link href="/about" className="text-white/60 hover:text-white hover:underline underline-offset-8 decoration-[#FF5F1F] transition-all duration-300">ABOUT</Link>
+          <Link href="/about" className={linkBase}>ABOUT</Link>
         </Magnetic>
       </div>
     </nav>

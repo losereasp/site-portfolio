@@ -40,6 +40,7 @@ interface ProjectOverlayProps {
     storyboardImage?: string;
     thematicHeader?: string;
     category?: string;
+    youtubeId?: string;
   };
 }
 
@@ -284,7 +285,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
         <section className="w-full bg-[#F0F0EE] pb-24 px-6 md:px-12">
           <div className="flex flex-col gap-12">
             <div className="flex items-center gap-6">
-              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Storyboard & Moodboard</h2>
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Moodboard</h2>
               <div className="flex-1 h-[2px] bg-black/10" />
             </div>
             
@@ -380,6 +381,36 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
             <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-col gap-1 pointer-events-none">
               <p className="font-mono text-[8px] md:text-[10px] text-white/40 uppercase tracking-widest italic">Full HD Output</p>
               <p className="font-primary text-xl md:text-3xl text-white uppercase tracking-normal">{project.title} // Cinematic</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 2.8. FULL BREAKDOWN VIDEO (YouTube embed) */}
+      {project.youtubeId && (
+        <section className="w-full bg-[#111111] px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-[1700px] mx-auto flex flex-col gap-10">
+            <div className="flex items-center gap-6">
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-white">Full Breakdown</h2>
+              <div className="flex-1 h-[2px] bg-white/10" />
+              <a
+                href={`https://www.youtube.com/watch?v=${project.youtubeId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-[#FF5F1F] transition-colors flex items-center gap-2 shrink-0"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                YouTube ↗
+              </a>
+            </div>
+            <div className="relative w-full aspect-video overflow-hidden shadow-2xl">
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
+                title={`${project.title} — Full Breakdown`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full border-0"
+              />
             </div>
           </div>
         </section>
@@ -543,7 +574,21 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
-                                    {asset.includes('breakdown_character') ? 'Character animation' :
+                                    {asset.includes('rampage_roll_car') ? 'Asset // VAZ 2108' :
+                                     asset.includes('rampage_roll_buhanka') ? 'Asset // UAZ Bukhanka' :
+                                     asset.includes('rampage_roll_future_cars') ? 'Asset // Future Cars' :
+                                     asset.includes('rampage_roll_bus') ? 'Asset // Electrobus KAMAZ' :
+                                     asset.includes('rampage_roll_helicopter') ? 'Asset // Mi-24 Helicopter' :
+                                     asset.includes('rampage_roll_buildings') ? 'Asset // Soviet Blocks' :
+                                     asset.includes('rampage_roll_trees') ? 'Asset // Environment Trees' :
+                                     asset.includes('rampage_roll_rain') ? 'FX // Rain Simulation' :
+                                     asset.includes('rampage_cascadeur') ? 'Animation // Cascadeur Rig' :
+                                     asset.includes('breakdown_character') ? 'Character animation' :
+                                     asset.includes('rampage_clay_env') ? 'Viewport // Environment' :
+                                     asset.includes('rampage_clay_pov') ? 'Viewport // Camera POV' :
+                                     asset.includes('rampage_crash_1') ? 'Physics // Crash Simulation' :
+                                     asset.includes('rampage_crash_2') ? 'Physics // Impact Study' :
+                                     asset.includes('rampage_crash_3') ? 'Physics // Debris Dynamics' :
                                      asset.includes('scene_') ? 'C4D Simulation Render' :
                                      asset.includes('light_layers') ? 'Lighting Layers' : 'Processing Stream'}
                                   </span>
@@ -579,7 +624,22 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                           <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest transition-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
                             isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                           }`}>
-                            {asset.includes('breakdown_character') ? 'Cascadeur Technical Breakdown' :
+                            {asset.includes('rampage_roll_car') ? 'VAZ 2108 — Hero Vehicle' :
+                             asset.includes('rampage_roll_buhanka') ? 'UAZ Bukhanka — Postal Van' :
+                             asset.includes('rampage_roll_future_cars') ? 'Future Cars — Background Props' :
+                             asset.includes('rampage_roll_bus') ? 'Electrobus KAMAZ-6282' :
+                             asset.includes('rampage_roll_helicopter') ? 'Mi-24 — Military Helicopter' :
+                             asset.includes('rampage_roll_buildings') ? 'Soviet Residential Blocks' :
+                             asset.includes('rampage_roll_trees') ? 'Environment Trees' :
+                             asset.includes('rampage_roll_rain') ? 'Rain FX Simulation' :
+                             asset.includes('rampage_cascadeur') ? 'Cascadeur — Character Animation' :
+                             asset.includes('rampage_clay_env') ? 'Environment Clay Render' :
+                             asset.includes('rampage_clay_pov') ? 'Camera POV Blocking' :
+                             asset.includes('rampage_crash_1') ? 'Crash Physics Simulation' :
+                             asset.includes('rampage_crash_2') ? 'Impact Dynamics Study' :
+                             asset.includes('rampage_crash_3') ? 'Debris Simulation Pass' :
+                             asset.includes('rampage_keyvisual') ? 'Final Key Visual' :
+                             asset.includes('breakdown_character') ? 'Cascadeur Technical Breakdown' :
                              asset.includes('detail_4') ? 'Unreal Engine Viewport' : 
                              asset.includes('detail_1') ? 'After Effects Compositing' : 
                              asset.includes('detail_2') ? 'Substance Painter Texturing' : 

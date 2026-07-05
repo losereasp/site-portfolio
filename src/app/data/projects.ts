@@ -18,6 +18,35 @@ export const PROJECTS_DATA = {
       "/frost_core_detail_2.webp"     // 4: Substance Painter (Grid Bottom Right)
     ]
   },
+  "rampage-rally": {
+    title: "RAMPAGE RALLY",
+    category: "CGI & 3D MOTION",
+    thematicHeader: "Back to the Past",
+    description: "My first run at the Rampage Rally community challenge. Inspired by 'Back to the Future,' but rebuilt in a post-Soviet setting — I swapped the iconic DeLorean for a VAZ-2108, the car everyone here grew up with. A two-week sprint, and my first real step toward finding my own style.",
+    software: ["Cinema 4D", "Redshift", "Cascadeur", "After Effects"],
+    heroImage: "/rampage_hero.jpg",
+    hoverVideo: "/rampage_showcase.mp4",
+    youtubeId: "-qkx-ZzaRkY",
+    storyboardImage: "/rampage_moodboard.webp",
+    beforeVideo: "/rampage_end_viewport.mp4",
+    afterVideo: "/rampage_end_final.mp4",
+    assets: [
+      "/rampage_roll_car.mp4",
+      "/rampage_roll_buhanka.mp4",
+      "/rampage_roll_future_cars.mp4",
+      "/rampage_roll_bus.mp4",
+      "/rampage_roll_helicopter.mp4",
+      "/rampage_roll_buildings.mp4",
+      "/rampage_roll_trees.mp4",
+      "/rampage_roll_rain.mp4",
+      "/rampage_cascadeur.mp4",
+      "/rampage_clay_env.mp4",
+      "/rampage_clay_pov.mp4",
+      "/rampage_crash_1.mp4",
+      "/rampage_crash_2.mp4",
+      "/rampage_crash_3.mp4"
+    ]
+  },
   "stanley-bottle": {
     title: "STANLEY BOTTLE",
     category: "CGI & 3D MOTION",

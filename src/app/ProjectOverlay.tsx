@@ -574,7 +574,12 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
-                                    {asset.includes('rampage_roll_car') ? 'Asset // VAZ 2108' :
+                                    {asset.includes('rampage_start_viewport_animation_car') ? 'Animation // Car Rig Viewport' :
+                                     asset.includes('rampage_start_viewport') ? 'Viewport // Start Layout' :
+                                     asset.includes('rampage_start') ? 'Render // Start Scene' :
+                                     asset.includes('rampage_end_plus') ? 'Render // Final Cut +' :
+                                     asset.includes('rampage_test_1') ? 'Concept // Motion Test' :
+                                     asset.includes('rampage_roll_car') ? 'Asset // VAZ 2108' :
                                      asset.includes('rampage_roll_buhanka') ? 'Asset // UAZ Bukhanka' :
                                      asset.includes('rampage_roll_future_cars') ? 'Asset // Future Cars' :
                                      asset.includes('rampage_roll_bus') ? 'Asset // Electrobus KAMAZ' :
@@ -624,7 +629,12 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                           <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest transition-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
                             isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                           }`}>
-                            {asset.includes('rampage_roll_car') ? 'VAZ 2108 — Hero Vehicle' :
+                            {asset.includes('rampage_start_viewport_animation_car') ? 'Start Scene — Car Animation Viewport' :
+                             asset.includes('rampage_start_viewport') ? 'Start Scene — Viewport Blocking' :
+                             asset.includes('rampage_start') ? 'Start Scene — Final Lighting Render' :
+                             asset.includes('rampage_end_plus') ? 'End Scene — Extended Sequence Render' :
+                             asset.includes('rampage_test_1') ? 'Initial Scene Concept Test' :
+                             asset.includes('rampage_roll_car') ? 'VAZ 2108 — Hero Vehicle' :
                              asset.includes('rampage_roll_buhanka') ? 'UAZ Bukhanka — Postal Van' :
                              asset.includes('rampage_roll_future_cars') ? 'Future Cars — Background Props' :
                              asset.includes('rampage_roll_bus') ? 'Electrobus KAMAZ-6282' :

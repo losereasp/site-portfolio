@@ -26,8 +26,24 @@ export default function WorkPage() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const [displayProject, setDisplayProject] = useState<any>(null);
 
   const previewRef = useRef<HTMLDivElement>(null);
+
+  // Sync displayProject with hoveredId with delay on cleanup to cover exit animation
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (hoveredId) {
+      setDisplayProject(PROJECTS_DATA[hoveredId as keyof typeof PROJECTS_DATA]);
+    } else {
+      timeoutId = setTimeout(() => {
+        setDisplayProject(null);
+      }, 300); // matches the GSAP exit duration
+    }
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [hoveredId]);
 
   const openProject = (id: string) => {
     const data = (PROJECTS_DATA as any)[id];
@@ -113,7 +129,7 @@ export default function WorkPage() {
     }
   }, [hoveredId]);
 
-  const activeProject = hoveredId ? PROJECTS_DATA[hoveredId as keyof typeof PROJECTS_DATA] : null;
+  // Use displayProject for the preview to avoid the content disappearing instantly before fade animation ends
 
   return (
     <main className="min-h-screen bg-[#F0F0EE] text-[#111111] selection:bg-[#FF5F1F] selection:text-white">
@@ -258,12 +274,12 @@ export default function WorkPage() {
         className="fixed top-0 left-0 pointer-events-none z-[200] opacity-0 scale-90 w-80 h-48 bg-black border border-black/20 overflow-hidden shadow-2xl rounded-sm hidden md:block"
         style={{ willChange: "transform, opacity" }}
       >
-        {hoveredId && activeProject && (
+        {displayProject && (
           <div className="relative w-full h-full">
-            {activeProject.hoverVideo ? (
+            {displayProject.hoverVideo ? (
               <video
-                key={hoveredId}
-                src={activeProject.hoverVideo}
+                key={displayProject.title}
+                src={displayProject.hoverVideo}
                 autoPlay
                 muted
                 loop
@@ -272,8 +288,8 @@ export default function WorkPage() {
               />
             ) : (
               <img
-                src={activeProject.heroImage}
-                alt={activeProject.title}
+                src={displayProject.heroImage}
+                alt={displayProject.title}
                 className="w-full h-full object-cover"
               />
             )}
@@ -282,7 +298,7 @@ export default function WorkPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
             <div className="absolute bottom-3 left-3 flex flex-col pointer-events-none">
               <span className="font-mono text-[8px] tracking-[0.25em] text-[#FF5F1F] uppercase">PREVIEW CORE // DATA</span>
-              <span className="font-primary text-lg text-white uppercase leading-none mt-1">{activeProject.title}</span>
+              <span className="font-primary text-lg text-white uppercase leading-none mt-1">{displayProject.title}</span>
             </div>
           </div>
         )}

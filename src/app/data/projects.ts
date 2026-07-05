@@ -31,6 +31,11 @@ export const PROJECTS_DATA = {
     beforeVideo: "/rampage_end_viewport.mp4",
     afterVideo: "/rampage_end_final.mp4",
     assets: [
+      "/rampage_start_viewport.mp4",
+      "/rampage_start_viewport_animation_car.mp4",
+      "/rampage_start.mp4",
+      "/rampage_end_plus.mp4",
+      "/rampage_test_1.mp4",
       "/rampage_roll_car.mp4",
       "/rampage_roll_buhanka.mp4",
       "/rampage_roll_future_cars.mp4",

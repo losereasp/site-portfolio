@@ -632,7 +632,7 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                             {asset.includes('rampage_start_viewport_animation_car') ? 'Start Scene — Car Animation Viewport' :
                              asset.includes('rampage_start_viewport') ? 'Start Scene — Viewport Blocking' :
                              asset.includes('rampage_start') ? 'Start Scene — Final Lighting Render' :
-                             asset.includes('rampage_end_plus') ? 'End Scene — Extended Sequence Render' :
+                             asset.includes('rampage_end_plus') ? 'End Scene — Final Lighting Render' :
                              asset.includes('rampage_test_1') ? 'Initial Scene Concept Test' :
                              asset.includes('rampage_roll_car') ? 'VAZ 2108 — Hero Vehicle' :
                              asset.includes('rampage_roll_buhanka') ? 'UAZ Bukhanka — Postal Van' :
@@ -643,8 +643,8 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
                              asset.includes('rampage_roll_trees') ? 'Environment Trees' :
                              asset.includes('rampage_roll_rain') ? 'Rain FX Simulation' :
                              asset.includes('rampage_cascadeur') ? 'Cascadeur — Character Animation' :
-                             asset.includes('rampage_clay_env') ? 'Environment Clay Render' :
-                             asset.includes('rampage_clay_pov') ? 'Camera POV Blocking' :
+                             asset.includes('rampage_clay_env') ? 'End Scene — Viewport Blocking' :
+                             asset.includes('rampage_clay_pov') ? 'End Scene — Final animation' :
                              asset.includes('rampage_crash_1') ? 'Crash Physics Simulation' :
                              asset.includes('rampage_crash_2') ? 'Impact Dynamics Study' :
                              asset.includes('rampage_crash_3') ? 'Debris Simulation Pass' :

@@ -28,8 +28,6 @@ export const PROJECTS_DATA = {
     hoverVideo: "/rampage_showcase.mp4",
     youtubeId: "-qkx-ZzaRkY",
     storyboardImage: "/rampage_moodboard.webp",
-    beforeVideo: "/rampage_end_viewport.mp4",
-    afterVideo: "/rampage_end_final.mp4",
     assets: [
       "/rampage_start_viewport.mp4",
       "/rampage_start_viewport_animation_car.mp4",

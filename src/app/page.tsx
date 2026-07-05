@@ -399,7 +399,7 @@ export default function Home() {
         </div>
 
         {/* PERSONAL SKETCHES Marquee Header - GSAP Scroll-Linked */}
-        <ScrollMarquee className="!border-b !border-black/5" speed={1.5}>
+        <ScrollMarquee className="" speed={1.5}>
           <div className="flex items-center gap-8 md:gap-16 font-mono text-5xl md:text-8xl uppercase font-black text-[#111111]">
             <span>Personal Sketches</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />

@@ -20,7 +20,7 @@ export const PROJECTS_DATA = {
   },
   "rampage-rally": {
     title: "RAMPAGE RALLY",
-    category: "CGI & 3D MOTION",
+    category: "CHALLENGE",
     thematicHeader: "Back to the Past",
     description: "My first run at the Rampage Rally community challenge. Inspired by 'Back to the Future,' but rebuilt in a post-Soviet setting — I swapped the iconic DeLorean for a VAZ-2108, the car everyone here grew up with. A two-week sprint, and my first real step toward finding my own style.",
     software: ["Cinema 4D", "Redshift", "Cascadeur", "After Effects"],

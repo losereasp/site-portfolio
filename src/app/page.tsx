@@ -26,9 +26,8 @@ const SKETCHES_DATA = [
     status: "CACHED",
     posterTime: 1.5,
     cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 1,
-    aspect: "aspect-video"
+    gridClass: "col-span-1 lg:col-span-2 lg:row-span-1",
+    aspect: "aspect-video lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
   },
   {
     id: "02",
@@ -41,23 +40,8 @@ const SKETCHES_DATA = [
     status: "COMPLETE",
     cropPx: 28,
     cropX: 55,
-    mobileColSpan: false,
-    desktopCol: 2,
-    aspect: "aspect-[9/16]"
-  },
-  {
-    id: "03",
-    label: "Houdini // PING-PONG",
-    video: "/sketches_03.mp4",
-    software: "HOUDINI",
-    engine: "RBD BULLET",
-    specs: "4.5K BODIES",
-    cache: "1.8 GB",
-    status: "CACHED",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 3,
-    aspect: "aspect-video"
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-2",
+    aspect: "aspect-[9/16] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
   },
   {
     id: "04",
@@ -69,81 +53,8 @@ const SKETCHES_DATA = [
     cache: "0.5 GB",
     status: "ACTIVE",
     cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 1,
-    aspect: "aspect-square"
-  },
-  {
-    id: "05",
-    label: "Houdini // PAETOCHKI",
-    video: "/sketches_paetochki.mp4",
-    software: "HOUDINI",
-    engine: "VELLUM BEADS",
-    specs: "18.2K BEADS",
-    cache: "6.7 GB",
-    status: "COMPLETE",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 3,
-    aspect: "aspect-[4/5]"
-  },
-  {
-    id: "06",
-    label: "C4D // SKULL COLLAB",
-    video: "/sketches_skull.mp4",
-    software: "CINEMA 4D",
-    engine: "REDSHIFT GPU",
-    specs: "1.4M POLYS",
-    cache: "RENDER // OK",
-    status: "FINISHED",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 1,
-    aspect: "aspect-[9/16]"
-  },
-  {
-    id: "07",
-    label: "C4D // STATUE COLLAB",
-    video: "/sketches_statue.mp4",
-    poster: "/sketches_statue_poster.png",
-    software: "CINEMA 4D",
-    engine: "REDSHIFT GPU",
-    specs: "4.8M POLYS",
-    cache: "CLAY SHADER",
-    status: "FINISHED",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 2,
-    aspect: "aspect-[9/16]"
-  },
-  {
-    id: "08",
-    label: "C4D // CUBE³ WALLPAPER",
-    isImage: true,
-    image: "/sketches_plastic_cube.png",
-    software: "CINEMA 4D",
-    engine: "REDSHIFT GPU",
-    specs: "2.6M POLYS",
-    cache: "4K RE-LOD",
-    status: "FINISHED",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 3,
-    aspect: "aspect-[9/16]"
-  },
-  {
-    id: "09",
-    label: "C4D // PHONE PILLOW",
-    video: "/sketches_phone_pillow.mp4",
-    software: "CINEMA 4D",
-    engine: "C4D SOFTBODY",
-    specs: "920K POLYS",
-    cache: "PHYSICS OK",
-    status: "FINISHED",
-    cropPx: 0,
-    mobileColSpan: false,
-    desktopCol: 3,
-    aspect: "aspect-video"
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-1",
+    aspect: "aspect-square lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
   },
   {
     id: "10",
@@ -156,9 +67,88 @@ const SKETCHES_DATA = [
     cache: "DISPERSION",
     status: "FINISHED",
     cropPx: 0,
-    mobileColSpan: true,
-    desktopCol: 2,
-    aspect: "aspect-[4/5]"
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-1",
+    aspect: "aspect-[4/5] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "03",
+    label: "Houdini // PING-PONG",
+    video: "/sketches_03.mp4",
+    software: "HOUDINI",
+    engine: "RBD BULLET",
+    specs: "4.5K BODIES",
+    cache: "1.8 GB",
+    status: "CACHED",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-2 lg:row-span-1",
+    aspect: "aspect-video lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "05",
+    label: "Houdini // PAETOCHKI",
+    video: "/sketches_paetochki.mp4",
+    software: "HOUDINI",
+    engine: "VELLUM BEADS",
+    specs: "18.2K BEADS",
+    cache: "6.7 GB",
+    status: "COMPLETE",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-2",
+    aspect: "aspect-[4/5] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "06",
+    label: "C4D // SKULL COLLAB",
+    video: "/sketches_skull.mp4",
+    software: "CINEMA 4D",
+    engine: "REDSHIFT GPU",
+    specs: "1.4M POLYS",
+    cache: "RENDER // OK",
+    status: "FINISHED",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-2",
+    aspect: "aspect-[9/16] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "07",
+    label: "C4D // STATUE COLLAB",
+    video: "/sketches_statue.mp4",
+    poster: "/sketches_statue_poster.png",
+    software: "CINEMA 4D",
+    engine: "REDSHIFT GPU",
+    specs: "4.8M POLYS",
+    cache: "CLAY SHADER",
+    status: "FINISHED",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-2",
+    aspect: "aspect-[9/16] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "08",
+    label: "C4D // CUBE³ WALLPAPER",
+    isImage: true,
+    image: "/sketches_plastic_cube.png",
+    software: "CINEMA 4D",
+    engine: "REDSHIFT GPU",
+    specs: "2.6M POLYS",
+    cache: "4K RE-LOD",
+    status: "FINISHED",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-1 lg:row-span-2",
+    aspect: "aspect-[9/16] lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
+  },
+  {
+    id: "09",
+    label: "C4D // PHONE PILLOW",
+    video: "/sketches_phone_pillow.mp4",
+    software: "CINEMA 4D",
+    engine: "C4D SOFTBODY",
+    specs: "920K POLYS",
+    cache: "PHYSICS OK",
+    status: "FINISHED",
+    cropPx: 0,
+    gridClass: "col-span-1 lg:col-span-2 lg:row-span-1",
+    aspect: "aspect-video lg:aspect-auto flex-1 min-h-[200px] lg:min-h-0"
   }
 ];
 
@@ -237,7 +227,7 @@ function SketchCard({
   return (
     <div
       ref={cardRef}
-      className={`group relative overflow-hidden bg-surface border border-black/10 rounded-sm flex flex-col transition-all duration-500 hover:border-black/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.03)] ${className}`}
+      className={`group relative overflow-hidden bg-surface border border-black/10 rounded-sm flex flex-col transition-all duration-500 hover:border-black/30 hover:shadow-[0_4px_24px_rgba(0,0,0,0.03)] h-full ${className}`}
       style={style}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => !isImage && videoRef.current?.play()}
@@ -259,7 +249,7 @@ function SketchCard({
       </div>
 
       {/* Media Viewport */}
-      <div className={`relative w-full overflow-hidden bg-black ${aspect}`}>
+      <div className={`relative w-full overflow-hidden bg-black ${aspect === 'h-full' ? 'flex-1 min-h-[200px] lg:min-h-0' : aspect}`}>
         <div 
           ref={innerRef} 
           className="absolute inset-0 scale-[1.05] will-change-transform"
@@ -287,7 +277,7 @@ function SketchCard({
       </div>
 
       {/* Card Footer */}
-      <div className="p-3 bg-[#FBFBFA]/40 font-mono text-[9px] leading-relaxed text-black/60 select-none border-t border-black/5 flex-1 flex flex-col justify-between">
+      <div className="p-3 bg-[#FBFBFA]/40 font-mono text-[9px] leading-relaxed text-black/60 select-none border-t border-black/5 flex flex-col justify-between">
         <div className="font-bold text-black uppercase tracking-[0.12em] mb-2 flex items-center justify-between">
           <span>{cleanLabel}</span>
           <span className="text-[#FF5F1F]/40">⬡</span>
@@ -302,22 +292,9 @@ function SketchCard({
   );
 }
 
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return isMobile;
-}
-
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
-  const isMobile = useIsMobile();
   const openProject = (id: string) => {
     const data = (PROJECTS_DATA as any)[id];
     setActiveData(data);
@@ -425,103 +402,29 @@ export default function Home() {
         </div>
 
         <div className="px-[18px] pb-16">
-          {isMobile ? (
-            <div className="grid grid-cols-2 gap-[2px]">
-              {SKETCHES_DATA.map((sketch) => (
-                <SketchCard
-                  key={sketch.id}
-                  id={sketch.id}
-                  video={sketch.video}
-                  poster={sketch.poster}
-                  isImage={sketch.isImage}
-                  image={sketch.image}
-                  label={sketch.label}
-                  posterTime={sketch.posterTime}
-                  cropPx={sketch.cropPx}
-                  cropX={sketch.cropX}
-                  software={sketch.software}
-                  engine={sketch.engine}
-                  specs={sketch.specs}
-                  cache={sketch.cache}
-                  status={sketch.status}
-                  aspect={sketch.aspect}
-                  className={sketch.mobileColSpan ? "col-span-2" : ""}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="flex gap-[2px]">
-              {/* Column 1 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                {SKETCHES_DATA.filter((s) => s.desktopCol === 1).map((sketch) => (
-                  <SketchCard
-                    key={sketch.id}
-                    id={sketch.id}
-                    video={sketch.video}
-                    poster={sketch.poster}
-                    isImage={sketch.isImage}
-                    image={sketch.image}
-                    label={sketch.label}
-                    posterTime={sketch.posterTime}
-                    cropPx={sketch.cropPx}
-                    cropX={sketch.cropX}
-                    software={sketch.software}
-                    engine={sketch.engine}
-                    specs={sketch.specs}
-                    cache={sketch.cache}
-                    status={sketch.status}
-                    aspect={sketch.aspect}
-                  />
-                ))}
-              </div>
-              {/* Column 2 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                {SKETCHES_DATA.filter((s) => s.desktopCol === 2).map((sketch) => (
-                  <SketchCard
-                    key={sketch.id}
-                    id={sketch.id}
-                    video={sketch.video}
-                    poster={sketch.poster}
-                    isImage={sketch.isImage}
-                    image={sketch.image}
-                    label={sketch.label}
-                    posterTime={sketch.posterTime}
-                    cropPx={sketch.cropPx}
-                    cropX={sketch.cropX}
-                    software={sketch.software}
-                    engine={sketch.engine}
-                    specs={sketch.specs}
-                    cache={sketch.cache}
-                    status={sketch.status}
-                    aspect={sketch.aspect}
-                  />
-                ))}
-              </div>
-              {/* Column 3 */}
-              <div className="flex-1 flex flex-col gap-[2px]">
-                {SKETCHES_DATA.filter((s) => s.desktopCol === 3).map((sketch) => (
-                  <SketchCard
-                    key={sketch.id}
-                    id={sketch.id}
-                    video={sketch.video}
-                    poster={sketch.poster}
-                    isImage={sketch.isImage}
-                    image={sketch.image}
-                    label={sketch.label}
-                    posterTime={sketch.posterTime}
-                    cropPx={sketch.cropPx}
-                    cropX={sketch.cropX}
-                    software={sketch.software}
-                    engine={sketch.engine}
-                    specs={sketch.specs}
-                    cache={sketch.cache}
-                    status={sketch.status}
-                    aspect={sketch.aspect}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[2px] auto-rows-auto lg:auto-rows-[300px]">
+            {SKETCHES_DATA.map((sketch) => (
+              <SketchCard
+                key={sketch.id}
+                id={sketch.id}
+                video={sketch.video}
+                poster={sketch.poster}
+                isImage={sketch.isImage}
+                image={sketch.image}
+                label={sketch.label}
+                posterTime={sketch.posterTime}
+                cropPx={sketch.cropPx}
+                cropX={sketch.cropX}
+                software={sketch.software}
+                engine={sketch.engine}
+                specs={sketch.specs}
+                cache={sketch.cache}
+                status={sketch.status}
+                aspect={sketch.aspect}
+                className={sketch.gridClass}
+              />
+            ))}
+          </div>
         </div>
 
       </section>

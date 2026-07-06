@@ -14,7 +14,82 @@ import ProjectCard from "./ProjectCard";
 import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
 
-function SketchCard({ video, label, poster, posterTime, isImage, image, aspect }: {
+type SketchItem = typeof SKETCHES[number];
+
+function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClose: () => void }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!sketch) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [sketch, onClose]);
+
+  useEffect(() => {
+    if (sketch && !sketch.isImage && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [sketch]);
+
+  if (!sketch) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[400] flex items-center justify-center"
+      style={{ backgroundColor: 'rgba(0,0,0,0.92)' }}
+      onClick={onClose}
+    >
+      {/* Media container */}
+      <div
+        className="relative flex items-center justify-center animate-lightbox"
+        style={{ maxWidth: '92vw', maxHeight: '88vh' }}
+        onClick={e => e.stopPropagation()}
+      >
+        {sketch.isImage ? (
+          <img
+            src={sketch.image}
+            alt={sketch.label}
+            style={{ maxWidth: '92vw', maxHeight: '84vh', display: 'block' }}
+          />
+        ) : (
+          <video
+            ref={videoRef}
+            src={sketch.video}
+            poster={sketch.poster}
+            loop
+            muted
+            playsInline
+            style={{ maxWidth: '92vw', maxHeight: '84vh', display: 'block' }}
+          />
+        )}
+
+        {/* Bottom label */}
+        <div className="absolute bottom-0 left-0 right-0 flex justify-between items-end p-4 md:p-6 pointer-events-none"
+          style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)' }}>
+          <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/60">
+            <span className="text-[#FF5F1F]/70 mr-1.5">⬡</span>{sketch.label}
+          </p>
+          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-white/30">ESC — закрыть</p>
+        </div>
+      </div>
+
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        className="absolute top-6 right-6 font-mono text-[10px] tracking-[0.3em] uppercase text-white/40 hover:text-[#FF5F1F] transition-colors duration-200 cursor-pointer"
+      >
+        [×]
+      </button>
+    </div>
+  );
+}
+
+function SketchCard({ video, label, poster, posterTime, isImage, image, aspect, onOpen }: {
   video?: string;
   isImage?: boolean;
   image?: string;
@@ -22,6 +97,7 @@ function SketchCard({ video, label, poster, posterTime, isImage, image, aspect }
   poster?: string;
   posterTime?: number;
   aspect: number;
+  onOpen: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -59,19 +135,16 @@ function SketchCard({ video, label, poster, posterTime, isImage, image, aspect }
   return (
     <div
       ref={cardRef}
-      className="group relative overflow-hidden bg-black"
+      className="group relative overflow-hidden bg-black cursor-pointer"
       style={{ flex: aspect }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => !isImage && videoRef.current?.play()}
       onMouseLeave={handleMouseLeave}
+      onClick={onOpen}
     >
       <div ref={innerRef} className="absolute inset-0 scale-[1.01] will-change-transform">
         {isImage ? (
-          <img
-            src={image}
-            alt={label}
-            className="w-full h-full object-cover"
-          />
+          <img src={image} alt={label} className="w-full h-full object-cover" />
         ) : (
           <video
             ref={videoRef}
@@ -85,6 +158,18 @@ function SketchCard({ video, label, poster, posterTime, isImage, image, aspect }
           />
         )}
       </div>
+
+      {/* Expand indicator — top-right, appears on hover */}
+      <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="flex items-center gap-1.5 px-2 py-1 bg-black/50 backdrop-blur-sm border border-white/10">
+          <svg className="w-3 h-3 text-[#FF5F1F]" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <path d="M4.5 1.5H1.5v3M9.5 1.5h3v3M1.5 9.5v3h3M12.5 9.5v3h-3"/>
+          </svg>
+          <span className="font-mono text-[8px] tracking-[0.3em] uppercase text-white/60">expand</span>
+        </div>
+      </div>
+
+      {/* Label */}
       <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
         <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/30 group-hover:text-white/70 transition-colors duration-300">
           <span className="text-[#FF5F1F]/40 group-hover:text-[#FF5F1F]/80 transition-colors duration-300 mr-1.5">⬡</span>{label}
@@ -128,6 +213,7 @@ const MOBILE_ROWS  = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]];
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
+  const [openSketch, setOpenSketch] = useState<SketchItem | null>(null);
   const isMobile = useIsMobile();
   const openProject = (id: string) => {
     const data = (PROJECTS_DATA as any)[id];
@@ -242,6 +328,7 @@ export default function Home() {
                     poster={s.poster}
                     posterTime={s.posterTime}
                     aspect={s.aspect}
+                    onOpen={() => setOpenSketch(SKETCHES[i])}
                   />
                 );
               })}
@@ -256,6 +343,9 @@ export default function Home() {
 
       {/* Footer Section */}
       <Footer />
+
+      {/* Sketch Lightbox */}
+      <SketchLightbox sketch={openSketch} onClose={() => setOpenSketch(null)} />
 
       {/* Case Study Overlay */}
       <ProjectOverlay

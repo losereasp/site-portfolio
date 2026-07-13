@@ -1,0 +1,29 @@
+{
+  "projectId": "a638dc5b-650c-410b-bc71-44df9e8ea5f9",
+  "shape": "package",
+  "pkg": "next-portfolio",
+  "globalName": "PortfolioDS",
+  "entry": ".design-sync/ds-entry.tsx",
+  "srcDir": "src/app",
+  "tsconfig": ".design-sync/tsconfig.dssync.json",
+  "cssEntry": ".design-sync/.cache/app.css",
+  "buildCmd": "node .design-sync/build-css.mjs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "BeforeAfterSlider": { "cardMode": "column" },
+    "Footer": { "cardMode": "column" },
+    "ProjectCard": { "cardMode": "column" },
+    "MainNavbar": { "cardMode": "single", "primaryStory": "OverDark" }
+  },
+  "componentSrcMap": {
+    "Footer": "src/app/Footer.tsx",
+    "ProjectCard": "src/app/ProjectCard.tsx",
+    "MainNavbar": "src/app/MainNavbar.tsx",
+    "BeforeAfterSlider": "src/app/BeforeAfterSlider.tsx",
+    "ProjectOverlay": "src/app/ProjectOverlay.tsx",
+    "LocalTime": "src/app/LocalTime.tsx",
+    "Magnetic": "src/app/Magnetic.tsx",
+    "ScrollMarquee": "src/app/ScrollMarquee.tsx",
+    "LoadingScreen": "src/app/LoadingScreen.tsx"
+  }
+}

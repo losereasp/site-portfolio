@@ -36,8 +36,12 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
       }`}
     >
       <Magnetic>
-        <Link href="/" className="font-primary text-2xl md:text-4xl tracking-tight uppercase text-[#FF5F1F] hover:underline underline-offset-8 transition-all">
-          LSRSP
+        <Link href="/" aria-label="LSRSP — home" className="block transition-opacity hover:opacity-80">
+          <img
+            src="/favicon-mark.svg"
+            alt="LSRSP"
+            className="h-8 w-8 md:h-10 md:w-10 rounded-md"
+          />
         </Link>
       </Magnetic>
       <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight">

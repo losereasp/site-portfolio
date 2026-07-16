@@ -36,12 +36,14 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
       }`}
     >
       <Magnetic>
-        <Link href="/" aria-label="LSRSP — home" className="block transition-opacity hover:opacity-80">
-          <img
-            src="/favicon-mark.svg"
-            alt="LSRSP"
-            className="h-8 w-8 md:h-10 md:w-10 rounded-md"
-          />
+        <Link
+          href="/"
+          aria-label="LSRSP — home"
+          className="font-primary normal-case text-3xl md:text-5xl tracking-tight transition-opacity hover:opacity-80"
+        >
+          <span className="text-[#FF5F1F]">[</span>
+          <span className={isLight ? "text-black" : "text-white"}>l</span>
+          <span className="text-[#FF5F1F]">]</span>
         </Link>
       </Magnetic>
       <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight">

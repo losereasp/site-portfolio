@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 const jetBrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-  weight: ["300", "400"],
+  weight: ["300", "400", "700"],
 });
 
 export const metadata: Metadata = {

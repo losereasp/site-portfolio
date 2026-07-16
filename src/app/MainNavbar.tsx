@@ -39,7 +39,7 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
         <Link
           href="/"
           aria-label="LSRSP — home"
-          className="font-mono normal-case text-3xl md:text-5xl tracking-tight transition-opacity hover:opacity-80"
+          className="font-mono font-bold normal-case text-3xl md:text-5xl tracking-tight transition-opacity hover:opacity-80"
         >
           <span className="text-[#FF5F1F]">[</span>
           <span className={isLight ? "text-black" : "text-white"}>l</span>

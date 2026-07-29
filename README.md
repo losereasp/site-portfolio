@@ -1,7 +1,7 @@
 # LSRSP — Portfolio & 3D R&D Lab
 
 > **Iaroslav Marchenkov** · CG Generalist & Creative Developer  
-> Live Site: [https://site-portfolio-kappa-two.vercel.app](https://site-portfolio-kappa-two.vercel.app)
+> Live Site: [https://losereasp.com](https://losereasp.com)
 
 ---
 

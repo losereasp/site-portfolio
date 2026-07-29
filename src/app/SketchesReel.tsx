@@ -207,7 +207,7 @@ function ReelCard({ sketch, onOpen }: { sketch: SketchItem; onOpen: () => void }
       onClick={onOpen}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden bg-black border border-black/10 rounded-sm shrink-0 md:cursor-none cursor-pointer h-[280px] md:h-[400px] transition-transform duration-300 hover:scale-[1.01]"
+      className="group relative overflow-hidden bg-black rounded-sm shrink-0 md:cursor-none cursor-pointer h-[280px] md:h-[400px] transition-transform duration-300 hover:scale-[1.01]"
       style={{ aspectRatio: sketch.aspect }}
     >
       {sketch.isImage ? (

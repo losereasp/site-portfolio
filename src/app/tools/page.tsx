@@ -20,44 +20,44 @@ export default function ToolsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#F0F0EE] text-black selection:bg-[#FF5F1F] selection:text-white relative">
+    <main className="min-h-screen bg-[#080808] bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] text-white selection:bg-[#FF5F1F] selection:text-white relative">
       <ViewCursor />
       <ScrollToTop />
-      <MainNavbar lightMode />
+      <MainNavbar />
 
       {/* Hero Section */}
       <section className="pt-32 md:pt-44 pb-12 md:pb-20 px-4 md:px-8 max-w-7xl mx-auto">
         {/* Top Metadata Badges */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
-            <span className="inline-block w-2.5 h-2.5 bg-[#FF5F1F]" />
+            <span className="inline-block w-2.5 h-2.5 bg-[#FF5F1F] shadow-[0_0_8px_#FF5F1F]" />
             <span className="font-mono text-xs md:text-sm tracking-[0.25em] text-[#FF5F1F] font-bold uppercase">
               [ PIPELINE &amp; SOFTWARE R&amp;D ]
             </span>
           </div>
 
           {/* Status Pill */}
-          <div className="inline-flex items-center gap-3 px-3.5 py-1.5 border border-black/20 bg-black text-white text-xs font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-3 px-3.5 py-1.5 border border-[#FF5F1F]/40 bg-[#0F0F0F] text-white text-xs font-mono tracking-widest uppercase shadow-[0_0_15px_rgba(255,95,31,0.1)]">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF5F1F] opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#FF5F1F]" />
             </span>
-            <span>[ STATUS: RESEARCH &amp; DEVELOPMENT ]</span>
+            <span className="text-white/90">[ STATUS: RESEARCH &amp; DEVELOPMENT ]</span>
           </div>
         </div>
 
         {/* Hero Headline */}
-        <h1 className="font-primary text-6xl md:text-9xl font-black uppercase tracking-tight text-[#111111] leading-[0.9] mb-6">
+        <h1 className="font-primary text-6xl md:text-9xl font-black uppercase tracking-tight text-white leading-[0.9] mb-6 drop-shadow-[0_0_35px_rgba(255,95,31,0.3)]">
           ASSET BROWSER
         </h1>
 
         {/* Subtitle / Tagline */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <p className="lg:col-span-8 font-mono text-xl md:text-3xl text-black/80 font-light leading-snug tracking-tight">
+          <p className="lg:col-span-8 font-mono text-xl md:text-3xl text-white/90 font-light leading-snug tracking-tight">
             &quot;One personal library. Every DCC. Zero clutter.&quot;
           </p>
 
-          <div className="lg:col-span-4 font-mono text-xs text-black/70 leading-relaxed border-l-2 border-[#FF5F1F] pl-4">
+          <div className="lg:col-span-4 font-mono text-xs text-white/60 leading-relaxed border-l-2 border-[#FF5F1F] pl-4">
             A local-first, universal 3D asset manifest &amp; live-bridge tool designed to unify workflows across Blender, Cinema 4D, Houdini, and Unreal Engine.
           </div>
         </div>
@@ -65,29 +65,29 @@ export default function ToolsPage() {
 
       {/* Interactive Mockup Section */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-20 md:pb-24">
-        <div className="mb-4 flex items-center justify-between font-mono text-xs tracking-wider text-black/60 uppercase border-b border-black/15 pb-2">
+        <div className="mb-4 flex items-center justify-between font-mono text-xs tracking-wider text-white/50 uppercase border-b border-white/10 pb-2">
           <div className="flex items-center gap-2">
             <span className="text-[#FF5F1F]">❖</span>
-            <span className="font-bold text-black">[ INTERACTIVE SOFTWARE PREVIEW — DEMO V0.4 ]</span>
+            <span className="font-bold text-white/90">[ INTERACTIVE SOFTWARE PREVIEW — DEMO V0.4 ]</span>
           </div>
-          <span className="hidden sm:inline">PROTOTYPE // INTERNAL BUILD</span>
+          <span className="hidden sm:inline text-white/40">PROTOTYPE // INTERNAL BUILD</span>
         </div>
 
         {/* Mockup Frame */}
-        <div className="border border-black shadow-2xl overflow-hidden bg-black">
+        <div className="border border-[#FF5F1F]/40 shadow-[0_0_60px_rgba(255,95,31,0.15)] overflow-hidden bg-black">
           <AssetBrowserMockup />
         </div>
       </section>
 
       {/* Sticky Navigation Quick Filter Tabs */}
       <section className="sticky top-20 z-40 px-4 md:px-8 max-w-7xl mx-auto pb-12">
-        <div className="flex flex-wrap items-center gap-3 bg-[#F0F0EE]/90 backdrop-blur-md py-3 border-b-2 border-black/20">
+        <div className="flex flex-wrap items-center gap-3 bg-[#080808]/90 backdrop-blur-md py-3 border-b border-[#FF5F1F]/20">
           <button
             onClick={() => scrollToSection("problem-solution", "overview")}
             className={`font-mono text-xs md:text-sm tracking-widest uppercase px-5 py-2.5 border transition-all cursor-pointer ${
               activeTab === "overview"
-                ? "bg-[#111111] text-white border-[#111111] shadow-md"
-                : "bg-white text-black/80 border-black/20 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
+                ? "bg-[#FF5F1F] text-white border-[#FF5F1F] shadow-[0_0_20px_rgba(255,95,31,0.3)]"
+                : "bg-[#111111] text-white/70 border-white/10 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
             }`}
           >
             01 // PROBLEM VS SOLUTION
@@ -96,8 +96,8 @@ export default function ToolsPage() {
             onClick={() => scrollToSection("architecture", "specs")}
             className={`font-mono text-xs md:text-sm tracking-widest uppercase px-5 py-2.5 border transition-all cursor-pointer ${
               activeTab === "specs"
-                ? "bg-[#111111] text-white border-[#111111] shadow-md"
-                : "bg-white text-black/80 border-black/20 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
+                ? "bg-[#FF5F1F] text-white border-[#FF5F1F] shadow-[0_0_20px_rgba(255,95,31,0.3)]"
+                : "bg-[#111111] text-white/70 border-white/10 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
             }`}
           >
             02 // TECHNICAL ARCHITECTURE
@@ -106,11 +106,11 @@ export default function ToolsPage() {
             onClick={() => scrollToSection("roadmap", "roadmap")}
             className={`font-mono text-xs md:text-sm tracking-widest uppercase px-5 py-2.5 border transition-all cursor-pointer ${
               activeTab === "roadmap"
-                ? "bg-[#111111] text-white border-[#111111] shadow-md"
-                : "bg-white text-black/80 border-black/20 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
+                ? "bg-[#FF5F1F] text-white border-[#FF5F1F] shadow-[0_0_20px_rgba(255,95,31,0.3)]"
+                : "bg-[#111111] text-white/70 border-white/10 hover:border-[#FF5F1F] hover:text-[#FF5F1F]"
             }`}
           >
-            03 // DEVELOPMENT ROADMAP
+            03 // ROADMAP
           </button>
         </div>
       </section>
@@ -121,24 +121,24 @@ export default function ToolsPage() {
           <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
             [ THE PARADIGM SHIFT ]
           </span>
-          <h2 className="font-primary text-4xl md:text-6xl font-black uppercase text-[#111111]">
+          <h2 className="font-primary text-4xl md:text-6xl font-black uppercase text-white">
             PROBLEM VS SOLUTION
           </h2>
-          <p className="font-mono text-sm text-black/70 max-w-2xl mt-2">
+          <p className="font-mono text-sm text-white/60 max-w-2xl mt-2">
             Why legacy asset managers create friction in modern multi-DCC production pipelines, and how Asset Browser solves it.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
-          {/* THE PROBLEM CARD - High-Contrast Dark */}
-          <div className="bg-[#000000] text-white p-8 md:p-12 border border-white/10 relative flex flex-col justify-between overflow-hidden group shadow-2xl">
+          {/* THE PROBLEM CARD - Deep Crimson Dark #0D0606 */}
+          <div className="bg-[#0D0606] text-white p-8 md:p-12 border border-red-900/40 relative flex flex-col justify-between overflow-hidden group shadow-[0_0_40px_rgba(239,68,68,0.08)]">
             <div className="absolute top-0 right-0 w-40 h-40 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <div>
-              <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-8">
+              <div className="flex items-center justify-between border-b border-red-900/30 pb-4 mb-8">
                 <span className="font-mono text-xs text-red-400 tracking-widest uppercase font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 bg-red-500 rounded-full inline-block" />
+                  <span className="w-2 h-2 bg-red-500 rounded-full inline-block shadow-[0_0_8px_#ef4444]" />
                   [ 01 // THE PAIN POINT ]
                 </span>
                 <span className="font-mono text-xs text-white/50 uppercase">Ecosystem Fragmentation</span>
@@ -187,20 +187,20 @@ export default function ToolsPage() {
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-white/15 flex items-center justify-between font-mono text-[11px] text-white/50">
+            <div className="mt-10 pt-6 border-t border-red-900/30 flex items-center justify-between font-mono text-[11px] text-white/50">
               <span>RESULT: WASTED BILLABLE HOURS</span>
               <span className="text-red-400 font-bold">HIGH FRICTION</span>
             </div>
           </div>
 
-          {/* THE SOLUTION CARD - High-Contrast Pure Black Brand Accent */}
-          <div className="bg-[#111111] text-white p-8 md:p-12 border-2 border-[#FF5F1F] relative flex flex-col justify-between overflow-hidden shadow-2xl">
+          {/* THE SOLUTION CARD - Deep Dark #0E0A06 with #FF5F1F Orange Glow */}
+          <div className="bg-[#0E0A06] text-white p-8 md:p-12 border border-[#FF5F1F]/40 relative flex flex-col justify-between overflow-hidden shadow-[0_0_50px_rgba(255,95,31,0.12)]">
             <div className="absolute top-0 right-0 w-40 h-40 bg-[#FF5F1F]/20 rounded-full blur-3xl pointer-events-none" />
 
             <div>
-              <div className="flex items-center justify-between border-b border-white/15 pb-4 mb-8">
+              <div className="flex items-center justify-between border-b border-[#FF5F1F]/20 pb-4 mb-8">
                 <span className="font-mono text-xs text-[#FF5F1F] tracking-widest uppercase font-bold flex items-center gap-2">
-                  <span className="w-2 h-2 bg-[#FF5F1F] rounded-full inline-block" />
+                  <span className="w-2 h-2 bg-[#FF5F1F] rounded-full inline-block shadow-[0_0_8px_#FF5F1F]" />
                   [ 02 // THE LSRSP ARCHITECTURE ]
                 </span>
                 <span className="font-mono text-xs text-white/50 uppercase">Universal Interoperability</span>
@@ -249,7 +249,7 @@ export default function ToolsPage() {
               </div>
             </div>
 
-            <div className="mt-10 pt-6 border-t border-white/15 flex items-center justify-between font-mono text-[11px] text-white/60">
+            <div className="mt-10 pt-6 border-t border-[#FF5F1F]/20 flex items-center justify-between font-mono text-[11px] text-white/60">
               <span>RESULT: EFFORTLESS FLUIDITY</span>
               <span className="text-[#FF5F1F] font-bold">100% LOCAL CONTROL</span>
             </div>
@@ -257,8 +257,8 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Section 2: Core Architecture & Technical Specs Grid - Dark Cinematic Background Container */}
-      <div id="architecture" className="bg-[#000000] text-white py-24 md:py-32 border-y border-white/10">
+      {/* Section 2: Core Architecture & Technical Specs Grid */}
+      <div id="architecture" className="bg-[#050505] text-white py-24 md:py-32 border-y border-[#FF5F1F]/20">
         <section className="px-4 md:px-8 max-w-7xl mx-auto">
           <div className="mb-12">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
@@ -275,7 +275,7 @@ export default function ToolsPage() {
           {/* 5 Technical Specs Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Spec 1 */}
-            <div className="bg-[#111111] border border-white/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors group">
+            <div className="bg-[#111111] border border-[#FF5F1F]/30 p-8 flex flex-col justify-between hover:border-[#FF5F1F] hover:shadow-[0_0_25px_rgba(255,95,31,0.15)] transition-all group">
               <div>
                 <div className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest mb-3">
                   01 // INDEX ENGINE
@@ -294,7 +294,7 @@ export default function ToolsPage() {
             </div>
 
             {/* Spec 2 */}
-            <div className="bg-[#111111] border border-white/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors group">
+            <div className="bg-[#111111] border border-[#FF5F1F]/30 p-8 flex flex-col justify-between hover:border-[#FF5F1F] hover:shadow-[0_0_25px_rgba(255,95,31,0.15)] transition-all group">
               <div>
                 <div className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest mb-3">
                   02 // FORMAT STANDARD
@@ -313,7 +313,7 @@ export default function ToolsPage() {
             </div>
 
             {/* Spec 3 */}
-            <div className="bg-[#111111] border border-white/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors group">
+            <div className="bg-[#111111] border border-[#FF5F1F]/30 p-8 flex flex-col justify-between hover:border-[#FF5F1F] hover:shadow-[0_0_25px_rgba(255,95,31,0.15)] transition-all group">
               <div>
                 <div className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest mb-3">
                   03 // LIVE PIPELINE
@@ -332,7 +332,7 @@ export default function ToolsPage() {
             </div>
 
             {/* Spec 4 */}
-            <div className="bg-[#111111] border border-white/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors group">
+            <div className="bg-[#111111] border border-[#FF5F1F]/30 p-8 flex flex-col justify-between hover:border-[#FF5F1F] hover:shadow-[0_0_25px_rgba(255,95,31,0.15)] transition-all group">
               <div>
                 <div className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest mb-3">
                   04 // INTELLIGENCE
@@ -351,7 +351,7 @@ export default function ToolsPage() {
             </div>
 
             {/* Spec 5 */}
-            <div className="bg-[#111111] border border-white/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors group lg:col-span-2">
+            <div className="bg-[#111111] border border-[#FF5F1F]/30 p-8 flex flex-col justify-between hover:border-[#FF5F1F] hover:shadow-[0_0_25px_rgba(255,95,31,0.15)] transition-all group lg:col-span-2">
               <div>
                 <div className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest mb-3">
                   05 // GOVERNANCE &amp; RIGHTS
@@ -372,16 +372,16 @@ export default function ToolsPage() {
         </section>
       </div>
 
-      {/* Section 3: Development Roadmap Timeline (Clean - Target Dates Removed) */}
+      {/* Section 3: Development Roadmap Timeline */}
       <section id="roadmap" className="px-4 md:px-8 max-w-7xl mx-auto py-24 md:py-36">
         <div className="mb-12">
           <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
             [ EXECUTION TIMELINE ]
           </span>
-          <h2 className="font-primary text-4xl md:text-6xl font-black uppercase text-[#111111]">
-            DEVELOPMENT ROADMAP
+          <h2 className="font-primary text-4xl md:text-6xl font-black uppercase text-white">
+            ROADMAP
           </h2>
-          <p className="font-mono text-sm text-black/70 max-w-2xl mt-2">
+          <p className="font-mono text-sm text-white/60 max-w-2xl mt-2">
             Milestone tracker from initial architecture design to commercial-grade pipeline release.
           </p>
         </div>
@@ -389,7 +389,7 @@ export default function ToolsPage() {
         {/* Roadmap Steps */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Phase 01 */}
-          <div className="bg-[#111111] text-white border border-black p-6 relative flex flex-col justify-between shadow-md">
+          <div className="bg-[#111111] text-white border border-white/10 p-6 relative flex flex-col justify-between shadow-md">
             <div className="absolute top-0 right-0 bg-emerald-500 text-white font-mono text-[10px] px-2.5 py-1 uppercase font-bold tracking-wider">
               [ COMPLETED ]
             </div>
@@ -417,7 +417,7 @@ export default function ToolsPage() {
           </div>
 
           {/* Phase 02 */}
-          <div className="bg-[#111111] text-white border-2 border-[#FF5F1F] p-6 relative flex flex-col justify-between shadow-xl">
+          <div className="bg-[#111111] text-white border-2 border-[#FF5F1F] p-6 relative flex flex-col justify-between shadow-[0_0_25px_rgba(255,95,31,0.2)]">
             <div className="absolute top-0 right-0 bg-[#FF5F1F] text-white font-mono text-[10px] px-2.5 py-1 uppercase font-bold tracking-wider">
               [ IN PROGRESS ]
             </div>
@@ -445,7 +445,7 @@ export default function ToolsPage() {
           </div>
 
           {/* Phase 03 */}
-          <div className="bg-[#111111]/80 text-white border border-black/20 p-6 relative flex flex-col justify-between shadow-md">
+          <div className="bg-[#111111]/80 text-white border border-white/10 p-6 relative flex flex-col justify-between shadow-md">
             <div className="absolute top-0 right-0 bg-white/20 text-white/80 font-mono text-[10px] px-2.5 py-1 uppercase font-bold tracking-wider">
               [ UPCOMING ]
             </div>
@@ -473,7 +473,7 @@ export default function ToolsPage() {
           </div>
 
           {/* Phase 04 */}
-          <div className="bg-[#111111]/80 text-white border border-black/20 p-6 relative flex flex-col justify-between shadow-md">
+          <div className="bg-[#111111]/80 text-white border border-white/10 p-6 relative flex flex-col justify-between shadow-md">
             <div className="absolute top-0 right-0 bg-white/10 text-white/50 font-mono text-[10px] px-2.5 py-1 uppercase font-bold tracking-wider">
               [ PLANNED ]
             </div>
@@ -502,15 +502,15 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* Redesigned CTA Banner - Pure Dark Brand Contrast */}
+      {/* Redesigned Terminal CTA Console - Dark #050505 */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto pb-24 md:pb-36">
-        <div className="bg-[#000000] text-white p-8 md:p-16 border-2 border-[#FF5F1F] relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-2xl">
+        <div className="bg-[#050505] text-white p-8 md:p-16 border border-[#FF5F1F]/40 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-10 shadow-[0_0_50px_rgba(255,95,31,0.15)]">
           {/* Glowing Accent Circle */}
-          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#FF5F1F]/25 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-[#FF5F1F]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-2xl relative z-10">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-2.5 h-2.5 bg-[#FF5F1F] inline-block animate-pulse" />
+              <span className="w-2.5 h-2.5 bg-[#FF5F1F] inline-block animate-pulse shadow-[0_0_8px_#FF5F1F]" />
               <span className="font-mono text-xs text-[#FF5F1F] font-bold tracking-widest uppercase">
                 [ R&amp;D COLLABORATION &amp; EARLY BETA TESTING ]
               </span>
@@ -528,7 +528,7 @@ export default function ToolsPage() {
               href="https://t.me/losereasp"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center font-mono text-xs font-bold tracking-widest uppercase bg-[#FF5F1F] text-white px-8 py-4 border border-[#FF5F1F] hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg"
+              className="w-full sm:w-auto text-center font-mono text-xs font-bold tracking-widest uppercase bg-[#FF5F1F] text-white px-8 py-4 border border-[#FF5F1F] hover:bg-white hover:text-black transition-all cursor-pointer shadow-[0_0_20px_rgba(255,95,31,0.4)]"
             >
               [ TELEGRAM CONTACT → ]
             </a>

@@ -279,7 +279,7 @@ export default function ToolsPage() {
                     MERGED IN REPO
                   </span>
                 </div>
-                <h3 className="font-primary text-2xl font-bold uppercase text-white mb-4">
+                <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white mb-4">
                   IMPLEMENTED IN REPO
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/90">
@@ -306,7 +306,7 @@ export default function ToolsPage() {
                     NEXT GATES
                   </span>
                 </div>
-                <h3 className="font-primary text-2xl font-bold uppercase text-white/90 mb-4">
+                <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white/90 mb-4">
                   NEXT MILESTONES
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/70">
@@ -337,7 +337,7 @@ export default function ToolsPage() {
                     LATER
                   </span>
                 </div>
-                <h3 className="font-primary text-2xl font-bold uppercase text-white/70 mb-4">
+                <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white/70 mb-4">
                   FUTURE DIRECTION
                 </h3>
                 <ul className="space-y-2.5 font-mono text-xs text-white/50">

@@ -456,16 +456,16 @@ export default function ToolsPage() {
           </div>
 
           {/* Desktop Horizontal Timeline / Mobile Vertical */}
-          <div className="relative pt-6">
+          <div className="relative pt-4">
             {/* Horizontal Connecting Line (Desktop) */}
-            <div className="hidden lg:block absolute top-[42px] left-0 right-0 h-[2px] bg-black/15 z-0" />
+            <div className="hidden lg:block absolute top-[36px] left-0 right-0 h-[2px] bg-black/15 z-0" />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
               
               {/* Node NOW (Orange Accent & Highest Contrast) */}
               <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-5 h-5 rounded-full bg-[#FF5F1F] border-2 border-white ring-4 ring-[#FF5F1F]/20 flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
+                  <div className="w-6 h-6 rounded-full bg-[#FF5F1F] border-2 border-white ring-2 ring-[#FF5F1F]/30 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
                     ✓
                   </div>
                   <span className="font-mono text-sm text-[#FF5F1F] font-bold tracking-widest uppercase">
@@ -473,7 +473,7 @@ export default function ToolsPage() {
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-[#FF5F1F] pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-primary text-2xl font-black uppercase text-black mb-2">
+                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
                     DESKTOP FOUNDATION
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/80 leading-relaxed">
@@ -484,8 +484,8 @@ export default function ToolsPage() {
 
               {/* Node NEXT */}
               <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-5 h-5 rounded-full bg-black border-2 border-white ring-4 ring-black/10 flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
+                  <div className="w-6 h-6 rounded-full bg-black border-2 border-white ring-2 ring-black/20 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
                     ▶
                   </div>
                   <span className="font-mono text-sm text-black font-bold tracking-widest uppercase">
@@ -493,7 +493,7 @@ export default function ToolsPage() {
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/20 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-primary text-2xl font-bold uppercase text-black mb-2">
+                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
                     PACKAGING + LOCAL DATA
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/70 leading-relaxed">
@@ -504,8 +504,8 @@ export default function ToolsPage() {
 
               {/* Node THEN */}
               <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-5 h-5 rounded-full bg-black/40 border-2 border-white flex items-center justify-center text-white font-mono text-[9px]">
+                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
+                  <div className="w-6 h-6 rounded-full bg-black/40 border-2 border-white flex items-center justify-center text-white font-mono text-xs shrink-0">
                     ○
                   </div>
                   <span className="font-mono text-sm text-black/60 font-bold tracking-widest uppercase">
@@ -513,7 +513,7 @@ export default function ToolsPage() {
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/15 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-primary text-2xl font-bold uppercase text-black/80 mb-2">
+                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/80 mb-2">
                     WALKING SKELETON
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/60 leading-relaxed">
@@ -524,8 +524,8 @@ export default function ToolsPage() {
 
               {/* Node LATER */}
               <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-5 h-5 rounded-full bg-black/20 border-2 border-white flex items-center justify-center text-white font-mono text-[9px]">
+                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
+                  <div className="w-6 h-6 rounded-full bg-black/20 border-2 border-white flex items-center justify-center text-white font-mono text-xs shrink-0">
                     ○
                   </div>
                   <span className="font-mono text-sm text-black/40 font-bold tracking-widest uppercase">
@@ -533,7 +533,7 @@ export default function ToolsPage() {
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/10 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-primary text-2xl font-bold uppercase text-black/60 mb-2">
+                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/60 mb-2">
                     CATALOG + DCC CONNECTORS
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/50 leading-relaxed">

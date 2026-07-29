@@ -388,8 +388,8 @@ export default function ToolsPage() {
           
           {/* Row 01 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
-              01 —
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F]">
+              01
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">
@@ -405,8 +405,8 @@ export default function ToolsPage() {
 
           {/* Row 02 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
-              02 —
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F]">
+              02
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">
@@ -422,8 +422,8 @@ export default function ToolsPage() {
 
           {/* Row 03 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
-            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
-              03 —
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F]">
+              03
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">

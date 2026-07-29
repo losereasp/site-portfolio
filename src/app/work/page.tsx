@@ -311,6 +311,8 @@ export default function WorkPage() {
         isOpen={!!selectedProject}
         onClose={closeProject}
         project={selectedProject || activeData || PROJECTS_DATA[ALL_IDS[0] as keyof typeof PROJECTS_DATA]}
+        onSelectProject={openProject}
+        currentProjectId={selectedProject ? Object.keys(PROJECTS_DATA).find(key => (PROJECTS_DATA as any)[key] === selectedProject) : undefined}
       />
     </main>
   );

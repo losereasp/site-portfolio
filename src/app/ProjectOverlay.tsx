@@ -830,6 +830,7 @@ export default function ProjectOverlay({
             alt="Style Frame Fullscreen" 
             className="max-w-full max-h-full object-contain shadow-2xl border border-white/5" 
           />
+        </div>
       </div>
     )}
 

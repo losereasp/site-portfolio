@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LSRSP — Portfolio & 3D R&D Lab
 
-## Getting Started
+> **Iaroslav Marchenkov** · CG Generalist & Creative Developer  
+> Live Site: [https://site-portfolio-kappa-two.vercel.app](https://site-portfolio-kappa-two.vercel.app)
 
-First, run the development server:
+---
+
+## ⚡ Overview
+
+Personal portfolio and experimental R&D lab showcasing 3D artwork, motion graphics, interactive WebGL, and custom software pipeline tools. Built with a Swiss architectural visual posture (*Cream canvas, sharp hairline dividers, restrained brand orange `#FF5F1F`*).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, React 19)
+- **3D & Graphics:** [Three.js](https://threejs.org/) / [React Three Fiber](https://r3f.docs.pmnd.rs/)
+- **Animation:** [GSAP](https://gsap.com/) & [Framer Motion](https://framer.com/motion)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & Vanilla CSS Design Tokens
+- **Typography:** Impact (Display Headers) & JetBrains Mono (Metadata & Technical Data)
+- **Language:** TypeScript
+
+---
+
+## 🚀 Key Features & Pages
+
+- **Main Experience (`/`)**:
+  - Interactive 3D Canvas Hero
+  - Drag-based "Lab Reel" horizontal carousel for 3D sketches (`SketchesReel.tsx`)
+  - Bento Grid for Selected Commercial Works (`FROST CORE`, `RAMPAGE RALLY`, `THE VISIT`, `STANLEY BOTTLE`)
+  - Modal Project Overlay with full keyboard hotkeys (`←` / `→` Navigate, `Space` Play/Pause, `M` Mute, `Esc` Close)
+- **Tools R&D Showcase (`/tools`)**:
+  - Case Study & Architecture Breakdown for **Asset Browser** — a Windows-first, local-first 3D asset manifest desktop application
+  - Honest progress tracking (*Implemented in Repo vs Next Milestones vs Long-Term Direction*)
+  - Pipeline feedback & collaboration channel
+- **Work Archive (`/work`)**: Complete showcase of commercial projects & technical breakdowns
+- **About (`/about`)**: Biography, toolchain inventory, workflow philosophy, and direct contact options
+
+---
+
+## ⚙️ Local Development
 
 ```bash
+# Clone repository
+git clone https://github.com/losereasp/site-portfolio.git
+cd site-portfolio
+
+# Install dependencies
+npm install
+
+# Run dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📜 Build & Verification
 
-## Learn More
+```bash
+# Type check and production build
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Start production server
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📬 Contact
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Telegram:** [@losereasp](https://t.me/losereasp)
+- **Email:** [yarik.marchenkov@yandex.ru](mailto:yarik.marchenkov@yandex.ru)

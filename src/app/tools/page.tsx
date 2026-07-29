@@ -15,7 +15,7 @@ export default function ToolsPage() {
     <main className="min-h-screen bg-[#F0F0EE] text-black selection:bg-[#FF5F1F] selection:text-white relative">
       <ViewCursor />
       <ScrollToTop />
-      <MainNavbar />
+      <MainNavbar lightMode />
 
       {/* Hero Section */}
       <section className="pt-32 md:pt-44 pb-12 md:pb-20 px-4 md:px-8 max-w-7xl mx-auto">

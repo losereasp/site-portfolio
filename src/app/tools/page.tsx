@@ -33,12 +33,12 @@ export default function ToolsPage() {
         </div>
 
         {/* Hero Desktop Grid (Product Frame + Poster Display Title) */}
-        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-20 my-auto">
+        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-stretch relative z-20 my-auto">
           
-          {/* Left Column Title (Desktop: Clean Split) */}
+          {/* Left Column Title (Desktop: Clean Split with no overflow) */}
           <div className="lg:col-span-5 flex flex-col justify-between order-1 z-30">
             <div>
-              <h1 className="font-primary text-6xl md:text-8xl lg:text-[6.5vw] font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8">
+              <h1 className="font-primary text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8">
                 ASSET<br />BROWSER
               </h1>
 

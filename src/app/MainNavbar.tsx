@@ -62,6 +62,9 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           </a>
         </Magnetic>
         <Magnetic>
+          <Link href="/tools" className={linkBase}>TOOLS</Link>
+        </Magnetic>
+        <Magnetic>
           <a href="/#work" className={linkBase}>WORK</a>
         </Magnetic>
         <Magnetic>

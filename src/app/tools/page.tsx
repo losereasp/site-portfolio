@@ -35,10 +35,10 @@ export default function ToolsPage() {
         {/* Hero Desktop Grid (Product Frame + Poster Display Title) */}
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-20 my-auto">
           
-          {/* Left Column Title Overlay (Desktop: Overlaps Left/Bottom) */}
+          {/* Left Column Title (Desktop: Clean Split) */}
           <div className="lg:col-span-5 flex flex-col justify-between order-1 z-30">
             <div>
-              <h1 className="font-primary text-6xl md:text-8xl lg:text-[7.5vw] font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8 pointer-events-none lg:-mr-16 lg:relative">
+              <h1 className="font-primary text-6xl md:text-8xl lg:text-[6.5vw] font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8">
                 ASSET<br />BROWSER
               </h1>
 
@@ -88,19 +88,32 @@ export default function ToolsPage() {
                 <span className="text-[#7fb7c9]/80 font-bold">WIN / X64</span>
               </div>
 
-              {/* Main Shell Content: Shifted internal title right by 80px-110px to eliminate headline collision */}
+              {/* Main Shell Content */}
               <div className="p-8 md:p-12 relative flex flex-col justify-center flex-1 my-auto">
                 <div className="absolute top-0 bottom-0 left-6 md:left-12 w-[1px] bg-[#f0a85a]/25 pointer-events-none" />
 
-                <div className="pl-6 md:pl-32 lg:pl-[340px] xl:pl-[380px]">
-                  <div className="font-primary text-4xl md:text-6xl lg:text-6xl font-bold uppercase tracking-tighter text-[#e8eef1] leading-[0.8] mb-6">
-                    <div>ASSET</div>
-                    <div className="text-[#a7c6d1] ml-4 md:ml-8">BROWSER</div>
+                <div className="pl-6 md:pl-10">
+                  <div className="font-mono text-xs text-[#7fb7c9] tracking-[0.2em] font-bold uppercase mb-2">
+                    // WORKSPACE STATUS
+                  </div>
+                  <div className="font-mono text-xl md:text-2xl font-bold uppercase text-[#e8eef1] tracking-wide mb-6">
+                    ELECTRON DESKTOP SHELL
                   </div>
 
-                  <div className="flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-widest text-[#c7d1d6]">
+                  <div className="flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-widest text-[#c7d1d6] mb-6">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#f0a85a] border border-[#f8c98f] shadow-[0_0_12px_rgba(240,168,90,0.55)] inline-block" />
                     <span>DESKTOP SHELL READY</span>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#344553]/60 grid grid-cols-2 gap-4 font-mono text-[10px] md:text-xs text-[#9dabb2] uppercase tracking-wider">
+                    <div>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">CATALOG ENGINE</span>
+                      <span className="text-[#e8eef1]">STANDBY / NEXT MILESTONE</span>
+                    </div>
+                    <div>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">DCC IPC BRIDGE</span>
+                      <span className="text-[#e8eef1]">STANDBY / NEXT MILESTONE</span>
+                    </div>
                   </div>
                 </div>
               </div>

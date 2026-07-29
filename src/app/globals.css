@@ -77,3 +77,13 @@ body {
 .animate-lightbox {
   animation: lightboxFadeScale 0.25s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
 }
+
+/* Hide scrollbars cleanly across browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

@@ -38,12 +38,12 @@ export default function ToolsPage() {
           {/* Left Column Title (Desktop: Clean Split with no overflow) */}
           <div className="lg:col-span-5 flex flex-col justify-between order-1 z-30">
             <div>
-              <h1 className="font-primary text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8">
+              <h1 className="font-primary text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-black uppercase tracking-wide text-white leading-[0.88] mb-6 lg:mb-8">
                 ASSET<br />BROWSER
               </h1>
 
               <div className="border-l-2 border-[#FF5F1F] pl-4 max-w-lg mb-6">
-                <p className="font-mono text-base text-white/90 font-light leading-relaxed tracking-tight mb-3">
+                <p className="font-mono text-base text-white/90 font-light leading-relaxed mb-3">
                   One local library for the 3D assets I already own.
                 </p>
                 <p className="font-mono text-xs text-white/60 leading-relaxed">

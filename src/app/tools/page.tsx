@@ -5,7 +5,6 @@ import MainNavbar from "../MainNavbar";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
 import ViewCursor from "../ViewCursor";
-import AssetBrowserMockup from "./AssetBrowserMockup";
 
 export default function ToolsPage() {
   return (
@@ -46,33 +45,6 @@ export default function ToolsPage() {
           <div className="lg:col-span-4 font-mono text-xs text-black/60 leading-relaxed border-l-2 border-[#FF5F1F] pl-4">
             A local-first, universal 3D asset manifest &amp; live-bridge tool designed to unify workflows across Blender, Cinema 4D, Houdini, and Unreal Engine.
           </div>
-        </div>
-      </section>
-
-      {/* Interactive Mockup Section */}
-      <section className="px-4 md:px-8 max-w-7xl mx-auto pb-20 md:pb-24">
-        <div className="mb-4 flex items-center justify-between font-mono text-xs tracking-wider text-black/60 uppercase border-b border-black/10 pb-2">
-          <div className="flex items-center gap-2">
-            <span className="text-[#FF5F1F]">❖</span>
-            <span className="font-bold text-black/90">[ INTERACTIVE SOFTWARE PREVIEW — DEMO V0.4 ]</span>
-          </div>
-          <span className="hidden sm:inline text-black/40">PROTOTYPE // INTERNAL BUILD</span>
-        </div>
-
-        {/* macOS Dark Window Mockup Frame */}
-        <div className="border border-black/20 shadow-xl overflow-hidden bg-black">
-          <div className="bg-[#1A1A1A] border-b border-white/10 px-4 py-3 flex items-center justify-between select-none">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#FF5F56] inline-block" />
-              <span className="w-3 h-3 rounded-full bg-[#FFBD2E] inline-block" />
-              <span className="w-3 h-3 rounded-full bg-[#27C93F] inline-block" />
-            </div>
-            <span className="font-mono text-xs text-white/50 tracking-wider font-medium">
-              Asset Browser v0.4 — Local Manifest Workspace
-            </span>
-            <div className="w-12" />
-          </div>
-          <AssetBrowserMockup />
         </div>
       </section>
 

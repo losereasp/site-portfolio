@@ -92,10 +92,10 @@ export default function ToolsPage() {
               <div className="p-8 md:p-12 relative flex flex-col justify-center flex-1 my-auto">
                 <div className="absolute top-0 bottom-0 left-6 md:left-12 w-[1px] bg-[#f0a85a]/25 pointer-events-none" />
 
-                <div className="pl-6 md:pl-24 lg:pl-[110px]">
-                  <div className="font-primary text-5xl md:text-7xl font-bold uppercase tracking-tighter text-[#e8eef1] leading-[0.8] mb-6">
+                <div className="pl-6 md:pl-32 lg:pl-[340px] xl:pl-[380px]">
+                  <div className="font-primary text-4xl md:text-6xl lg:text-6xl font-bold uppercase tracking-tighter text-[#e8eef1] leading-[0.8] mb-6">
                     <div>ASSET</div>
-                    <div className="text-[#a7c6d1] ml-6 md:ml-12">BROWSER</div>
+                    <div className="text-[#a7c6d1] ml-4 md:ml-8">BROWSER</div>
                   </div>
 
                   <div className="flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-widest text-[#c7d1d6]">

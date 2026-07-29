@@ -71,4 +71,4 @@ npm run start
 ## 📬 Contact
 
 - **Telegram:** [@losereasp](https://t.me/losereasp)
-- **Email:** [yarik.marchenkov@yandex.ru](mailto:yarik.marchenkov@yandex.ru)
+- **Email:** [iaroslav@losereasp.com](mailto:iaroslav@losereasp.com)

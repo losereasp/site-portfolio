@@ -572,7 +572,7 @@ export default function ToolsPage() {
               [ TELEGRAM CONTACT → ]
             </a>
             <a
-              href="mailto:yarik.marchenkov@yandex.ru"
+              href="mailto:iaroslav@losereasp.com"
               className="w-full sm:w-auto inline-flex items-center justify-center text-center font-mono text-xs font-bold tracking-wider uppercase bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-all px-6 md:px-8 py-4 cursor-pointer whitespace-nowrap"
             >
               [ EMAIL INQUIRY → ]

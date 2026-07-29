@@ -13,8 +13,7 @@ import ProjectOverlay from "./ProjectOverlay";
 import ProjectCard from "./ProjectCard";
 import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
-
-type SketchItem = typeof SKETCHES[number];
+import SketchesReel, { type SketchItem } from "./SketchesReel";
 
 function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -89,107 +88,7 @@ function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClos
   );
 }
 
-function SketchCard({ video, label, poster, posterTime, isImage, image, aspect, onOpen }: {
-  video?: string;
-  isImage?: boolean;
-  image?: string;
-  label: string;
-  poster?: string;
-  posterTime?: number;
-  aspect: number;
-  onOpen: () => void;
-}) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (posterTime !== undefined && videoRef.current) {
-      videoRef.current.currentTime = posterTime;
-    }
-  }, [posterTime]);
-
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    const card = cardRef.current;
-    const inner = innerRef.current;
-    if (!card || !inner) return;
-    const rect = card.getBoundingClientRect();
-    const dx = (e.clientX - rect.left) / rect.width - 0.5;
-    const dy = (e.clientY - rect.top) / rect.height - 0.5;
-    inner.style.transition = 'transform 0.2s ease-out';
-    inner.style.transform = `translate(${dx * 12}px, ${dy * 12}px) scale(1.03)`;
-  };
-
-  const handleMouseLeave = () => {
-    const inner = innerRef.current;
-    if (inner) {
-      inner.style.transition = 'transform 0.6s ease-out';
-      inner.style.transform = '';
-    }
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = posterTime ?? 0;
-    }
-  };
-
-  return (
-    <div
-      ref={cardRef}
-      className="group relative overflow-hidden bg-black cursor-pointer"
-      style={{ flex: aspect }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => !isImage && videoRef.current?.play()}
-      onMouseLeave={handleMouseLeave}
-      onClick={onOpen}
-    >
-      <div ref={innerRef} className="absolute inset-0 scale-[1.01] will-change-transform">
-        {isImage ? (
-          <img src={image} alt={label} className="w-full h-full object-cover" />
-        ) : (
-          <video
-            ref={videoRef}
-            src={video}
-            poster={poster}
-            muted
-            loop
-            playsInline
-            preload={posterTime !== undefined ? "auto" : "metadata"}
-            className="w-full h-full object-cover"
-          />
-        )}
-      </div>
-
-      {/* Expand indicator — top-right, appears on hover */}
-      <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="flex items-center gap-1.5 px-2 py-1 bg-black/50 backdrop-blur-sm border border-white/10">
-          <svg className="w-3 h-3 text-[#FF5F1F]" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-            <path d="M4.5 1.5H1.5v3M9.5 1.5h3v3M1.5 9.5v3h3M12.5 9.5v3h-3"/>
-          </svg>
-          <span className="font-mono text-[8px] tracking-[0.3em] uppercase text-white/60">expand</span>
-        </div>
-      </div>
-
-      {/* Label */}
-      <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-10">
-        <p className="font-mono text-[9px] tracking-[0.35em] uppercase text-white/30 group-hover:text-white/70 transition-colors duration-300">
-          <span className="text-[#FF5F1F]/40 group-hover:text-[#FF5F1F]/80 transition-colors duration-300 mr-1.5">⬡</span>{label}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return isMobile;
-}
 
 const SKETCHES = [
   { id: "apollo",       video: "/sketches_01.mp4",          label: "Houdini // APOLLO",              aspect: 16 / 9, posterTime: 1.5 },
@@ -204,17 +103,10 @@ const SKETCHES = [
   { id: "trans_cube",   video: "/sketches_trans_cube.mp4",  label: "C4D // TRANS CUBE",              aspect: 4 / 5,   poster: "/sketches_trans_cube_poster.png" },
 ];
 
-// Row groupings: each sub-array fills its row completely via flex:aspect
-// Desktop: 3 rows — Row 1 wide/narrow/wide, Row 2 mixed, Row 3 portrait+wide+portrait
-// Mobile: 5 rows of 2
-const DESKTOP_ROWS = [[0, 1, 2], [3, 4, 5, 6], [7, 8, 9]];
-const MOBILE_ROWS  = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]];
-
 export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [openSketch, setOpenSketch] = useState<SketchItem | null>(null);
-  const isMobile = useIsMobile();
   const openProject = (id: string) => {
     const data = (PROJECTS_DATA as any)[id];
     setActiveData(data);
@@ -309,31 +201,8 @@ export default function Home() {
           </div>
         </ScrollMarquee>
 
-        <div className="px-[18px] pb-16 flex flex-col gap-[2px]">
-          {(isMobile ? MOBILE_ROWS : DESKTOP_ROWS).map((indices, ri) => (
-            <div
-              key={ri}
-              className="flex gap-[2px] w-full overflow-hidden"
-              style={{ height: isMobile ? 160 : 300 }}
-            >
-              {indices.map(i => {
-                const s = SKETCHES[i];
-                return (
-                  <SketchCard
-                    key={s.id}
-                    video={s.video}
-                    isImage={s.isImage}
-                    image={s.image}
-                    label={s.label}
-                    poster={s.poster}
-                    posterTime={s.posterTime}
-                    aspect={s.aspect}
-                    onOpen={() => setOpenSketch(SKETCHES[i])}
-                  />
-                );
-              })}
-            </div>
-          ))}
+        <div className="pb-16">
+          <SketchesReel sketches={SKETCHES} onOpenSketch={(sketch) => setOpenSketch(sketch)} />
         </div>
 
       </section>

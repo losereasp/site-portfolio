@@ -42,9 +42,25 @@ interface ProjectOverlayProps {
     category?: string;
     youtubeId?: string;
   };
+  onSelectProject?: (id: string) => void;
+  currentProjectId?: string;
 }
 
-export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOverlayProps) {
+const PROJECT_ORDER = ["frost-core", "rampage-rally", "the-visit", "stanley-bottle"];
+const PROJECT_TITLES: Record<string, string> = {
+  "frost-core": "FROST CORE",
+  "rampage-rally": "RAMPAGE RALLY",
+  "the-visit": "THE VISIT",
+  "stanley-bottle": "STANLEY BOTTLE",
+};
+
+export default function ProjectOverlay({ 
+  isOpen, 
+  onClose, 
+  project, 
+  onSelectProject, 
+  currentProjectId 
+}: ProjectOverlayProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -57,6 +73,27 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
 
   const assetRefs = useRef<(HTMLDivElement | null)[]>([]);
   const prevRects = useRef<Map<number, DOMRect>>(new Map());
+
+  const getIndex = () => {
+    if (currentProjectId) {
+      const idx = PROJECT_ORDER.indexOf(currentProjectId);
+      if (idx !== -1) return idx;
+    }
+    const titleLower = project.title.toLowerCase();
+    if (titleLower.includes("frost")) return PROJECT_ORDER.indexOf("frost-core");
+    if (titleLower.includes("rampage")) return PROJECT_ORDER.indexOf("rampage-rally");
+    if (titleLower.includes("visit")) return PROJECT_ORDER.indexOf("the-visit");
+    if (titleLower.includes("stanley")) return PROJECT_ORDER.indexOf("stanley-bottle");
+    return 0;
+  };
+
+  const currentIndex = getIndex();
+  const prevIndex = (currentIndex - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length;
+  const nextIndex = (currentIndex + 1) % PROJECT_ORDER.length;
+  const prevId = PROJECT_ORDER[prevIndex];
+  const nextId = PROJECT_ORDER[nextIndex];
+  const prevTitle = PROJECT_TITLES[prevId] || prevId.toUpperCase();
+  const nextTitle = PROJECT_TITLES[nextId] || nextId.toUpperCase();
 
   // FLIP Animation Engine - Professional Layout transitions
   useLayoutEffect(() => {
@@ -89,16 +126,74 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
     });
   }, [expandedIndex]);
 
-  // Listen for Escape key to close Lightbox
+  // Global keydown handler for hotkeys
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        document.activeElement?.tagName === "INPUT" ||
+        document.activeElement?.tagName === "TEXTAREA" ||
+        (document.activeElement as HTMLElement)?.isContentEditable
+      ) {
+        return;
+      }
+
       if (e.key === "Escape") {
-        setActiveLightbox(null);
+        if (activeLightbox) {
+          setActiveLightbox(null);
+        } else {
+          onClose();
+        }
+        return;
+      }
+
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (onSelectProject) {
+          const idx = getIndex();
+          const prevIdx = (idx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length;
+          onSelectProject(PROJECT_ORDER[prevIdx]);
+        }
+        return;
+      }
+
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (onSelectProject) {
+          const idx = getIndex();
+          const nextIdx = (idx + 1) % PROJECT_ORDER.length;
+          onSelectProject(PROJECT_ORDER[nextIdx]);
+        }
+        return;
+      }
+
+      if (e.code === "Space" || e.key === " ") {
+        e.preventDefault();
+        if (videoPlayerRef.current) {
+          if (isPlaying) {
+            videoPlayerRef.current.pause();
+            setIsPlaying(false);
+          } else {
+            videoPlayerRef.current.play();
+            setIsPlaying(true);
+          }
+        }
+        return;
+      }
+
+      if (e.key === "m" || e.key === "M" || e.code === "KeyM") {
+        if (videoPlayerRef.current) {
+          videoPlayerRef.current.muted = !isMuted;
+          setIsMuted(!isMuted);
+        }
+        return;
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [isOpen, activeLightbox, currentProjectId, isPlaying, isMuted, onSelectProject, onClose, project]);
 
   const handleAssetClick = (i: number) => {
     // 1. Capture "First" state for all items
@@ -226,7 +321,30 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
         <div className="absolute bottom-0 left-0 right-0 h-60 bg-gradient-to-t from-black/85 via-black/30 to-transparent pointer-events-none z-10" />
         
         {/* Absolute Header Overlay */}
-        <div className="absolute top-0 left-0 right-0 p-6 md:p-12 flex justify-end items-center z-20">
+        <div className="absolute top-0 left-0 right-0 p-6 md:p-12 flex justify-between items-center z-20">
+          {/* Header Navigation Buttons */}
+          {onSelectProject ? (
+            <div className="flex items-center gap-2 md:gap-3 bg-black/40 backdrop-blur-md px-3 md:px-4 py-2 rounded-full border border-white/10 text-white font-mono text-[10px] md:text-xs">
+              <button 
+                onClick={() => onSelectProject(prevId)}
+                className="hover:text-[#FF5F1F] transition-colors flex items-center gap-1.5 uppercase font-medium"
+                title={`Navigate to ${prevTitle}`}
+              >
+                <span>[ ← PREV ]</span>
+                <span className="hidden sm:inline text-white/50 font-normal text-[9px] md:text-[10px] ml-0.5">{prevTitle}</span>
+              </button>
+              <span className="text-white/20 font-light">|</span>
+              <button 
+                onClick={() => onSelectProject(nextId)}
+                className="hover:text-[#FF5F1F] transition-colors flex items-center gap-1.5 uppercase font-medium"
+                title={`Navigate to ${nextTitle}`}
+              >
+                <span className="hidden sm:inline text-white/50 font-normal text-[9px] md:text-[10px] mr-0.5">{nextTitle}</span>
+                <span>[ NEXT → ]</span>
+              </button>
+            </div>
+          ) : <div />}
+
           <Magnetic>
             <button 
               onClick={onClose}
@@ -712,6 +830,20 @@ export default function ProjectOverlay({ isOpen, onClose, project }: ProjectOver
             alt="Style Frame Fullscreen" 
             className="max-w-full max-h-full object-contain shadow-2xl border border-white/5" 
           />
+      </div>
+    )}
+
+    {/* Floating Monospace Hotkey Legend Bar */}
+    {isOpen && !activeLightbox && (
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[105] pointer-events-none">
+        <div className="bg-black/85 backdrop-blur-md border border-white/15 px-4 py-2 rounded-full shadow-2xl flex flex-wrap items-center justify-center gap-2 md:gap-3 font-mono text-[9px] md:text-[11px] text-white uppercase tracking-wider">
+          <span className="text-[#FF5F1F] font-semibold">[ ← → NAVIGATE ]</span>
+          <span className="text-white/30">•</span>
+          <span className="text-[#FF5F1F] font-semibold">[ SPACE PLAY/PAUSE ]</span>
+          <span className="text-white/30">•</span>
+          <span className="text-[#FF5F1F] font-semibold">[ M MUTE ]</span>
+          <span className="text-white/30">•</span>
+          <span className="text-[#FF5F1F] font-semibold">[ ESC CLOSE ]</span>
         </div>
       </div>
     )}

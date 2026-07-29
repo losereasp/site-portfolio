@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import MainNavbar from "../MainNavbar";
 import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
@@ -14,11 +13,11 @@ export default function ToolsPage() {
       <ViewCursor />
       <ScrollToTop />
 
-      {/* 1. DARK PRODUCT HERO (85–100svh) */}
+      {/* 1. DARK PRODUCT HERO (85–92svh) */}
       <section className="relative min-h-[85svh] lg:min-h-[92svh] bg-[#0A0D11] text-white flex flex-col justify-between pt-24 md:pt-28 pb-8 md:pb-12 px-4 md:px-8 border-b-2 border-black overflow-hidden">
         <MainNavbar />
 
-        {/* Top Eyebrow & Status Row */}
+        {/* Top Eyebrow & Compact Status */}
         <div className="w-full max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 z-20 mb-6">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 bg-[#FF5F1F] inline-block" />
@@ -27,27 +26,27 @@ export default function ToolsPage() {
             </span>
           </div>
 
-          <div className="inline-flex items-center gap-3 px-3.5 py-1.5 border border-[#344553] bg-[#101419] text-white/90 text-xs font-mono tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 border border-[#344553] bg-[#101419] text-white/90 text-xs font-mono tracking-widest uppercase">
             <span className="w-2 h-2 rounded-full bg-[#f0a85a] shadow-[0_0_8px_#f0a85a]" />
-            <span>[ CURRENT BUILD: F-02 / ELECTRON DESKTOP SHELL ]</span>
+            <span>[ CURRENT: DESKTOP SHELL ]</span>
           </div>
         </div>
 
         {/* Hero Desktop Grid (Product Frame + Poster Display Title) */}
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-20 my-auto">
           
-          {/* Mobile Order Fix & Left Column Title Overlay (Desktop: Overlaps Left/Bottom) */}
-          <div className="lg:col-span-5 flex flex-col justify-between order-1 lg:order-1 z-30">
+          {/* Left Column Title Overlay (Desktop: Overlaps Left/Bottom) */}
+          <div className="lg:col-span-5 flex flex-col justify-between order-1 z-30">
             <div>
-              <h1 className="font-primary text-6xl md:text-8xl lg:text-[7vw] font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8 pointer-events-none lg:-mr-16 lg:relative">
+              <h1 className="font-primary text-6xl md:text-8xl lg:text-[7.5vw] font-black uppercase tracking-tight text-white leading-[0.88] mb-6 lg:mb-8 pointer-events-none lg:-mr-16 lg:relative">
                 ASSET<br />BROWSER
               </h1>
 
               <div className="border-l-2 border-[#FF5F1F] pl-4 max-w-lg mb-6">
-                <p className="font-mono text-base md:text-lg text-white/90 font-light leading-snug tracking-tight mb-3">
+                <p className="font-mono text-base text-white/90 font-light leading-relaxed tracking-tight mb-3">
                   One local library for the 3D assets I already own.
                 </p>
-                <p className="font-mono text-xs md:text-sm text-white/60 leading-relaxed">
+                <p className="font-mono text-xs text-white/60 leading-relaxed">
                   A Windows-first desktop tool I’m building to catalog assets in place and, step by step, send them into Blender, Cinema 4D, Houdini, and Unreal Engine.
                 </p>
               </div>
@@ -75,7 +74,7 @@ export default function ToolsPage() {
           </div>
 
           {/* Right Column: PRODUCT FRAME (Real Shell Representation) */}
-          <div className="lg:col-span-7 order-2 lg:order-2 flex flex-col justify-center">
+          <div className="lg:col-span-7 order-2 flex flex-col justify-center">
             {/* Real Electron App Shell Representation */}
             <div className="w-full bg-[#101419] border border-[#344553] shadow-[0_2rem_6rem_rgba(0,0,0,0.5)] overflow-hidden relative flex flex-col min-h-[320px] md:min-h-[420px] justify-between">
               
@@ -89,11 +88,11 @@ export default function ToolsPage() {
                 <span className="text-[#7fb7c9]/80 font-bold">WIN / X64</span>
               </div>
 
-              {/* Main Shell Content */}
+              {/* Main Shell Content: Shifted internal title right by 80px-110px to eliminate headline collision */}
               <div className="p-8 md:p-12 relative flex flex-col justify-center flex-1 my-auto">
                 <div className="absolute top-0 bottom-0 left-6 md:left-12 w-[1px] bg-[#f0a85a]/25 pointer-events-none" />
 
-                <div className="pl-6 md:pl-10">
+                <div className="pl-6 md:pl-24 lg:pl-[110px]">
                   <div className="font-primary text-5xl md:text-7xl font-bold uppercase tracking-tighter text-[#e8eef1] leading-[0.8] mb-6">
                     <div>ASSET</div>
                     <div className="text-[#a7c6d1] ml-6 md:ml-12">BROWSER</div>
@@ -114,17 +113,21 @@ export default function ToolsPage() {
               </div>
             </div>
 
-            {/* Frame Caption */}
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-center justify-between font-mono text-[10px] md:text-xs text-white/40 tracking-widest uppercase">
-              <span>CURRENT BUILD / ELECTRON DESKTOP SHELL / JUL 2026</span>
-              <span className="text-white/30 italic">Catalog, indexing and DCC connectors are not implemented yet.</span>
+            {/* Rebuilt Left-Aligned Caption Under Product Frame */}
+            <div className="mt-3 font-mono text-xs max-w-full">
+              <div className="text-white/80 font-bold uppercase tracking-widest">
+                CURRENT BUILD / F-02 / ELECTRON DESKTOP SHELL / JUL 2026
+              </div>
+              <div className="text-white/50 text-[11px] leading-relaxed mt-0.5">
+                Catalog, indexing and DCC connectors are not implemented yet.
+              </div>
             </div>
           </div>
 
         </div>
       </section>
 
-      {/* 3. MARQUEE TRANSITION LINE */}
+      {/* 2. MARQUEE TRANSITION LINE */}
       <ScrollMarquee className="!bg-[#111111] !border-y !border-black text-white py-3" speed={1.8}>
         <div className="flex items-center gap-8 md:gap-16 font-mono text-sm md:text-xl uppercase font-bold tracking-[0.25em] text-[#F0F0EE]">
           <span>LOCAL-FIRST</span>
@@ -140,66 +143,63 @@ export default function ToolsPage() {
         </div>
       </ScrollMarquee>
 
-      {/* 4. WHY I’M BUILDING IT */}
+      {/* 3. WHY I’M BUILDING IT (Asymmetric Editorial Layout) */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto py-20 md:py-28">
-        <div className="mb-12">
-          <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
-            [ MOTIVATION &amp; CORE PAIN ]
-          </span>
-          <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111]">
-            WHY I’M BUILDING IT
-          </h2>
-          <p className="font-mono text-base text-black/70 max-w-2xl mt-3 leading-relaxed">
-            I work as a CG Generalist. Over time, 3D models and materials accumulate into an unmanageable clutter across local drives.
-          </p>
-        </div>
-
-        {/* Three Concrete Problems */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-4">
-                PROBLEM 01
-              </span>
-              <h3 className="font-primary text-2xl font-bold uppercase text-black mb-3">
-                SCATTERED FILES
-              </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
-                Assets are scattered across random folders, external drives, and closed vendor libraries with different rules.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+          {/* Left Column: Heading & Narrative Statement */}
+          <div className="lg:col-span-5">
+            <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
+              [ MOTIVATION &amp; CORE PAIN ]
+            </span>
+            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111] leading-[0.9] mb-6">
+              WHY I’M<br />BUILDING IT
+            </h2>
+            <p className="font-mono text-base text-black/80 font-light leading-relaxed max-w-md">
+              My models, materials and textures are spread across local drives, external storage and vendor libraries. Finding the right asset often means remembering where it came from.
+            </p>
           </div>
 
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-4">
-                PROBLEM 02
-              </span>
-              <h3 className="font-primary text-2xl font-bold uppercase text-black mb-3">
-                INCONSISTENT METADATA
-              </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
-                Searching for a specific mesh or texture map takes minutes. Provenance, tags, and license terms get lost.
+          {/* Right Column: Three Vertical Problem Rows */}
+          <div className="lg:col-span-7 flex flex-col divide-y divide-black/15">
+            <div className="pt-6 pb-8 first:pt-0">
+              <div className="flex items-baseline gap-4 mb-2">
+                <span className="font-mono text-sm text-[#FF5F1F] font-bold">01 —</span>
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                  SCATTERED FILES
+                </h3>
+              </div>
+              <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
+                Assets are scattered across local folders, external drives and closed vendor libraries.
               </p>
             </div>
-          </div>
 
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-4">
-                PROBLEM 03
-              </span>
-              <h3 className="font-primary text-2xl font-bold uppercase text-black mb-3">
-                REPEATED DCC SETUP
-              </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
-                Moving an asset between Blender, Cinema 4D, Houdini, or Unreal Engine forces you to rebuild materials from scratch.
+            <div className="py-8">
+              <div className="flex items-baseline gap-4 mb-2">
+                <span className="font-mono text-sm text-[#FF5F1F] font-bold">02 —</span>
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                  INCONSISTENT METADATA
+                </h3>
+              </div>
+              <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
+                Previews, tags, source information and license terms are stored inconsistently or get lost.
+              </p>
+            </div>
+
+            <div className="py-8">
+              <div className="flex items-baseline gap-4 mb-2">
+                <span className="font-mono text-sm text-[#FF5F1F] font-bold">03 —</span>
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                  REPEATED DCC SETUP
+                </h3>
+              </div>
+              <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
+                Moving an asset between DCCs often means rebuilding materials, relinking textures and repeating import setup.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Large Target Workflow Diagram */}
+        {/* Target Pipeline Flow Diagram */}
         <div className="bg-[#111111] text-white p-8 md:p-12 border border-black relative overflow-hidden">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-widest uppercase font-bold">
@@ -210,7 +210,7 @@ export default function ToolsPage() {
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center font-mono py-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center font-mono py-4">
             <div className="p-6 border border-white/15 bg-black/40">
               <span className="text-white/40 text-xs block mb-2 font-bold">SOURCE</span>
               <span className="text-sm md:text-base font-bold text-white uppercase">SCATTERED FOLDERS + VENDOR LIBRARIES</span>
@@ -239,7 +239,7 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* 5. CURRENT BUILD (Three Levels of Implementation) */}
+      {/* 4. CURRENT BUILD (Three Levels of Implementation Cards) */}
       <section className="bg-[#111111] text-white py-20 md:py-28 border-y border-black">
         <div className="px-4 md:px-8 max-w-7xl mx-auto">
           <div className="mb-12">
@@ -255,7 +255,7 @@ export default function ToolsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Level 1: Implemented in Repo (High Contrast) */}
+            {/* Level 1: Implemented in Repo */}
             <div className="bg-[#182129] border-2 border-[#FF5F1F] p-8 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
@@ -282,7 +282,7 @@ export default function ToolsPage() {
               </div>
             </div>
 
-            {/* Level 2: Next Gates (Secondary Tone) */}
+            {/* Level 2: Next Milestones */}
             <div className="bg-[#101419] border border-white/20 p-8 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
@@ -313,8 +313,8 @@ export default function ToolsPage() {
               </div>
             </div>
 
-            {/* Level 3: Later (Quiet / Dim Tone) */}
-            <div className="bg-[#0A0D11] border border-white/10 p-8 flex flex-col justify-between opacity-80">
+            {/* Level 3: Future Direction */}
+            <div className="bg-[#0A0D11] border border-white/10 p-8 flex flex-col justify-between opacity-75">
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <span className="font-mono text-xs text-white/40 font-bold uppercase tracking-widest">
@@ -356,10 +356,10 @@ export default function ToolsPage() {
         </div>
       </section>
 
-      {/* 6. DESIGN TARGETS */}
+      {/* 5. DESIGN TARGETS (Numbered Manifesto Rows) */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto py-20 md:py-28">
-        <div className="mb-12">
-          <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
+        <div className="mb-14">
+          <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
             [ ARCHITECTURAL GOALS ]
           </span>
           <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111]">
@@ -370,56 +370,68 @@ export default function ToolsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-3">
-                TARGET 01
-              </span>
-              <h3 className="font-primary text-3xl font-bold uppercase text-black mb-3">
+        {/* Three Large Horizontal Numbered Rows */}
+        <div className="flex flex-col divide-y divide-black/20 border-t border-b border-black/20">
+          
+          {/* Row 01 */}
+          <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
+              01 —
+            </div>
+            <div className="md:col-span-4">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">
                 LOCAL CATALOG
               </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
-                Index existing folders without moving or modifying the original files on your storage drives.
+            </div>
+            <div className="md:col-span-6">
+              <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
+                Index existing folders without moving or modifying the original files.
               </p>
             </div>
           </div>
 
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-3">
-                TARGET 02
-              </span>
-              <h3 className="font-primary text-3xl font-bold uppercase text-black mb-3">
+          {/* Row 02 */}
+          <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
+              02 —
+            </div>
+            <div className="md:col-span-4">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">
                 PORTABLE METADATA
               </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
+            </div>
+            <div className="md:col-span-6">
+              <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
                 Keep previews, tags, source and license information attached to the logical asset.
               </p>
             </div>
           </div>
 
-          <div className="bg-white border border-black/15 p-8 flex flex-col justify-between hover:border-[#FF5F1F] transition-colors">
-            <div>
-              <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest block mb-3">
-                TARGET 03
-              </span>
-              <h3 className="font-primary text-3xl font-bold uppercase text-black mb-3">
+          {/* Row 03 */}
+          <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-baseline">
+            <div className="md:col-span-2 font-mono text-lg md:text-xl font-bold text-[#FF5F1F]">
+              03 —
+            </div>
+            <div className="md:col-span-4">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black">
                 THIN DCC CONNECTORS
               </h3>
-              <p className="font-mono text-sm text-black/70 leading-relaxed">
+            </div>
+            <div className="md:col-span-6">
+              <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
                 Build host-specific import operations around one shared local catalog.
               </p>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* 7. BUILD LOG */}
+      {/* 6. BUILD LOG (Horizontal Timeline on Desktop) */}
       <section className="bg-white py-20 md:py-28 border-t border-black/15">
         <div className="px-4 md:px-8 max-w-7xl mx-auto">
-          <div className="mb-12">
-            <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
+          <div className="mb-14">
+            <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
               [ REALISTIC STAGING ]
             </span>
             <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111]">
@@ -430,59 +442,99 @@ export default function ToolsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="border border-black/15 p-6 bg-[#F0F0EE]/50 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs text-[#FF5F1F] font-bold block mb-2">NOW</span>
-                <h3 className="font-primary text-xl font-bold uppercase text-black mb-3">
-                  DESKTOP FOUNDATION
-                </h3>
-                <p className="font-mono text-xs text-black/70 leading-relaxed">
-                  Electron shell, repository tooling and security baseline.
-                </p>
-              </div>
-            </div>
+          {/* Desktop Horizontal Timeline / Mobile Vertical */}
+          <div className="relative pt-6">
+            {/* Horizontal Connecting Line (Desktop) */}
+            <div className="hidden lg:block absolute top-[42px] left-0 right-0 h-[2px] bg-black/15 z-0" />
 
-            <div className="border border-black/15 p-6 bg-[#F0F0EE]/50 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs text-black/50 font-bold block mb-2">NEXT</span>
-                <h3 className="font-primary text-xl font-bold uppercase text-black mb-3">
-                  PACKAGING + LOCAL DATA
-                </h3>
-                <p className="font-mono text-xs text-black/70 leading-relaxed">
-                  Packaged Windows verification and first SQLite slice.
-                </p>
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
+              
+              {/* Node NOW (Orange Accent & Highest Contrast) */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-5 h-5 rounded-full bg-[#FF5F1F] border-2 border-white ring-4 ring-[#FF5F1F]/20 flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                    ✓
+                  </div>
+                  <span className="font-mono text-sm text-[#FF5F1F] font-bold tracking-widest uppercase">
+                    NOW
+                  </span>
+                </div>
+                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-[#FF5F1F] pl-4 lg:pl-0 lg:pt-4">
+                  <h3 className="font-primary text-2xl font-black uppercase text-black mb-2">
+                    DESKTOP FOUNDATION
+                  </h3>
+                  <p className="font-mono text-xs md:text-sm text-black/80 leading-relaxed">
+                    Electron shell, repository tooling and security baseline.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="border border-black/15 p-6 bg-[#F0F0EE]/50 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs text-black/50 font-bold block mb-2">THEN</span>
-                <h3 className="font-primary text-xl font-bold uppercase text-black mb-3">
-                  WALKING SKELETON
-                </h3>
-                <p className="font-mono text-xs text-black/70 leading-relaxed">
-                  Scan fixtures, show one asset and execute one mock operation end to end.
-                </p>
+              {/* Node NEXT */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-5 h-5 rounded-full bg-black border-2 border-white ring-4 ring-black/10 flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                    ▶
+                  </div>
+                  <span className="font-mono text-sm text-black font-bold tracking-widest uppercase">
+                    NEXT
+                  </span>
+                </div>
+                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/20 pl-4 lg:pl-0 lg:pt-4">
+                  <h3 className="font-primary text-2xl font-bold uppercase text-black mb-2">
+                    PACKAGING + LOCAL DATA
+                  </h3>
+                  <p className="font-mono text-xs md:text-sm text-black/70 leading-relaxed">
+                    Packaged Windows verification and first SQLite slice.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="border border-black/15 p-6 bg-[#F0F0EE]/50 flex flex-col justify-between">
-              <div>
-                <span className="font-mono text-xs text-black/50 font-bold block mb-2">LATER</span>
-                <h3 className="font-primary text-xl font-bold uppercase text-black mb-3">
-                  CATALOG + DCC CONNECTORS
-                </h3>
-                <p className="font-mono text-xs text-black/70 leading-relaxed">
-                  Useful personal catalog first, then one verified connector at a time.
-                </p>
+              {/* Node THEN */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-5 h-5 rounded-full bg-black/40 border-2 border-white flex items-center justify-center text-white font-mono text-[9px]">
+                    ○
+                  </div>
+                  <span className="font-mono text-sm text-black/60 font-bold tracking-widest uppercase">
+                    THEN
+                  </span>
+                </div>
+                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/15 pl-4 lg:pl-0 lg:pt-4">
+                  <h3 className="font-primary text-2xl font-bold uppercase text-black/80 mb-2">
+                    WALKING SKELETON
+                  </h3>
+                  <p className="font-mono text-xs md:text-sm text-black/60 leading-relaxed">
+                    Scan fixtures, show one asset and execute one mock operation end to end.
+                  </p>
+                </div>
               </div>
+
+              {/* Node LATER */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-5 h-5 rounded-full bg-black/20 border-2 border-white flex items-center justify-center text-white font-mono text-[9px]">
+                    ○
+                  </div>
+                  <span className="font-mono text-sm text-black/40 font-bold tracking-widest uppercase">
+                    LATER
+                  </span>
+                </div>
+                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/10 pl-4 lg:pl-0 lg:pt-4">
+                  <h3 className="font-primary text-2xl font-bold uppercase text-black/60 mb-2">
+                    CATALOG + DCC CONNECTORS
+                  </h3>
+                  <p className="font-mono text-xs md:text-sm text-black/50 leading-relaxed">
+                    Useful personal catalog first, then one verified connector at a time.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
 
-      {/* 8. CTA BANNER */}
+      {/* 7. CTA BANNER */}
       <section className="px-4 md:px-8 max-w-7xl mx-auto py-20 md:py-28">
         <div className="bg-[#111111] text-white p-8 md:p-14 border border-black shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
           <div className="max-w-2xl">
@@ -493,7 +545,7 @@ export default function ToolsPage() {
               HAVE A MESSY 3D ASSET LIBRARY?
             </h2>
             <p className="font-mono text-xs md:text-sm text-white/80 leading-relaxed">
-              I’m documenting how artists store, find and reuse assets across different DCCs. Send me your current setup and the part that wastes the most time. Early testing will open after the personal build becomes useful.
+              I’m documenting how artists store, find, and reuse assets across DCCs. If your library is messy too, tell me what wastes the most time. Early testing comes after the personal build proves useful.
             </p>
           </div>
 

@@ -164,7 +164,7 @@ export default function ToolsPage() {
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
               [ MOTIVATION &amp; CORE PAIN ]
             </span>
-            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111] leading-[0.9] mb-6">
+            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111] leading-[0.9] mb-6">
               WHY I’M<br />BUILDING IT
             </h2>
             <p className="font-mono text-base text-black/80 font-light leading-relaxed max-w-md">
@@ -177,7 +177,7 @@ export default function ToolsPage() {
             <div className="pt-6 pb-8 first:pt-0">
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">01 —</span>
-                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
                   SCATTERED FILES
                 </h3>
               </div>
@@ -189,7 +189,7 @@ export default function ToolsPage() {
             <div className="py-8">
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">02 —</span>
-                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
                   INCONSISTENT METADATA
                 </h3>
               </div>
@@ -201,7 +201,7 @@ export default function ToolsPage() {
             <div className="py-8">
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">03 —</span>
-                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase text-black">
+                <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
                   REPEATED DCC SETUP
                 </h3>
               </div>
@@ -259,7 +259,7 @@ export default function ToolsPage() {
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
               [ TRANSPARENT STATE ]
             </span>
-            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-white">
+            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-white">
               CURRENT BUILD
             </h2>
             <p className="font-mono text-base text-white/60 max-w-2xl mt-3">
@@ -375,7 +375,7 @@ export default function ToolsPage() {
           <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
             [ ARCHITECTURAL GOALS ]
           </span>
-          <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111]">
+          <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111]">
             DESIGN TARGETS
           </h2>
           <p className="font-mono text-base text-black/70 max-w-2xl mt-3">
@@ -388,11 +388,11 @@ export default function ToolsPage() {
           
           {/* Row 01 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
-            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F] leading-none">
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black tracking-wide text-[#FF5F1F] leading-none">
               01
             </div>
             <div className="md:col-span-4">
-              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black leading-none">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
                 LOCAL CATALOG
               </h3>
             </div>
@@ -405,11 +405,11 @@ export default function ToolsPage() {
 
           {/* Row 02 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
-            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F] leading-none">
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black tracking-wide text-[#FF5F1F] leading-none">
               02
             </div>
             <div className="md:col-span-4">
-              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black leading-none">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
                 PORTABLE METADATA
               </h3>
             </div>
@@ -422,11 +422,11 @@ export default function ToolsPage() {
 
           {/* Row 03 */}
           <div className="py-8 md:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-center">
-            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black text-[#FF5F1F] leading-none">
+            <div className="md:col-span-2 font-primary text-4xl md:text-5xl font-black tracking-wide text-[#FF5F1F] leading-none">
               03
             </div>
             <div className="md:col-span-4">
-              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase text-black leading-none">
+              <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
                 THIN DCC CONNECTORS
               </h3>
             </div>
@@ -447,7 +447,7 @@ export default function ToolsPage() {
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
               [ REALISTIC STAGING ]
             </span>
-            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase text-[#111111]">
+            <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111]">
               BUILD LOG
             </h2>
             <p className="font-mono text-base text-black/70 max-w-2xl mt-3">
@@ -554,7 +554,7 @@ export default function ToolsPage() {
             <span className="font-mono text-xs text-[#FF5F1F] font-bold tracking-widest uppercase block mb-3">
               [ PIPELINE FEEDBACK ]
             </span>
-            <h2 className="font-primary text-4xl md:text-6xl font-black uppercase text-white mb-4 leading-tight">
+            <h2 className="font-primary text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4 leading-tight">
               HAVE A MESSY 3D ASSET LIBRARY?
             </h2>
             <p className="font-mono text-xs md:text-sm text-white/80 leading-relaxed">

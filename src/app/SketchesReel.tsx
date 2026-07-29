@@ -20,13 +20,14 @@ interface SketchesReelProps {
 
 export default function SketchesReel({ sketches, onOpenSketch }: SketchesReelProps) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const hasDraggedRef = useRef(false);
   const [currentIndex, setCurrentIndex] = useState(1);
   const [scrollProgress, setScrollProgress] = useState(0); // 0 to 1
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [clientPos, setClientPos] = useState({ x: 0, y: 0 });
 
   const updateProgress = () => {
     const track = trackRef.current;
@@ -63,11 +64,16 @@ export default function SketchesReel({ sketches, onOpenSketch }: SketchesReelPro
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     if (!trackRef.current) return;
     setIsMouseDown(true);
+    hasDraggedRef.current = false;
     setStartX(e.pageX - trackRef.current.offsetLeft);
     setScrollLeft(trackRef.current.scrollLeft);
   };
 
-  const handleMouseLeaveOrUp = () => {
+  const handleMouseUp = () => {
+    setIsMouseDown(false);
+  };
+
+  const handleMouseLeave = () => {
     setIsMouseDown(false);
     setIsHovered(false);
   };
@@ -75,59 +81,68 @@ export default function SketchesReel({ sketches, onOpenSketch }: SketchesReelPro
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const track = trackRef.current;
     if (!track) return;
-    
-    // Update floating drag cursor position relative to track
-    const rect = track.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+
+    // Track viewport coordinates for floating drag cursor badge
+    setClientPos({
+      x: e.clientX,
+      y: e.clientY,
     });
 
     if (!isMouseDown) return;
-    e.preventDefault();
+
     const x = e.pageX - track.offsetLeft;
     const walk = (x - startX) * 1.5;
+
+    // If mouse has moved more than 5px, mark as drag to prevent onClick trigger
+    if (Math.abs(walk) > 5) {
+      hasDraggedRef.current = true;
+    }
+
     track.scrollLeft = scrollLeft - walk;
   };
 
   return (
     <div className="w-full flex flex-col gap-4 relative">
+      {/* Fixed Viewport Drag Cursor Badge */}
+      {isHovered && (
+        <div
+          className="pointer-events-none fixed z-[350] -translate-x-1/2 -translate-y-1/2 transition-opacity duration-150 hidden md:block"
+          style={{
+            left: `${clientPos.x}px`,
+            top: `${clientPos.y}px`,
+            opacity: isHovered ? 1 : 0,
+          }}
+        >
+          <div className="px-3 py-1.5 bg-black/85 backdrop-blur-md border border-[#FF5F1F]/50 shadow-[0_0_20px_rgba(255,95,31,0.2)] text-white font-mono text-[9px] tracking-[0.25em] uppercase flex items-center gap-1.5 rounded-full">
+            <span className="text-[#FF5F1F] font-bold">‹</span>
+            <span>{isMouseDown ? "HOLD & DRAG" : "DRAG REEL"}</span>
+            <span className="text-[#FF5F1F] font-bold">›</span>
+          </div>
+        </div>
+      )}
+
       {/* Reel Track */}
       <div
         ref={trackRef}
         onMouseDown={handleMouseDown}
         onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={handleMouseLeaveOrUp}
-        onMouseUp={() => setIsMouseDown(false)}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        className={`w-full overflow-x-auto no-scrollbar flex gap-4 md:gap-6 px-[18px] select-none relative ${
+        className={`w-full overflow-x-auto no-scrollbar flex gap-4 md:gap-6 px-[18px] select-none ${
           isMouseDown ? "cursor-grabbing" : "cursor-grab"
         }`}
         style={{ scrollBehavior: isMouseDown ? "auto" : "smooth" }}
       >
-        {/* Floating Custom Drag Cursor Indicator */}
-        {isHovered && (
-          <div
-            className="pointer-events-none absolute z-30 transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-200 hidden md:block"
-            style={{
-              left: `${mousePos.x}px`,
-              top: `${mousePos.y}px`,
-              opacity: isHovered ? 1 : 0,
-            }}
-          >
-            <div className="px-3 py-1.5 bg-black/80 backdrop-blur-md border border-[#FF5F1F]/40 shadow-lg text-white font-mono text-[9px] tracking-[0.25em] uppercase flex items-center gap-1.5 rounded-full">
-              <span className="text-[#FF5F1F] font-bold">‹</span>
-              <span>{isMouseDown ? "HOLD & DRAG" : "DRAG REEL"}</span>
-              <span className="text-[#FF5F1F] font-bold">›</span>
-            </div>
-          </div>
-        )}
-
         {sketches.map((sketch) => (
           <ReelCard
             key={sketch.id}
             sketch={sketch}
-            onOpen={() => onOpenSketch(sketch)}
+            onOpen={() => {
+              if (!hasDraggedRef.current) {
+                onOpenSketch(sketch);
+              }
+            }}
           />
         ))}
       </div>

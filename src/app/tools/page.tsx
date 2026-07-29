@@ -562,18 +562,18 @@ export default function ToolsPage() {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto shrink-0">
             <a
               href="https://t.me/losereasp"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto text-center font-mono text-xs font-bold tracking-widest uppercase bg-[#FF5F1F] text-white px-8 py-4 border border-[#FF5F1F] hover:bg-white hover:text-black transition-all cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center text-center font-mono text-xs font-bold tracking-wider uppercase bg-[#FF5F1F] text-white px-6 md:px-8 py-4 border border-[#FF5F1F] hover:bg-white hover:text-black transition-all cursor-pointer whitespace-nowrap"
             >
               [ TELEGRAM CONTACT → ]
             </a>
             <a
               href="mailto:yarik.marchenkov@yandex.ru"
-              className="w-full sm:w-auto text-center font-mono text-xs font-bold tracking-widest uppercase bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-all px-8 py-4 cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center text-center font-mono text-xs font-bold tracking-wider uppercase bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-all px-6 md:px-8 py-4 cursor-pointer whitespace-nowrap"
             >
               [ EMAIL INQUIRY → ]
             </a>

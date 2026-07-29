@@ -117,7 +117,7 @@ export default function AboutPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 items-start mb-8 animate-buttons opacity-0">
             <Magnetic>
-              <a href="mailto:losereasp@gmail.com" className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#FF5F1F] bg-[#FF5F1F] text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-[#FF5F1F] rounded-[3px] w-full sm:w-auto">
+              <a href="mailto:iaroslav@losereasp.com" className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#FF5F1F] bg-[#FF5F1F] text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-[#FF5F1F] rounded-[3px] w-full sm:w-auto">
                 DROP ME A LINE
               </a>
             </Magnetic>

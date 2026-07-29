@@ -129,9 +129,7 @@ export default function SketchesReel({ sketches, onOpenSketch }: SketchesReelPro
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        className={`w-full overflow-x-auto no-scrollbar flex gap-4 md:gap-6 px-[18px] select-none ${
-          isMouseDown ? "cursor-grabbing" : "cursor-grab"
-        }`}
+        className="w-full overflow-x-auto no-scrollbar flex gap-4 md:gap-6 px-[18px] select-none md:cursor-none cursor-grab"
         style={{ scrollBehavior: isMouseDown ? "auto" : "smooth" }}
       >
         {sketches.map((sketch) => (
@@ -209,7 +207,7 @@ function ReelCard({ sketch, onOpen }: { sketch: SketchItem; onOpen: () => void }
       onClick={onOpen}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative overflow-hidden bg-black border border-black/10 rounded-sm shrink-0 cursor-pointer h-[280px] md:h-[400px] transition-transform duration-300 hover:scale-[1.01]"
+      className="group relative overflow-hidden bg-black border border-black/10 rounded-sm shrink-0 md:cursor-none cursor-pointer h-[280px] md:h-[400px] transition-transform duration-300 hover:scale-[1.01]"
       style={{ aspectRatio: sketch.aspect }}
     >
       {sketch.isImage ? (

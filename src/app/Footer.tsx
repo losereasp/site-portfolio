@@ -1,6 +1,11 @@
+"use client";
+
 import LocalTime from "./LocalTime";
+import { useLanguage } from "./context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="w-full bg-[#F0F0EE] text-black py-20 px-8 md:px-16 flex flex-col lg:flex-row justify-between items-stretch gap-16">
       {/* Left Block */}
@@ -9,7 +14,7 @@ export default function Footer() {
           Iaroslav<br/>Marchenkov
         </h2>
         <p className="font-mono text-lg md:text-2xl tracking-wide text-black/60 font-light">
-          CG ARTIST & 3D GENERALIST
+          {t.footer.jobTitle}
         </p>
       </div>
 
@@ -19,7 +24,7 @@ export default function Footer() {
         <div className="flex flex-col flex-1 justify-center h-full xl:py-10">
           <div className="font-mono text-2xl md:text-3xl lg:text-[2rem] xl:text-[2.2rem] leading-[1.7] tracking-wider text-black/70 uppercase font-light">
             <p className="max-w-3xl mb-6 lg:mb-8">
-              LET'S BUILD SOMETHING COOL TOGETHER. DROP ME A LINE IF YOU HAVE A PROJECT IN MIND.
+              {t.footer.quote}
             </p>
           </div>
           

@@ -6,8 +6,11 @@ import Footer from "../Footer";
 import ScrollToTop from "../ScrollToTop";
 import ViewCursor from "../ViewCursor";
 import ScrollMarquee from "../ScrollMarquee";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ToolsPage() {
+  const { t } = useLanguage();
+
   return (
     <main className="min-h-screen bg-[#F0F0EE] text-black selection:bg-[#FF5F1F] selection:text-white relative font-mono overflow-x-hidden">
       <ViewCursor />
@@ -22,13 +25,13 @@ export default function ToolsPage() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 bg-[#FF5F1F] inline-block" />
             <span className="font-mono text-xs md:text-sm tracking-[0.3em] text-[#FF5F1F] font-bold uppercase">
-              [ THE LAB / PERSONAL PIPELINE R&amp;D ]
+              {t.tools.tagline}
             </span>
           </div>
 
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 border border-[#344553] bg-[#101419] text-white/90 text-xs font-mono tracking-widest uppercase">
             <span className="w-2 h-2 rounded-full bg-[#f0a85a] shadow-[0_0_8px_#f0a85a]" />
-            <span>[ CURRENT: DESKTOP SHELL ]</span>
+            <span>{t.tools.currentShell}</span>
           </div>
         </div>
 
@@ -39,15 +42,15 @@ export default function ToolsPage() {
           <div className="lg:col-span-5 flex flex-col justify-between order-1 z-30">
             <div>
               <h1 className="font-primary text-5xl md:text-7xl lg:text-7xl xl:text-8xl font-black uppercase tracking-wide text-white leading-[0.88] mb-6 lg:mb-8">
-                ASSET<br />BROWSER
+                {t.tools.title}
               </h1>
 
               <div className="border-l-2 border-[#FF5F1F] pl-4 max-w-lg mb-6">
                 <p className="font-mono text-base text-white/90 font-light leading-relaxed mb-3">
-                  One local library for the 3D assets I already own.
+                  {t.tools.subTitle}
                 </p>
                 <p className="font-mono text-xs text-white/60 leading-relaxed">
-                  A Windows-first desktop tool I’m building to catalog assets in place and, step by step, send them into Blender, Cinema 4D, Houdini, and Unreal Engine.
+                  {t.tools.desc}
                 </p>
               </div>
             </div>
@@ -55,20 +58,20 @@ export default function ToolsPage() {
             {/* Metadata Footer Block */}
             <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] font-mono text-white/50 uppercase tracking-wider">
               <div>
-                <span className="text-white/30 block">ROLE</span>
-                <span className="text-white/90 font-bold">PRODUCT / DESIGN / DEV</span>
+                <span className="text-white/30 block">{t.tools.roleLabel}</span>
+                <span className="text-white/90 font-bold">{t.tools.roleValue}</span>
               </div>
               <div>
-                <span className="text-white/30 block">STACK</span>
-                <span className="text-white/90 font-bold">ELECTRON / REACT / TS</span>
+                <span className="text-white/30 block">{t.tools.stackLabel}</span>
+                <span className="text-white/90 font-bold">{t.tools.stackValue}</span>
               </div>
               <div>
-                <span className="text-white/30 block">MODE</span>
-                <span className="text-white/90 font-bold">LOCAL-FIRST</span>
+                <span className="text-white/30 block">{t.tools.modeLabel}</span>
+                <span className="text-white/90 font-bold">{t.tools.modeValue}</span>
               </div>
               <div>
-                <span className="text-white/30 block">PLATFORM</span>
-                <span className="text-white/90 font-bold">WINDOWS 11</span>
+                <span className="text-white/30 block">{t.tools.platformLabel}</span>
+                <span className="text-white/90 font-bold">{t.tools.platformValue}</span>
               </div>
             </div>
           </div>
@@ -94,25 +97,25 @@ export default function ToolsPage() {
 
                 <div className="pl-6 md:pl-10">
                   <div className="font-mono text-xs text-[#7fb7c9] tracking-[0.2em] font-bold uppercase mb-2">
-                    // WORKSPACE STATUS
+                    {t.tools.workspaceStatus}
                   </div>
                   <div className="font-mono text-xl md:text-2xl font-bold uppercase text-[#e8eef1] tracking-wide mb-6">
-                    ELECTRON DESKTOP SHELL
+                    {t.tools.desktopShell}
                   </div>
 
                   <div className="flex items-center gap-3 font-mono text-xs md:text-sm uppercase tracking-widest text-[#c7d1d6] mb-6">
                     <span className="w-2.5 h-2.5 rounded-full bg-[#f0a85a] border border-[#f8c98f] shadow-[0_0_12px_rgba(240,168,90,0.55)] inline-block" />
-                    <span>DESKTOP SHELL READY</span>
+                    <span>{t.tools.desktopReady}</span>
                   </div>
 
                   <div className="pt-4 border-t border-[#344553]/60 grid grid-cols-2 gap-4 font-mono text-[10px] md:text-xs text-[#9dabb2] uppercase tracking-wider">
                     <div>
-                      <span className="text-[#7fb7c9]/60 block mb-0.5">CATALOG ENGINE</span>
-                      <span className="text-[#e8eef1]">STANDBY / NEXT MILESTONE</span>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.catalogEngine}</span>
+                      <span className="text-[#e8eef1]">{t.tools.standby}</span>
                     </div>
                     <div>
-                      <span className="text-[#7fb7c9]/60 block mb-0.5">DCC IPC BRIDGE</span>
-                      <span className="text-[#e8eef1]">STANDBY / NEXT MILESTONE</span>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.dccBridge}</span>
+                      <span className="text-[#e8eef1]">{t.tools.standby}</span>
                     </div>
                   </div>
                 </div>
@@ -120,19 +123,19 @@ export default function ToolsPage() {
 
               {/* Operating Constraints Footer Bar */}
               <div className="grid grid-cols-3 border-t border-[#344553] bg-[#182129] font-mono text-[10px] md:text-xs text-[#9dabb2] tracking-wider uppercase divide-x divide-[#344553]">
-                <div className="px-3 py-2.5 text-center">LOCAL-FIRST</div>
-                <div className="px-3 py-2.5 text-center">WINDOWS 11 X64</div>
-                <div className="px-3 py-2.5 text-center">NO CLOUD REQUIRED</div>
+                <div className="px-3 py-2.5 text-center">{t.tools.modeValue}</div>
+                <div className="px-3 py-2.5 text-center">{t.tools.platformValue} X64</div>
+                <div className="px-3 py-2.5 text-center">{t.tools.noCloud}</div>
               </div>
             </div>
 
             {/* Rebuilt Left-Aligned Caption Under Product Frame */}
             <div className="mt-3 font-mono text-xs max-w-full">
               <div className="text-white/80 font-bold uppercase tracking-widest">
-                CURRENT BUILD / F-02 / ELECTRON DESKTOP SHELL / JUL 2026
+                {t.tools.currentBuildCap}
               </div>
               <div className="text-white/50 text-[11px] leading-relaxed mt-0.5">
-                Catalog, indexing and DCC connectors are not implemented yet.
+                {t.tools.buildCapSub}
               </div>
             </div>
           </div>
@@ -143,16 +146,12 @@ export default function ToolsPage() {
       {/* 2. MARQUEE TRANSITION LINE */}
       <ScrollMarquee className="!bg-[#111111] !border-y !border-black text-white py-3" speed={1.8}>
         <div className="flex items-center gap-8 md:gap-16 font-mono text-sm md:text-xl uppercase font-bold tracking-[0.25em] text-[#F0F0EE]">
-          <span>LOCAL-FIRST</span>
-          <span className="text-[#FF5F1F]">✦</span>
-          <span>WINDOWS</span>
-          <span className="text-[#FF5F1F]">✦</span>
-          <span>OWN YOUR FILES</span>
-          <span className="text-[#FF5F1F]">✦</span>
-          <span>MULTI-DCC TARGET</span>
-          <span className="text-[#FF5F1F]">✦</span>
-          <span>ACTIVE BUILD</span>
-          <span className="text-[#FF5F1F]">✦</span>
+          {t.tools.marquee.map((item, idx) => (
+            <React.Fragment key={idx}>
+              <span>{item}</span>
+              <span className="text-[#FF5F1F]">✦</span>
+            </React.Fragment>
+          ))}
         </div>
       </ScrollMarquee>
 
@@ -162,13 +161,13 @@ export default function ToolsPage() {
           {/* Left Column: Heading & Narrative Statement */}
           <div className="lg:col-span-5">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
-              [ MOTIVATION &amp; CORE PAIN ]
+              {t.tools.motivationTag}
             </span>
             <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111] leading-[0.9] mb-6">
-              WHY I’M<br />BUILDING IT
+              {t.tools.whyBuilding}
             </h2>
             <p className="font-mono text-base text-black/80 font-light leading-relaxed max-w-md">
-              My models, materials and textures are spread across local drives, external storage and vendor libraries. Finding the right asset often means remembering where it came from.
+              {t.tools.whyDesc}
             </p>
           </div>
 
@@ -178,11 +177,11 @@ export default function ToolsPage() {
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">01 —</span>
                 <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
-                  SCATTERED FILES
+                  {t.tools.problem1Title}
                 </h3>
               </div>
               <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
-                Assets are scattered across local folders, external drives and closed vendor libraries.
+                {t.tools.problem1Desc}
               </p>
             </div>
 
@@ -190,11 +189,11 @@ export default function ToolsPage() {
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">02 —</span>
                 <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
-                  INCONSISTENT METADATA
+                  {t.tools.problem2Title}
                 </h3>
               </div>
               <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
-                Previews, tags, source information and license terms are stored inconsistently or get lost.
+                {t.tools.problem2Desc}
               </p>
             </div>
 
@@ -202,11 +201,11 @@ export default function ToolsPage() {
               <div className="flex items-baseline gap-4 mb-2">
                 <span className="font-mono text-sm text-[#FF5F1F] font-bold">03 —</span>
                 <h3 className="font-primary text-2xl md:text-3xl font-bold uppercase tracking-wide text-black">
-                  REPEATED DCC SETUP
+                  {t.tools.problem3Title}
                 </h3>
               </div>
               <p className="font-mono text-sm text-black/70 leading-relaxed pl-12">
-                Moving an asset between DCCs often means rebuilding materials, relinking textures and repeating import setup.
+                {t.tools.problem3Desc}
               </p>
             </div>
           </div>
@@ -216,28 +215,28 @@ export default function ToolsPage() {
         <div className="bg-[#111111] text-white p-8 md:p-12 border border-black relative overflow-hidden">
           <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-widest uppercase font-bold">
-              [ TARGET PIPELINE FLOW ]
+              {t.tools.targetFlowTag}
             </span>
             <span className="font-mono text-[10px] md:text-xs text-white/50 uppercase tracking-widest bg-white/10 px-3 py-1">
-              TARGET WORKFLOW — NOT IMPLEMENTED YET
+              {t.tools.notImplementedTag}
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center text-center font-mono py-4">
             <div className="p-6 border border-white/15 bg-black/40">
-              <span className="text-white/40 text-xs block mb-2 font-bold">SOURCE</span>
-              <span className="text-sm md:text-base font-bold text-white uppercase">SCATTERED FOLDERS + VENDOR LIBRARIES</span>
+              <span className="text-white/40 text-xs block mb-2 font-bold">{t.tools.sourceTitle}</span>
+              <span className="text-sm md:text-base font-bold text-white uppercase">{t.tools.sourceDesc}</span>
             </div>
 
             <div className="flex flex-col items-center justify-center text-[#FF5F1F] font-bold text-xl md:text-2xl py-2">
               <span className="hidden md:inline">➔</span>
               <span className="md:hidden">⬇</span>
-              <span className="text-[10px] text-white/40 font-normal tracking-widest mt-1">INDEX IN PLACE</span>
+              <span className="text-[10px] text-white/40 font-normal tracking-widest mt-1">{t.tools.indexInPlace}</span>
             </div>
 
             <div className="p-6 border border-[#FF5F1F]/40 bg-[#FF5F1F]/10">
-              <span className="text-[#FF5F1F] text-xs block mb-2 font-bold">HUB</span>
-              <span className="text-sm md:text-base font-bold text-white uppercase">ONE LOCAL CATALOG</span>
+              <span className="text-[#FF5F1F] text-xs block mb-2 font-bold">{t.tools.hubTitle}</span>
+              <span className="text-sm md:text-base font-bold text-white uppercase">{t.tools.hubDesc}</span>
             </div>
           </div>
 
@@ -246,7 +245,7 @@ export default function ToolsPage() {
           </div>
 
           <div className="p-6 border border-white/15 bg-black/40 text-center font-mono">
-            <span className="text-white/40 text-xs block mb-2 font-bold">TARGET DCCS</span>
+            <span className="text-white/40 text-xs block mb-2 font-bold">{t.tools.targetDccsTitle}</span>
             <span className="text-sm md:text-lg font-bold text-white tracking-widest uppercase">BLENDER / C4D / HOUDINI / UNREAL</span>
           </div>
         </div>
@@ -257,13 +256,13 @@ export default function ToolsPage() {
         <div className="px-4 md:px-8 max-w-7xl mx-auto">
           <div className="mb-12">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-2">
-              [ TRANSPARENT STATE ]
+              {t.tools.transparentTag}
             </span>
             <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-white">
-              CURRENT BUILD
+              {t.tools.currentBuildTitle}
             </h2>
             <p className="font-mono text-base text-white/60 max-w-2xl mt-3">
-              Honest status check of what is merged in the codebase today versus future goals.
+              {t.tools.currentBuildDesc}
             </p>
           </div>
 
@@ -273,23 +272,23 @@ export default function ToolsPage() {
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <span className="font-mono text-xs text-[#FF5F1F] font-bold uppercase tracking-widest">
-                    LEVEL 01
+                    {t.tools.level1Tag}
                   </span>
                   <span className="font-mono text-[10px] bg-[#FF5F1F] text-black font-bold px-2 py-0.5 uppercase">
-                    MERGED IN REPO
+                    {t.tools.level1Badge}
                   </span>
                 </div>
                 <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white mb-4">
-                  IMPLEMENTED IN REPO
+                  {t.tools.level1Title}
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/90">
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#FF5F1F] font-bold">✓</span>
-                    <span>Pinned Windows toolchain and workspace checks</span>
+                    <span>{t.tools.level1Item1}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-[#FF5F1F] font-bold">✓</span>
-                    <span>Secure Electron / React desktop shell</span>
+                    <span>{t.tools.level1Item2}</span>
                   </li>
                 </ul>
               </div>
@@ -300,27 +299,27 @@ export default function ToolsPage() {
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <span className="font-mono text-xs text-white/60 font-bold uppercase tracking-widest">
-                    LEVEL 02
+                    {t.tools.level2Tag}
                   </span>
                   <span className="font-mono text-[10px] bg-white/20 text-white font-bold px-2 py-0.5 uppercase">
-                    NEXT GATES
+                    {t.tools.level2Badge}
                   </span>
                 </div>
                 <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white/90 mb-4">
-                  NEXT MILESTONES
+                  {t.tools.level2Title}
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/70">
                   <li className="flex items-start gap-2.5">
                     <span className="text-white/40">▶</span>
-                    <span>Packaged Windows smoke test</span>
+                    <span>{t.tools.level2Item1}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-white/40">▶</span>
-                    <span>Local SQLite read/write slice</span>
+                    <span>{t.tools.level2Item2}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <span className="text-white/40">▶</span>
-                    <span>First end-to-end walking skeleton</span>
+                    <span>{t.tools.level2Item3}</span>
                   </li>
                 </ul>
               </div>
@@ -331,35 +330,35 @@ export default function ToolsPage() {
               <div>
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
                   <span className="font-mono text-xs text-white/40 font-bold uppercase tracking-widest">
-                    LEVEL 03
+                    {t.tools.level3Tag}
                   </span>
                   <span className="font-mono text-[10px] bg-white/10 text-white/50 font-bold px-2 py-0.5 uppercase">
-                    LATER
+                    {t.tools.level3Badge}
                   </span>
                 </div>
                 <h3 className="font-mono text-xl font-bold uppercase tracking-wider text-white/70 mb-4">
-                  FUTURE DIRECTION
+                  {t.tools.level3Title}
                 </h3>
                 <ul className="space-y-2.5 font-mono text-xs text-white/50">
                   <li className="flex items-start gap-2">
                     <span>○</span>
-                    <span>Searchable local catalog</span>
+                    <span>{t.tools.level3Item1}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span>○</span>
-                    <span>Previews, metadata and filters</span>
+                    <span>{t.tools.level3Item2}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span>○</span>
-                    <span>First production DCC connector</span>
+                    <span>{t.tools.level3Item3}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span>○</span>
-                    <span>Additional DCC connectors</span>
+                    <span>{t.tools.level3Item4}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span>○</span>
-                    <span>Visual search after core workflow proves useful</span>
+                    <span>{t.tools.level3Item5}</span>
                   </li>
                 </ul>
               </div>
@@ -373,13 +372,13 @@ export default function ToolsPage() {
       <section className="px-4 md:px-8 max-w-7xl mx-auto py-20 md:py-28">
         <div className="mb-14">
           <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
-            [ ARCHITECTURAL GOALS ]
+            {t.tools.archGoalsTag}
           </span>
           <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111]">
-            DESIGN TARGETS
+            {t.tools.designTargetsTitle}
           </h2>
           <p className="font-mono text-base text-black/70 max-w-2xl mt-3">
-            Core principles guiding how the software will be structured as development progresses.
+            {t.tools.designTargetsDesc}
           </p>
         </div>
 
@@ -393,12 +392,12 @@ export default function ToolsPage() {
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
-                LOCAL CATALOG
+                {t.tools.target1Title}
               </h3>
             </div>
             <div className="md:col-span-6">
               <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
-                Index existing folders without moving or modifying the original files.
+                {t.tools.target1Desc}
               </p>
             </div>
           </div>
@@ -410,12 +409,12 @@ export default function ToolsPage() {
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
-                PORTABLE METADATA
+                {t.tools.target2Title}
               </h3>
             </div>
             <div className="md:col-span-6">
               <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
-                Keep previews, tags, source and license information attached to the logical asset.
+                {t.tools.target2Desc}
               </p>
             </div>
           </div>
@@ -427,12 +426,12 @@ export default function ToolsPage() {
             </div>
             <div className="md:col-span-4">
               <h3 className="font-primary text-3xl md:text-4xl font-black uppercase tracking-wide text-black leading-none">
-                THIN DCC CONNECTORS
+                {t.tools.target3Title}
               </h3>
             </div>
             <div className="md:col-span-6">
               <p className="font-mono text-sm md:text-base text-black/80 font-light leading-relaxed">
-                Build host-specific import operations around one shared local catalog.
+                {t.tools.target3Desc}
               </p>
             </div>
           </div>
@@ -445,13 +444,13 @@ export default function ToolsPage() {
         <div className="px-4 md:px-8 max-w-7xl mx-auto">
           <div className="mb-14">
             <span className="font-mono text-xs text-[#FF5F1F] tracking-[0.2em] font-bold uppercase block mb-3">
-              [ REALISTIC STAGING ]
+              {t.tools.stagingTag}
             </span>
             <h2 className="font-primary text-5xl md:text-7xl font-black uppercase tracking-wide text-[#111111]">
-              BUILD LOG
+              {t.tools.buildLogTitle}
             </h2>
             <p className="font-mono text-base text-black/70 max-w-2xl mt-3">
-              Sequential staging plan. No artificial release dates — one verified milestone at a time.
+              {t.tools.buildLogDesc}
             </p>
           </div>
 
@@ -469,15 +468,15 @@ export default function ToolsPage() {
                     ✓
                   </div>
                   <span className="font-mono text-sm text-[#FF5F1F] font-bold tracking-widest uppercase">
-                    NOW
+                    {t.tools.stageNow}
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-[#FF5F1F] pl-4 lg:pl-0 lg:pt-4">
                   <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
-                    DESKTOP FOUNDATION
+                    {t.tools.stageNowTitle}
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/80 leading-relaxed">
-                    Electron shell, repository tooling and security baseline.
+                    {t.tools.stageNowDesc}
                   </p>
                 </div>
               </div>
@@ -489,15 +488,15 @@ export default function ToolsPage() {
                     ▶
                   </div>
                   <span className="font-mono text-sm text-black font-bold tracking-widest uppercase">
-                    NEXT
+                    {t.tools.stageNext}
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/20 pl-4 lg:pl-0 lg:pt-4">
                   <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
-                    PACKAGING + LOCAL DATA
+                    {t.tools.stageNextTitle}
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/70 leading-relaxed">
-                    Packaged Windows verification and first SQLite slice.
+                    {t.tools.stageNextDesc}
                   </p>
                 </div>
               </div>
@@ -509,15 +508,15 @@ export default function ToolsPage() {
                     ○
                   </div>
                   <span className="font-mono text-sm text-black/60 font-bold tracking-widest uppercase">
-                    THEN
+                    {t.tools.stageThen}
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/15 pl-4 lg:pl-0 lg:pt-4">
                   <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/80 mb-2">
-                    WALKING SKELETON
+                    {t.tools.stageThenTitle}
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/60 leading-relaxed">
-                    Scan fixtures, show one asset and execute one mock operation end to end.
+                    {t.tools.stageThenDesc}
                   </p>
                 </div>
               </div>
@@ -529,15 +528,15 @@ export default function ToolsPage() {
                     ○
                   </div>
                   <span className="font-mono text-sm text-black/40 font-bold tracking-widest uppercase">
-                    LATER
+                    {t.tools.stageLater}
                   </span>
                 </div>
                 <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/10 pl-4 lg:pl-0 lg:pt-4">
                   <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/60 mb-2">
-                    CATALOG + DCC CONNECTORS
+                    {t.tools.stageLaterTitle}
                   </h3>
                   <p className="font-mono text-xs md:text-sm text-black/50 leading-relaxed">
-                    Useful personal catalog first, then one verified connector at a time.
+                    {t.tools.stageLaterDesc}
                   </p>
                 </div>
               </div>
@@ -552,13 +551,13 @@ export default function ToolsPage() {
         <div className="bg-[#111111] text-white p-8 md:p-14 border border-black shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-10">
           <div className="max-w-2xl">
             <span className="font-mono text-xs text-[#FF5F1F] font-bold tracking-widest uppercase block mb-3">
-              [ PIPELINE FEEDBACK ]
+              {t.tools.feedbackTag}
             </span>
             <h2 className="font-primary text-4xl md:text-6xl font-black uppercase tracking-wide text-white mb-4 leading-tight">
-              HAVE A MESSY 3D ASSET LIBRARY?
+              {t.tools.ctaTitle}
             </h2>
             <p className="font-mono text-xs md:text-sm text-white/80 leading-relaxed">
-              I’m documenting how artists store, find, and reuse assets across DCCs. If your library is messy too, tell me what wastes the most time. Early testing comes after the personal build proves useful.
+              {t.tools.ctaDesc}
             </p>
           </div>
 
@@ -569,13 +568,13 @@ export default function ToolsPage() {
               rel="noopener noreferrer"
               className="w-full sm:w-auto inline-flex items-center justify-center text-center font-mono text-xs font-bold tracking-wider uppercase bg-[#FF5F1F] text-white px-6 md:px-8 py-4 border border-[#FF5F1F] hover:bg-white hover:text-black transition-all cursor-pointer whitespace-nowrap"
             >
-              [ TELEGRAM CONTACT → ]
+              {t.tools.telegramBtn}
             </a>
             <a
               href="mailto:iaroslav@losereasp.com"
               className="w-full sm:w-auto inline-flex items-center justify-center text-center font-mono text-xs font-bold tracking-wider uppercase bg-transparent border border-white/30 text-white hover:bg-white hover:text-black transition-all px-6 md:px-8 py-4 cursor-pointer whitespace-nowrap"
             >
-              [ EMAIL INQUIRY → ]
+              {t.tools.emailBtn}
             </a>
           </div>
         </div>
@@ -585,3 +584,4 @@ export default function ToolsPage() {
     </main>
   );
 }
+

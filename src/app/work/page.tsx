@@ -10,6 +10,7 @@ import ScrollToTop from "../ScrollToTop";
 import ProjectOverlay from "../ProjectOverlay";
 import Magnetic from "../Magnetic";
 import { PROJECTS_DATA } from "../data/projects";
+import { useLanguage } from "../context/LanguageContext";
 
 // Full archive order
 const ALL_IDS = ["frost-core", "the-visit", "rampage-rally", "stanley-bottle"];
@@ -23,6 +24,7 @@ const PROJECT_METADATA: Record<string, { year: string; index: string }> = {
 };
 
 export default function WorkPage() {
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -142,13 +144,13 @@ export default function WorkPage() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
             <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase text-[#FF5F1F] mb-4 animate-header-item opacity-0">
-              Archive Index // Dataset
+              {t.work.archiveDataset}
             </p>
             <h1 className="font-primary text-6xl md:text-8xl lg:text-[7.5vw] leading-[0.9] uppercase text-black tracking-normal animate-header-item opacity-0">
-              Project Archive
+              {t.work.title}
             </h1>
             <p className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-black/30 mt-4 animate-header-item opacity-0">
-              {ALL_IDS.length} Entries Indexed // {new Date().getFullYear()}
+              {ALL_IDS.length} {t.work.entriesIndexed} // {new Date().getFullYear()}
             </p>
           </div>
           <Magnetic>
@@ -157,7 +159,7 @@ export default function WorkPage() {
               className="group inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-black/60 hover:text-black transition-colors cursor-pointer self-start md:self-auto animate-header-item opacity-0"
             >
               <span className="text-[#FF5F1F] transition-transform duration-300 group-hover:-translate-x-1">←</span>
-              <span>Back Home</span>
+              <span>{t.work.backHome}</span>
             </Link>
           </Magnetic>
         </div>
@@ -171,11 +173,11 @@ export default function WorkPage() {
         <div className="hidden md:flex flex-col w-full">
           {/* Table Header */}
           <div className="flex border-b-[2px] border-black/20 pb-4 text-[10px] font-mono tracking-[0.35em] text-black/40 uppercase select-none animate-table-header opacity-0">
-            <div className="w-[8%]">INDEX</div>
-            <div className="w-[32%]">PROJECT TITLE</div>
-            <div className="w-[25%]">CATEGORY / FORMAT</div>
-            <div className="w-[25%]">BUILDING STACK</div>
-            <div className="w-[10%] text-right">YEAR</div>
+            <div className="w-[8%]">{t.work.colIndex}</div>
+            <div className="w-[32%]">{t.work.colTitle}</div>
+            <div className="w-[25%]">{t.work.colCategory}</div>
+            <div className="w-[25%]">{t.work.colStack}</div>
+            <div className="w-[10%] text-right">{t.work.colYear}</div>
           </div>
 
           {/* Table Body */}
@@ -297,7 +299,7 @@ export default function WorkPage() {
             <div className="absolute inset-0 bg-black/10 mix-blend-overlay pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
             <div className="absolute bottom-3 left-3 flex flex-col pointer-events-none">
-              <span className="font-mono text-[8px] tracking-[0.25em] text-[#FF5F1F] uppercase">PREVIEW CORE // DATA</span>
+              <span className="font-mono text-[8px] tracking-[0.25em] text-[#FF5F1F] uppercase">{t.work.previewData}</span>
               <span className="font-primary text-lg text-white uppercase leading-none mt-1">{displayProject.title}</span>
             </div>
           </div>
@@ -317,3 +319,4 @@ export default function WorkPage() {
     </main>
   );
 }
+

@@ -5,9 +5,11 @@ import Link from "next/link";
 import gsap from "gsap";
 import MainNavbar from "../MainNavbar";
 import Magnetic from "../Magnetic";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,18 +84,18 @@ export default function AboutPage() {
         <div className="w-full lg:w-[55%] flex flex-col justify-start">
           
           <h1 className="font-primary text-5xl lg:text-[5vw] leading-[1.2] tracking-normal uppercase mb-6 lg:mb-12 font-bold text-[#111111] animate-title opacity-0">
-            MY NAME IS IAROSLAV
+            {t.about.title}
           </h1>
 
           <div className="font-mono text-base md:text-xl lg:text-2xl leading-[1.6] tracking-tight font-light w-full max-w-2xl mb-12 animate-bio-text opacity-0">
             <p className="mb-6">
-              I am a CG Generalist based in Da Nang. I’m trying to make cool CG stuff, and sometimes it's actually possible. When I'm not tweaking render settings, I'm probably riding my scrambler around Vietnam or trying to understand my cat's logic.
+              {t.about.bio}
             </p>
           </div>
 
           <div className="mb-16 max-w-3xl flex flex-col gap-8">
             <div className="animate-stack opacity-0">
-              <p className="font-mono text-black/50 mb-3 tracking-widest text-xs uppercase font-bold">Main Stack</p>
+              <p className="font-mono text-black/50 mb-3 tracking-widest text-xs uppercase font-bold">{t.about.mainStack}</p>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {['Cinema 4D', 'Redshift', 'Blender', 'After Effects'].map(tech => (
                   <span key={tech} className="px-4 py-2 border border-black/20 rounded-[3px] text-sm lg:text-base font-sans font-medium hover:border-[#FF5F1F] hover:text-[#FF5F1F] hover:bg-[#FF5F1F]/5 transition-colors cursor-default">
@@ -104,7 +106,7 @@ export default function AboutPage() {
             </div>
             
             <div className="animate-stack opacity-0">
-              <p className="font-mono text-black/50 mb-3 tracking-widest text-xs uppercase font-bold">Currently Expanding Into</p>
+              <p className="font-mono text-black/50 mb-3 tracking-widest text-xs uppercase font-bold">{t.about.expandingInto}</p>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {['Unreal Engine', 'Houdini', 'Substance Painter'].map(tech => (
                   <span key={tech} className="px-4 py-2 border border-black/20 border-dashed rounded-[3px] text-sm lg:text-base font-sans font-medium text-black/60 hover:text-black hover:border-black/50 transition-colors cursor-default">
@@ -118,13 +120,13 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row gap-4 items-start mb-8 animate-buttons opacity-0">
             <Magnetic>
               <a href="mailto:iaroslav@losereasp.com" className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#FF5F1F] bg-[#FF5F1F] text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:bg-transparent hover:text-[#FF5F1F] rounded-[3px] w-full sm:w-auto">
-                DROP ME A LINE
+                {t.about.dropLine}
               </a>
             </Magnetic>
 
             <div className="relative group/resume w-full sm:w-auto">
               <div className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/10 text-black/30 font-mono text-base md:text-lg font-bold uppercase cursor-not-allowed rounded-[3px] w-full sm:w-auto whitespace-nowrap">
-                DOWNLOAD RESUME (COMING SOON)
+                {t.about.downloadResume}
               </div>
             </div>
           </div>

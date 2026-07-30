@@ -14,9 +14,11 @@ import ProjectCard from "./ProjectCard";
 import Magnetic from "./Magnetic";
 import { PROJECTS_DATA } from "./data/projects";
 import SketchesReel, { type SketchItem } from "./SketchesReel";
+import { useLanguage } from "./context/LanguageContext";
 
 function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (!sketch) return;
@@ -73,7 +75,7 @@ function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClos
           <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/60">
             <span className="text-[#FF5F1F]/70 mr-1.5">⬡</span>{sketch.label}
           </p>
-          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-white/30">ESC — закрыть</p>
+          <p className="font-mono text-[9px] tracking-[0.3em] uppercase text-white/30">{t.home.escClose}</p>
         </div>
       </div>
 
@@ -104,6 +106,7 @@ const SKETCHES = [
 ];
 
 export default function Home() {
+  const { t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [openSketch, setOpenSketch] = useState<SketchItem | null>(null);
@@ -137,7 +140,7 @@ export default function Home() {
         {/* SELECTED WORKS Marquee Header - GSAP Scroll-Linked */}
         <ScrollMarquee className="!border-b !border-black/5" speed={2}>
           <h2 className="font-mono text-5xl md:text-8xl uppercase font-black text-[#111111] flex items-center gap-8 md:gap-16">
-            <span>Selected Works</span>
+            <span>{t.home.selectedWorks}</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />
           </h2>
         </ScrollMarquee>
@@ -178,7 +181,7 @@ export default function Home() {
                 className="group flex items-center gap-2 text-black hover:text-[#FF5F1F] font-bold tracking-[0.3em] transition-colors duration-300 cursor-none"
                 data-normal-cursor
               >
-                <span>VIEW ARCHIVE</span>
+                <span>{t.home.viewArchive}</span>
                 <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">[→]</span>
               </Link>
             </Magnetic>
@@ -190,13 +193,13 @@ export default function Home() {
         {/* PERSONAL SKETCHES Marquee Header - GSAP Scroll-Linked */}
         <ScrollMarquee className="!border-b !border-black/5" speed={1.5}>
           <div className="flex items-center gap-8 md:gap-16 font-mono text-5xl md:text-8xl uppercase font-black text-[#111111]">
-            <span>Personal Sketches</span>
+            <span>{t.home.personalSketches}</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />
-            <span>Explorations</span>
+            <span>{t.home.explorations}</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />
-            <span>The Lab</span>
+            <span>{t.home.theLab}</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />
-            <span>R&D</span>
+            <span>{t.home.rnd}</span>
             <span className="w-4 h-4 md:w-6 md:h-6 bg-[#FF5F1F] rounded-full" />
           </div>
         </ScrollMarquee>
@@ -227,3 +230,4 @@ export default function Home() {
     </main>
   );
 }
+

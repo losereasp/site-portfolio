@@ -31,7 +31,7 @@ export const PROJECTS_DATA = {
     categoryRu: "ЧЕЛЛЕНДЖ",
     thematicHeader: "Back to the Past",
     thematicHeaderEn: "Back to the Past",
-    thematicHeaderRu: "Назад в прошлое",
+    thematicHeaderRu: "Вперед в прошлое",
     description: "My first entry in the pwnisher challenge. Inspired by 'Back to the Future,' but rebuilt in a post-Soviet setting — I swapped the iconic DeLorean for a VAZ-2108. Built over one month, and my first step toward finding my own visual style.",
     descriptionEn: "My first entry in the pwnisher challenge. Inspired by 'Back to the Future,' but rebuilt in a post-Soviet setting — I swapped the iconic DeLorean for a VAZ-2108. Built over one month, and my first step toward finding my own visual style.",
     descriptionRu: "Первый заход в pwnisher challenge. Взял «Назад в будущее», перенёс историю в постсоветскую реальность и вместо DeLorean поставил ВАЗ-2108. Собирал месяц, заодно попробовал нащупать свой визуальный язык.",

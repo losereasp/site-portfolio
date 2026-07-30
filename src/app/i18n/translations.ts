@@ -164,7 +164,7 @@ export const translations = {
       selectedWorks: "ИЗБРАННЫЕ РАБОТЫ",
       viewArchive: "ВСЕ РАБОТЫ",
       personalSketches: "ЛИЧНЫЕ ЭКСПЕРИМЕНТЫ",
-      explorations: "ЭТЮДЫ И ЭКСПЕРИМЕНТЫ",
+      explorations: "СКЕТЧИ",
       theLab: "ЛАБОРАТОРИЯ",
       rnd: "R&D",
       escClose: "ESC: закрыть",

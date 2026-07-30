@@ -77,17 +77,15 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
             onClick={toggleLang}
             type="button"
             aria-label="Toggle language"
-            className="font-mono text-xl md:text-3xl tracking-normal cursor-pointer select-none transition-all duration-300"
+            className="font-mono text-xs md:text-sm tracking-widest uppercase cursor-pointer select-none transition-all duration-300 opacity-60 hover:opacity-100 ml-1 md:ml-3"
           >
-            <span className={isLight ? "text-black/40" : "text-white/40"}>[</span>{" "}
-            <span className={lang === "en" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}>
+            <span className={lang === "en" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/60" : "text-white/60"}>
               EN
             </span>
-            <span className={isLight ? "text-black/30 mx-1" : "text-white/30 mx-1"}>|</span>
-            <span className={lang === "ru" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}>
+            <span className={isLight ? "text-black/30 mx-1" : "text-white/30 mx-1"}>/</span>
+            <span className={lang === "ru" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/60" : "text-white/60"}>
               RU
-            </span>{" "}
-            <span className={isLight ? "text-black/40" : "text-white/40"}>]</span>
+            </span>
           </button>
         </Magnetic>
       </div>

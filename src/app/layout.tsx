@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "./context/LanguageContext";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -29,8 +30,9 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${jetBrainsMono.variable} antialiased`}
       >
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
 }
+

@@ -19,12 +19,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const savedLang = localStorage.getItem("portfolio_lang") as Language;
     if (savedLang === "en" || savedLang === "ru") {
       setLangState(savedLang);
+      document.documentElement.lang = savedLang;
+    } else {
+      document.documentElement.lang = "en";
     }
   }, []);
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);
     localStorage.setItem("portfolio_lang", newLang);
+    document.documentElement.lang = newLang;
   };
 
   const toggleLang = () => {

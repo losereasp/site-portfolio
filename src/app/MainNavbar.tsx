@@ -11,7 +11,7 @@ interface MainNavbarProps {
 
 export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
   const [scrolled, setScrolled] = useState(false);
-  const { lang, toggleLang, t } = useLanguage();
+  const { lang, setLang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,21 +72,50 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
         <Magnetic>
           <Link href="/about" className={linkBase}>{t.nav.about}</Link>
         </Magnetic>
+
+        {/* Segmented EN | RU Language Switcher */}
         <Magnetic>
-          <button
-            onClick={toggleLang}
-            type="button"
-            aria-label="Toggle language"
-            className="font-mono text-xs md:text-sm tracking-widest uppercase cursor-pointer select-none transition-all duration-300 opacity-60 hover:opacity-100 ml-1 md:ml-3"
+          <div
+            role="group"
+            aria-label="Language selector"
+            className={`inline-flex items-center font-mono text-xs md:text-sm tracking-wider uppercase select-none rounded-[2px] px-1.5 py-0.5 border ${
+              isLight ? "border-black/15 bg-black/5" : "border-white/15 bg-white/5"
+            }`}
           >
-            <span className={lang === "en" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/60" : "text-white/60"}>
+            <span className={isLight ? "text-black/40 mr-1 font-bold" : "text-white/40 mr-1 font-bold"} aria-hidden="true">[</span>
+            <button
+              onClick={() => setLang("en")}
+              type="button"
+              aria-label={lang === "ru" ? "Switch site language to English" : "Site language is English"}
+              aria-pressed={lang === "en"}
+              className={`min-w-[36px] min-h-[36px] px-1.5 flex items-center justify-center cursor-pointer transition-colors duration-200 ${
+                lang === "en"
+                  ? "text-[#FF5F1F] font-bold border-b-2 border-[#FF5F1F]"
+                  : isLight
+                  ? "text-black/60 hover:text-black"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
               EN
-            </span>
-            <span className={isLight ? "text-black/30 mx-1" : "text-white/30 mx-1"}>/</span>
-            <span className={lang === "ru" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/60" : "text-white/60"}>
+            </button>
+            <span className={`px-0.5 ${isLight ? "text-black/25" : "text-white/25"}`} aria-hidden="true">|</span>
+            <button
+              onClick={() => setLang("ru")}
+              type="button"
+              aria-label={lang === "en" ? "Переключить сайт на русский" : "Язык сайта русский"}
+              aria-pressed={lang === "ru"}
+              className={`min-w-[36px] min-h-[36px] px-1.5 flex items-center justify-center cursor-pointer transition-colors duration-200 ${
+                lang === "ru"
+                  ? "text-[#FF5F1F] font-bold border-b-2 border-[#FF5F1F]"
+                  : isLight
+                  ? "text-black/60 hover:text-black"
+                  : "text-white/60 hover:text-white"
+              }`}
+            >
               RU
-            </span>
-          </button>
+            </button>
+            <span className={isLight ? "text-black/40 ml-1 font-bold" : "text-white/40 ml-1 font-bold"} aria-hidden="true">]</span>
+          </div>
         </Magnetic>
       </div>
     </nav>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Magnetic from "./Magnetic";
+import { useLanguage } from "./context/LanguageContext";
 
 interface MainNavbarProps {
   lightMode?: boolean;
@@ -10,6 +11,7 @@ interface MainNavbarProps {
 
 export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
   const [scrolled, setScrolled] = useState(false);
+  const { lang, toggleLang, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,17 +60,35 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
                 : "opacity-0 translate-y-4 pointer-events-none"
             }`}
           >
-            REEL
+            {t.nav.reel}
           </a>
         </Magnetic>
         <Magnetic>
-          <Link href="/tools" className={linkBase}>TOOLS</Link>
+          <Link href="/tools" className={linkBase}>{t.nav.tools}</Link>
         </Magnetic>
         <Magnetic>
-          <Link href="/work" className={linkBase}>WORK</Link>
+          <Link href="/work" className={linkBase}>{t.nav.work}</Link>
         </Magnetic>
         <Magnetic>
-          <Link href="/about" className={linkBase}>ABOUT</Link>
+          <Link href="/about" className={linkBase}>{t.nav.about}</Link>
+        </Magnetic>
+        <Magnetic>
+          <button
+            onClick={toggleLang}
+            type="button"
+            aria-label="Toggle language"
+            className="font-mono text-xl md:text-3xl tracking-normal cursor-pointer select-none transition-all duration-300"
+          >
+            <span className={isLight ? "text-black/40" : "text-white/40"}>[</span>{" "}
+            <span className={lang === "en" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}>
+              EN
+            </span>
+            <span className={isLight ? "text-black/30 mx-1" : "text-white/30 mx-1"}>|</span>
+            <span className={lang === "ru" ? "text-[#FF5F1F] font-bold" : isLight ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}>
+              RU
+            </span>{" "}
+            <span className={isLight ? "text-black/40" : "text-white/40"}>]</span>
+          </button>
         </Magnetic>
       </div>
     </nav>

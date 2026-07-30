@@ -7,6 +7,7 @@ import BeforeAfterVideoSlider from "./BeforeAfterVideoSlider";
 import Magnetic from "./Magnetic";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { useLanguage } from "./context/LanguageContext";
 
 // Dynamically load the heavy 3D viewer only when the overlay opens
 const AssetViewer = dynamic(() => import("./AssetViewer"), { 
@@ -27,6 +28,8 @@ interface ProjectOverlayProps {
   project: {
     title: string;
     description: string;
+    descriptionEn?: string;
+    descriptionRu?: string;
     software: string[];
     heroImage: string;
     beforeImage?: string;
@@ -39,7 +42,11 @@ interface ProjectOverlayProps {
     styleframes?: string[];
     storyboardImage?: string;
     thematicHeader?: string;
+    thematicHeaderEn?: string;
+    thematicHeaderRu?: string;
     category?: string;
+    categoryEn?: string;
+    categoryRu?: string;
     youtubeId?: string;
   };
   onSelectProject?: (id: string) => void;
@@ -61,6 +68,7 @@ export default function ProjectOverlay({
   onSelectProject, 
   currentProjectId 
 }: ProjectOverlayProps) {
+  const { lang, t } = useLanguage();
   const overlayRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -94,6 +102,10 @@ export default function ProjectOverlay({
   const nextId = PROJECT_ORDER[nextIndex];
   const prevTitle = PROJECT_TITLES[prevId] || prevId.toUpperCase();
   const nextTitle = PROJECT_TITLES[nextId] || nextId.toUpperCase();
+
+  const localizedCategory = lang === "ru" ? (project.categoryRu || project.category) : (project.categoryEn || project.category);
+  const localizedThematicHeader = lang === "ru" ? (project.thematicHeaderRu || project.thematicHeader) : (project.thematicHeaderEn || project.thematicHeader);
+  const localizedDescription = lang === "ru" ? (project.descriptionRu || project.description) : (project.descriptionEn || project.description);
 
   // FLIP Animation Engine - Professional Layout transitions
   useLayoutEffect(() => {
@@ -350,14 +362,14 @@ export default function ProjectOverlay({
               onClick={onClose}
               className="font-mono text-xs md:text-sm text-white hover:text-[#FF5F1F] hover:underline underline-offset-8 transition-all uppercase tracking-widest px-4 py-2"
             >
-              ← Back to Work
+              ← {lang === 'ru' ? 'К работам' : 'Back to Work'}
             </button>
           </Magnetic>
         </div>
 
         {/* Hero Title Overlay */}
         <div className="absolute bottom-12 left-6 md:left-12 flex flex-col items-start max-w-[90%] pointer-events-none">
-           <p className="font-mono text-[10px] md:text-xs text-[#FF5F1F] uppercase tracking-[0.4em] mb-4 ml-1 md:ml-[6px]">Case Study</p>
+           <p className="font-mono text-[10px] md:text-xs text-[#FF5F1F] uppercase tracking-[0.4em] mb-4 ml-1 md:ml-[6px]">{lang === 'ru' ? 'Кейс' : 'Case Study'}</p>
            <h1 className="font-primary text-4xl md:text-6xl lg:text-[7vw] text-white leading-[0.9] uppercase tracking-normal">
              {project.title}
            </h1>
@@ -370,12 +382,12 @@ export default function ProjectOverlay({
           {/* Left: Huge H2 */}
           <div className="md:col-span-12 lg:col-span-7">
             <h2 className="font-primary text-5xl md:text-8xl leading-[0.9] uppercase text-black tracking-normal">
-              {project.thematicHeader ? (
+              {localizedThematicHeader ? (
                 <>
-                  {project.thematicHeader}:<br />{project.title}
+                  {localizedThematicHeader}:<br />{project.title}
                 </>
               ) : (
-                project.category || project.title
+                localizedCategory || project.title
               )}
             </h2>
           </div>
@@ -392,7 +404,7 @@ export default function ProjectOverlay({
               ))}
             </div>
             <p className="font-mono text-sm md:text-base leading-relaxed text-black/70">
-              {project.description}
+              {localizedDescription}
             </p>
           </div>
         </div>
@@ -403,7 +415,7 @@ export default function ProjectOverlay({
         <section className="w-full bg-[#F0F0EE] pb-24 px-6 md:px-12">
           <div className="flex flex-col gap-12">
             <div className="flex items-center gap-6">
-              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Moodboard</h2>
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{t.overlay.storyboard}</h2>
               <div className="flex-1 h-[2px] bg-black/10" />
             </div>
             
@@ -509,7 +521,7 @@ export default function ProjectOverlay({
         <section className="w-full bg-[#111111] px-6 md:px-12 py-16 md:py-24">
           <div className="max-w-[1700px] mx-auto flex flex-col gap-10">
             <div className="flex items-center gap-6">
-              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-white">Full Breakdown</h2>
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-white">{t.overlay.breakdown}</h2>
               <div className="flex-1 h-[2px] bg-white/10" />
               <a
                 href={`https://www.youtube.com/watch?v=${project.youtubeId}`}
@@ -539,7 +551,7 @@ export default function ProjectOverlay({
         <section className="w-full">
           <div className="bg-[#F0F0EE] px-6 md:px-12 pt-24 md:pt-40 pb-12">
             <div className="flex items-center gap-6">
-              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">Render Comparison</h2>
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">{t.overlay.lookdev}</h2>
               <div className="flex-1 h-[2px] bg-black/10" />
             </div>
           </div>
@@ -556,7 +568,7 @@ export default function ProjectOverlay({
       {project.beforeVideo && project.afterVideo && (
         <section className="w-full bg-[#F0F0EE] px-6 md:px-12 pt-24 md:pt-40 pb-0">
           <div className="flex items-center gap-6 mb-12">
-            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">Render Comparison</h2>
+            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-black">{t.overlay.lookdev}</h2>
             <div className="flex-1 h-[2px] bg-black/10" />
           </div>
           <div className="max-w-[1800px] mx-auto">
@@ -573,7 +585,7 @@ export default function ProjectOverlay({
         <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 px-6 md:px-12">
           <div className="flex flex-col gap-12">
             <div className="flex items-center gap-6">
-              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Style Frames</h2>
+              <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{t.overlay.styleframes}</h2>
               <div className="flex-1 h-[2px] bg-black/10" />
             </div>
             
@@ -621,7 +633,7 @@ export default function ProjectOverlay({
       <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
         <div className="flex flex-col gap-12">
           <div className="flex items-center gap-6">
-            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">Asset Breakdown</h2>
+            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{t.overlay.breakdown}</h2>
             <div className="flex-1 h-[2px] bg-black/10" />
           </div>
 
@@ -838,13 +850,13 @@ export default function ProjectOverlay({
     {isOpen && !activeLightbox && (
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[105] pointer-events-none">
         <div className="bg-black/85 backdrop-blur-md border border-white/15 px-4 py-2 rounded-full shadow-2xl flex flex-wrap items-center justify-center gap-2 md:gap-3 font-mono text-[9px] md:text-[11px] text-white uppercase tracking-wider">
-          <span className="text-[#FF5F1F] font-semibold">[ ← → NAVIGATE ]</span>
+          <span className="text-[#FF5F1F] font-semibold">[ ← → {lang === 'ru' ? 'НАВИГАЦИЯ' : 'NAVIGATE'} ]</span>
           <span className="text-white/30">•</span>
-          <span className="text-[#FF5F1F] font-semibold">[ SPACE PLAY/PAUSE ]</span>
+          <span className="text-[#FF5F1F] font-semibold">[ SPACE {lang === 'ru' ? 'ПАУЗА' : 'PLAY/PAUSE'} ]</span>
           <span className="text-white/30">•</span>
-          <span className="text-[#FF5F1F] font-semibold">[ M MUTE ]</span>
+          <span className="text-[#FF5F1F] font-semibold">[ M {lang === 'ru' ? 'ЗВУК' : 'MUTE'} ]</span>
           <span className="text-white/30">•</span>
-          <span className="text-[#FF5F1F] font-semibold">[ ESC CLOSE ]</span>
+          <span className="text-[#FF5F1F] font-semibold">[ {t.home.escClose.toUpperCase()} ]</span>
         </div>
       </div>
     )}

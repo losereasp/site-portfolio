@@ -21,7 +21,7 @@ export const translations = {
     },
     about: {
       title: "MY NAME IS IAROSLAV",
-      bio: "I am a CG Generalist based in Da Nang. I’m trying to make cool CG stuff, and sometimes it's actually possible. When I'm not tweaking render settings, I'm probably riding my scrambler around Vietnam or trying to understand my cat's logic.",
+      bio: "CG Generalist. Originally from Shumyachi (Smolensk region), lived in Moscow from age 13, currently based in Da Nang. I build product visualizations, motion graphics, and atmospheric 3D scenes. Currently digging into Unreal Engine and Houdini. When not tweaking renders, I'm riding my scrambler around Vietnam or trying to understand my cat's logic.",
       mainStack: "Main Stack",
       expandingInto: "Currently Expanding Into",
       dropLine: "DROP ME A LINE",
@@ -173,7 +173,7 @@ export const translations = {
     },
     about: {
       title: "ЯРОСЛАВ МАРЧЕНКОВ",
-      bio: "CG-артист и 3D-дженералист из Дананга. Делаю моушн, продуктовые визуализации и атмосферные 3D-сцены. Сейчас параллельно разбираюсь с Unreal и Houdini. Когда не ковыряюсь в рендере, катаюсь по Вьетнаму на скремблере или пытаюсь понять, что у кота в голове.",
+      bio: "CG-артист и 3D-дженералист. Родом из посёлка Шумячи Смоленской области, с 13 лет жил в Москве, сейчас базируюсь в Дананге. Делаю моушн, продуктовые визуализации и атмосферные 3D-сцены. Сейчас параллельно разбираюсь с Unreal и Houdini. Когда не ковыряюсь в рендере, катаюсь по Вьетнаму на скремблере или пытаюсь понять, что у кота в голове.",
       mainStack: "ОСНОВНОЙ СТЕК",
       expandingInto: "СЕЙЧАС ОСВАИВАЮ",
       dropLine: "НАПИСАТЬ МНЕ",

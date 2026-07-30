@@ -16,6 +16,8 @@ export const translations = {
       theLab: "The Lab",
       rnd: "R&D",
       escClose: "ESC — close",
+      heroQuote: "TRYING TO PROCRASTINATE LESS AND DO MORE 3D. HONESTLY, IT'S NOT GOING GREAT, BUT I'M TRYING.",
+      viewWorks: "VIEW WORKS",
     },
     about: {
       title: "MY NAME IS IAROSLAV",
@@ -159,13 +161,15 @@ export const translations = {
       about: "ОБО МНЕ",
     },
     home: {
-      selectedWorks: "ВЫБРАННОЕ",
+      selectedWorks: "ИЗБРАННЫЕ РАБОТЫ",
       viewArchive: "ВСЕ РАБОТЫ",
       personalSketches: "ЛИЧНЫЕ ЭКСПЕРИМЕНТЫ",
       explorations: "ЭТЮДЫ И ЭКСПЕРИМЕНТЫ",
       theLab: "ЛАБОРАТОРИЯ",
       rnd: "R&D",
       escClose: "ESC: закрыть",
+      heroQuote: "ПЫТАЮСЬ МЕНЬШЕ ПРОКРАСТИНИРОВАТЬ И БОЛЬШЕ ДЕЛАТЬ 3D. ЧЕСТНО ГОВОРЯ, ПОЛУЧАЕТСЯ ТАК СЕБЕ, НО Я СТАРАЮСЬ.",
+      viewWorks: "СМОТРЕТЬ РАБОТЫ",
     },
     about: {
       title: "ЯРОСЛАВ МАРЧЕНКОВ",

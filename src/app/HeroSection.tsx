@@ -2,8 +2,11 @@
 
 import HeroVideo from "./HeroVideo";
 import HeroCursor from "./HeroCursor";
+import { useLanguage } from "./context/LanguageContext";
 
 export default function HeroSection() {
+  const { t } = useLanguage();
+
   return (
     <>
       <HeroCursor />
@@ -26,7 +29,7 @@ export default function HeroSection() {
               </h1>
               <div className="flex flex-col w-full">
                 <p className="font-mono text-white/80 text-lg md:text-2xl tracking-widest uppercase ml-1 md:ml-[6px] mb-6">
-                  CG ARTIST & 3D GENERALIST
+                  {t.footer.jobTitle}
                 </p>
               </div>
             </div>
@@ -55,7 +58,7 @@ export default function HeroSection() {
               
               <div className="flex gap-4 items-start w-full">
                 <p className="text-base md:text-xl tracking-widest leading-[1.8] uppercase opacity-90 text-left">
-                  TRYING TO PROCRASTINATE LESS AND DO MORE 3D. HONESTLY, IT'S NOT GOING GREAT, BUT I'M TRYING.
+                  {t.home.heroQuote}
                 </p>
               </div>
 
@@ -72,7 +75,7 @@ export default function HeroSection() {
         <div className="absolute bottom-5 sm:bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
           <a data-normal-cursor href="#work" className="group flex flex-col items-center gap-2 md:gap-4" onClick={e => e.stopPropagation()}>
             <span className="font-mono text-[9px] sm:text-[10px] md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] text-white/50 group-hover:text-[#FF5F1F] transition-colors font-bold">
-              VIEW WORKS
+              {t.home.viewWorks}
             </span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10 text-white/50 group-hover:text-[#FF5F1F] transition-colors animate-bounce"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
           </a>

@@ -159,7 +159,7 @@ export const translations = {
       about: "ОБО МНЕ",
     },
     home: {
-      selectedWorks: "ИЗБРАННЫЕ РАБОТЫ",
+      selectedWorks: "ВЫБРАННОЕ",
       viewArchive: "ВСЕ РАБОТЫ",
       personalSketches: "ЛИЧНЫЕ ЭКСПЕРИМЕНТЫ",
       explorations: "ЭТЮДЫ И ЭКСПЕРИМЕНТЫ",
@@ -271,8 +271,8 @@ export const translations = {
     work: {
       archiveDataset: "АРХИВ // КАТАЛОГ РАБОТ",
       title: "АРХИВ ПРОЕКТОВ",
-      entriesIndexed: "Записей в индексе",
-      backHome: "НА ГЛАВНУЮ",
+      entriesIndexed: "Работ в архиве",
+      backHome: "НАЗАД НА ГЛАВНУЮ",
       colIndex: "ИНДЕКС",
       colTitle: "ПРОЕКТ",
       colCategory: "КАТЕГОРИЯ / ФОРМАТ",
@@ -298,7 +298,7 @@ export const translations = {
     },
     footer: {
       jobTitle: "CG ARTIST & 3D GENERALIST",
-      quote: "ЕСТЬ ИДЕЯ ИЛИ ПРОЕКТ? НАПИШИТЕ — ОБСУДИМ.",
+      quote: "ЕСТЬ ИДЕЯ ИЛИ ПРОЕКТ? НАПИШИ.",
     }
   }
 } as const;

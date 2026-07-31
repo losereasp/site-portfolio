@@ -1,17 +1,17 @@
-# LSRSP — Portfolio & 3D R&D Lab
+# LSRSP — Portfolio
 
-> **Iaroslav Marchenkov** · CG Generalist & Creative Developer  
+> **Iaroslav Marchenkov** · CG Generalist
 > Live Site: [https://losereasp.com](https://losereasp.com)
 
 ---
 
-## ⚡ Overview
+## Overview
 
 Personal portfolio and experimental R&D lab showcasing 3D artwork, motion graphics, interactive WebGL, and custom software pipeline tools. Built with a Swiss architectural visual posture (*Cream canvas, sharp hairline dividers, restrained brand orange `#FF5F1F`*).
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework:** [Next.js 16](https://nextjs.org/) (App Router, React 19)
 - **3D & Graphics:** [Three.js](https://threejs.org/) / [React Three Fiber](https://r3f.docs.pmnd.rs/)
@@ -22,7 +22,7 @@ Personal portfolio and experimental R&D lab showcasing 3D artwork, motion graphi
 
 ---
 
-## 🚀 Key Features & Pages
+## Key Features & Pages
 
 - **Main Experience (`/`)**:
   - Interactive 3D Canvas Hero
@@ -38,7 +38,7 @@ Personal portfolio and experimental R&D lab showcasing 3D artwork, motion graphi
 
 ---
 
-## ⚙️ Local Development
+## Local Development
 
 ```bash
 # Clone repository
@@ -56,7 +56,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📜 Build & Verification
+## Build & Verification
 
 ```bash
 # Type check and production build
@@ -68,7 +68,7 @@ npm run start
 
 ---
 
-## 📬 Contact
+##Contact
 
 - **Telegram:** [@losereasp](https://t.me/losereasp)
 - **Email:** [iaroslav@losereasp.com](mailto:iaroslav@losereasp.com)

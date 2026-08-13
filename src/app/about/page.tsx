@@ -9,7 +9,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function AboutPage() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -124,11 +124,16 @@ export default function AboutPage() {
               </a>
             </Magnetic>
 
-            <div className="relative group/resume w-full sm:w-auto">
-              <div className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/10 text-black/30 font-mono text-base md:text-lg font-bold uppercase cursor-not-allowed rounded-[3px] w-full sm:w-auto whitespace-nowrap">
+            <Magnetic>
+              <a 
+                href={lang === 'ru' ? '/Iaroslav-Marchenkov-CV-RU.pdf' : '/Iaroslav-Marchenkov-CV-EN.pdf'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/20 text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:border-[#FF5F1F] hover:text-[#FF5F1F] hover:bg-[#FF5F1F]/5 rounded-[3px] w-full sm:w-auto whitespace-nowrap"
+              >
                 {t.about.downloadResume}
-              </div>
-            </div>
+              </a>
+            </Magnetic>
           </div>
           
           <div className="flex gap-6 md:gap-8">

@@ -25,7 +25,7 @@ export const translations = {
       mainStack: "Main Stack",
       expandingInto: "Currently Expanding Into",
       dropLine: "DROP ME A LINE",
-      downloadResume: "DOWNLOAD RESUME (COMING SOON)",
+      downloadResume: "DOWNLOAD RESUME",
     },
     tools: {
       tagline: "[ THE LAB / PERSONAL PIPELINE R&D ]",
@@ -177,7 +177,7 @@ export const translations = {
       mainStack: "ОСНОВНОЙ СТЕК",
       expandingInto: "СЕЙЧАС ОСВАИВАЮ",
       dropLine: "НАПИСАТЬ МНЕ",
-      downloadResume: "СКАЧАТЬ РЕЗЮМЕ (СКОРО)",
+      downloadResume: "СКАЧАТЬ РЕЗЮМЕ",
     },
     tools: {
       tagline: "[ ЛАБОРАТОРИЯ / ПАЙПЛАЙН R&D ]",

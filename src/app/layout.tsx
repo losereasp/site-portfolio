@@ -16,7 +16,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LSRSP | CG Generalist",
+  title: "LSRSP | CG Artist & 3D Motion Designer",
   description: "Trying to procrastinate less and do more 3d. Honestly, it's not going great, but i'm trying.",
 };
 

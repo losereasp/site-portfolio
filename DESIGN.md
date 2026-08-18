@@ -6,7 +6,7 @@
 |---|---|
 | Brand / handle | **LSRSP** |
 | Full name | Iaroslav Marchenkov |
-| Role | CG Artist & 3D Generalist |
+| Role | CG Artist & 3D Motion Designer |
 | Location | Da Nang |
 | Tagline | "Trying to procrastinate less and do more 3D." |
 

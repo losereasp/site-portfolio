@@ -1,6 +1,6 @@
 # LSRSP — Portfolio
 
-> **Iaroslav Marchenkov** · CG Generalist
+> **Iaroslav Marchenkov** · CG Artist & 3D Motion Designer
 > Live Site: [https://losereasp.com](https://losereasp.com)
 
 ---

@@ -21,7 +21,7 @@ export const translations = {
     },
     about: {
       title: "MY NAME IS IAROSLAV",
-      bio: "CG Generalist, currently in Da Nang. I build product visualizations, motion graphics, and atmospheric 3D scenes. Currently digging into Unreal Engine and Houdini. When not tweaking renders, I'm riding my scrambler around Vietnam or trying to understand my cat's logic.",
+      bio: "CG Artist & 3D Motion Designer, currently in Da Nang. I build product visualizations, motion graphics, and atmospheric 3D scenes. Currently digging into Unreal Engine and Houdini. When not tweaking renders, I'm riding my scrambler around Vietnam or trying to understand my cat's logic.",
       mainStack: "Main Stack",
       expandingInto: "Currently Expanding Into",
       dropLine: "DROP ME A LINE",
@@ -149,7 +149,7 @@ export const translations = {
       nextProject: "NEXT PROJECT",
     },
     footer: {
-      jobTitle: "CG ARTIST & 3D GENERALIST",
+      jobTitle: "CG ARTIST & 3D MOTION DESIGNER",
       quote: "LET'S BUILD SOMETHING COOL TOGETHER. DROP ME A LINE IF YOU HAVE A PROJECT IN MIND.",
     }
   },
@@ -173,7 +173,7 @@ export const translations = {
     },
     about: {
       title: "ЯРОСЛАВ МАРЧЕНКОВ",
-      bio: "CG-артист и 3D-дженералист, в данный момент в Дананге. Делаю моушн, продуктовые визуализации и атмосферные 3D-сцены. Сейчас параллельно разбираюсь с Unreal и Houdini. Когда не ковыряюсь в рендере, катаюсь по Вьетнаму на скремблере или пытаюсь понять, что у кота в голове.",
+      bio: "CG-артист и 3D Motion Designer, в данный момент в Дананге. Делаю моушн, продуктовые визуализации и атмосферные 3D-сцены. Сейчас параллельно разбираюсь с Unreal и Houdini. Когда не ковыряюсь в рендере, катаюсь по Вьетнаму на скремблере или пытаюсь понять, что у кота в голове.",
       mainStack: "ОСНОВНОЙ СТЕК",
       expandingInto: "СЕЙЧАС ОСВАИВАЮ",
       dropLine: "НАПИСАТЬ МНЕ",
@@ -301,7 +301,7 @@ export const translations = {
       nextProject: "СЛЕДУЮЩИЙ ПРОЕКТ",
     },
     footer: {
-      jobTitle: "CG ARTIST & 3D GENERALIST",
+      jobTitle: "CG ARTIST & 3D MOTION DESIGNER",
       quote: "ЕСТЬ ИДЕЯ ИЛИ ПРОЕКТ? НАПИШИ.",
     }
   }

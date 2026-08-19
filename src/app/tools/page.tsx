@@ -282,14 +282,12 @@ export default function ToolsPage() {
                   {t.tools.level1Title}
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/90">
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-[#FF5F1F] font-bold">✓</span>
-                    <span>{t.tools.level1Item1}</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-[#FF5F1F] font-bold">✓</span>
-                    <span>{t.tools.level1Item2}</span>
-                  </li>
+                  {t.tools.level1Items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="text-[#FF5F1F] font-bold">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -309,18 +307,12 @@ export default function ToolsPage() {
                   {t.tools.level2Title}
                 </h3>
                 <ul className="space-y-3 font-mono text-xs md:text-sm text-white/70">
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-white/40">▶</span>
-                    <span>{t.tools.level2Item1}</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-white/40">▶</span>
-                    <span>{t.tools.level2Item2}</span>
-                  </li>
-                  <li className="flex items-start gap-2.5">
-                    <span className="text-white/40">▶</span>
-                    <span>{t.tools.level2Item3}</span>
-                  </li>
+                  {t.tools.level2Items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <span className="text-white/40">▶</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -340,26 +332,12 @@ export default function ToolsPage() {
                   {t.tools.level3Title}
                 </h3>
                 <ul className="space-y-2.5 font-mono text-xs text-white/50">
-                  <li className="flex items-start gap-2">
-                    <span>○</span>
-                    <span>{t.tools.level3Item1}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>○</span>
-                    <span>{t.tools.level3Item2}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>○</span>
-                    <span>{t.tools.level3Item3}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>○</span>
-                    <span>{t.tools.level3Item4}</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>○</span>
-                    <span>{t.tools.level3Item5}</span>
-                  </li>
+                  {t.tools.level3Items.map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span>○</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -460,87 +438,60 @@ export default function ToolsPage() {
             <div className="hidden lg:block absolute top-[36px] left-0 right-0 h-[2px] bg-black/15 z-0" />
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
-              
-              {/* Node NOW (Orange Accent & Highest Contrast) */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
-                  <div className="w-6 h-6 rounded-full bg-[#FF5F1F] border-2 border-white ring-2 ring-[#FF5F1F]/30 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
-                    ✓
+              {t.tools.stages.map((stage, idx) => (
+                <div key={idx} className="flex flex-col">
+                  <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
+                    {stage.isCompleted ? (
+                      <div className="w-6 h-6 rounded-full bg-black border-2 border-white ring-2 ring-black/20 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
+                        ✓
+                      </div>
+                    ) : stage.isInProgress ? (
+                      <div className="w-6 h-6 rounded-full bg-[#FF5F1F] border-2 border-white ring-2 ring-[#FF5F1F]/30 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
+                        ▶
+                      </div>
+                    ) : (
+                      <div className="w-6 h-6 rounded-full bg-black/20 border-2 border-white flex items-center justify-center text-white font-mono text-xs shrink-0">
+                        ○
+                      </div>
+                    )}
+                    <span
+                      className={`font-mono text-xs md:text-sm font-bold tracking-widest uppercase ${
+                        stage.isInProgress
+                          ? "text-[#FF5F1F]"
+                          : stage.isCompleted
+                          ? "text-black/80"
+                          : "text-black/40"
+                      }`}
+                    >
+                      {stage.status}
+                    </span>
                   </div>
-                  <span className="font-mono text-sm text-[#FF5F1F] font-bold tracking-widest uppercase">
-                    {t.tools.stageNow}
-                  </span>
-                </div>
-                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-[#FF5F1F] pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
-                    {t.tools.stageNowTitle}
-                  </h3>
-                  <p className="font-mono text-xs md:text-sm text-black/80 leading-relaxed">
-                    {t.tools.stageNowDesc}
-                  </p>
-                </div>
-              </div>
-
-              {/* Node NEXT */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
-                  <div className="w-6 h-6 rounded-full bg-black border-2 border-white ring-2 ring-black/20 flex items-center justify-center text-white font-mono text-xs font-bold shrink-0">
-                    ▶
+                  <div
+                    className={`border-l-2 lg:border-l-0 lg:border-t-2 pl-4 lg:pl-0 lg:pt-4 ${
+                      stage.isInProgress
+                        ? "border-[#FF5F1F]"
+                        : stage.isCompleted
+                        ? "border-black/40"
+                        : "border-black/10"
+                    }`}
+                  >
+                    <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
+                      {stage.title}
+                    </h3>
+                    <p
+                      className={`font-mono text-xs md:text-sm leading-relaxed ${
+                        stage.isInProgress
+                          ? "text-black/90 font-medium"
+                          : stage.isCompleted
+                          ? "text-black/80"
+                          : "text-black/50"
+                      }`}
+                    >
+                      {stage.desc}
+                    </p>
                   </div>
-                  <span className="font-mono text-sm text-black font-bold tracking-widest uppercase">
-                    {t.tools.stageNext}
-                  </span>
                 </div>
-                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/20 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black mb-2">
-                    {t.tools.stageNextTitle}
-                  </h3>
-                  <p className="font-mono text-xs md:text-sm text-black/70 leading-relaxed">
-                    {t.tools.stageNextDesc}
-                  </p>
-                </div>
-              </div>
-
-              {/* Node THEN */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
-                  <div className="w-6 h-6 rounded-full bg-black/40 border-2 border-white flex items-center justify-center text-white font-mono text-xs shrink-0">
-                    ○
-                  </div>
-                  <span className="font-mono text-sm text-black/60 font-bold tracking-widest uppercase">
-                    {t.tools.stageThen}
-                  </span>
-                </div>
-                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/15 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/80 mb-2">
-                    {t.tools.stageThenTitle}
-                  </h3>
-                  <p className="font-mono text-xs md:text-sm text-black/60 leading-relaxed">
-                    {t.tools.stageThenDesc}
-                  </p>
-                </div>
-              </div>
-
-              {/* Node LATER */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">
-                  <div className="w-6 h-6 rounded-full bg-black/20 border-2 border-white flex items-center justify-center text-white font-mono text-xs shrink-0">
-                    ○
-                  </div>
-                  <span className="font-mono text-sm text-black/40 font-bold tracking-widest uppercase">
-                    {t.tools.stageLater}
-                  </span>
-                </div>
-                <div className="border-l-2 lg:border-l-0 lg:border-t-2 border-black/10 pl-4 lg:pl-0 lg:pt-4">
-                  <h3 className="font-mono text-lg md:text-xl font-bold uppercase tracking-wider text-black/60 mb-2">
-                    {t.tools.stageLaterTitle}
-                  </h3>
-                  <p className="font-mono text-xs md:text-sm text-black/50 leading-relaxed">
-                    {t.tools.stageLaterDesc}
-                  </p>
-                </div>
-              </div>
-
+              ))}
             </div>
           </div>
         </div>

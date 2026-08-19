@@ -11,7 +11,7 @@ export default function Footer() {
       {/* Left Block */}
       <div className="flex flex-col w-full lg:w-5/12">
         <h2 className="font-primary leading-[0.85] text-[15vw] lg:text-[6.5vw] uppercase mb-4 tracking-normal text-[#FF5F1F]">
-          Iaroslav<br/>Marchenkov
+          Iaroslav <br/>Marchenkov
         </h2>
         <p className="font-mono text-lg md:text-2xl tracking-wide text-black/60 font-light">
           {t.footer.jobTitle}

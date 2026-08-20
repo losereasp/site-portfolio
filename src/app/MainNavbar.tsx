@@ -31,10 +31,10 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full px-8 md:px-16 flex justify-between items-center z-[100] transition-all duration-700 ease-out border-b-[3px] ${
+      className={`fixed top-0 left-0 w-full px-6 sm:px-8 md:px-16 flex justify-between items-center z-[100] transition-all duration-700 ease-out border-b-[3px] ${
         scrolled
           ? "bg-[#000000] py-4 border-[#FF5F1F] shadow-[0_20px_50px_rgba(0,0,0,0.8)] text-white"
-          : "bg-transparent py-8 border-transparent shadow-none"
+          : "bg-transparent py-6 sm:py-8 border-transparent shadow-none"
       }`}
     >
       <Magnetic>
@@ -48,7 +48,7 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           <span className="text-[#FF5F1F]">]</span>
         </Link>
       </Magnetic>
-      <div className="flex items-center gap-6 md:gap-12 font-primary text-2xl md:text-4xl tracking-tight">
+      <div className="flex items-center gap-3.5 sm:gap-6 md:gap-12 font-primary text-xl sm:text-2xl md:text-4xl tracking-tight">
         <Magnetic>
           <a
             href="https://vimeo.com/1175696148"

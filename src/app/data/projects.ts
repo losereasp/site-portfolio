@@ -1,4 +1,29 @@
 export const PROJECTS_DATA = {
+  "last-mechanic": {
+    title: "THE LAST MECHANIC",
+    category: "CHALLENGE",
+    categoryEn: "CHALLENGE",
+    categoryRu: "ЧЕЛЛЕНДЖ",
+    thematicHeader: "Gauntlet of Gods",
+    thematicHeaderEn: "Gauntlet of Gods",
+    thematicHeaderRu: "Gauntlet of Gods",
+    description: "Entry for the Pwnisher 'Gauntlet of Gods' challenge. An experienced mechanic revives a seemingly dead motorcycle: tightening the final component, a confident thump of the fist, and the engine comes alive. Crafted in Unreal Engine 5 in a grounded comic realism aesthetic.",
+    descriptionEn: "Entry for the Pwnisher 'Gauntlet of Gods' challenge. An experienced mechanic revives a seemingly dead motorcycle: tightening the final component, a confident thump of the fist, and the engine comes alive. Crafted in Unreal Engine 5 in a grounded comic realism aesthetic.",
+    descriptionRu: "Проект для челленджа Pwnisher «Gauntlet of Gods». История опытного механика, который возвращает к жизни безнадёжный мотоцикл: один точный удар кулаком — и мёртвый мотор оживает. Собрано в Unreal Engine 5 в стилистике приземлённого комиксного реализма (grounded comic realism).",
+    software: ["Unreal Engine", "Blender", "Substance Painter", "Cascadeur", "After Effects"],
+    heroImage: "/last_mechanic_hero.webp",
+    hoverVideo: "/last_mechanic_hover.mp4",
+    showcaseVideo: "/last_mechanic_showcase.mp4",
+    breakdownVideo: "/last_mechanic_breakdown.mp4",
+    beforeImage: "/last_mechanic_graybox.webp",
+    afterImage: "/last_mechanic_after.webp",
+    assets: [
+      "/last_mechanic_lighting.webp",
+      "/last_mechanic_salvage.webp",
+      "/last_mechanic_concept.webp",
+      "/last_mechanic_mocap.mp4"
+    ]
+  },
   "frost-core": {
     title: "FROST CORE",
     category: "REAL-TIME ENVIRONMENT",

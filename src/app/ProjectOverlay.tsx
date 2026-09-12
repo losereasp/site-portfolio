@@ -38,6 +38,8 @@ interface ProjectOverlayProps {
     afterVideo?: string;
     assets: string[];
     hoverVideo?: string;
+    showcaseVideo?: string;
+    breakdownVideo?: string;
     modelPath?: string;
     styleframes?: string[];
     storyboardImage?: string;
@@ -53,8 +55,9 @@ interface ProjectOverlayProps {
   currentProjectId?: string;
 }
 
-const PROJECT_ORDER = ["frost-core", "rampage-rally", "the-visit", "stanley-bottle"];
+const PROJECT_ORDER = ["last-mechanic", "frost-core", "rampage-rally", "the-visit", "stanley-bottle"];
 const PROJECT_TITLES: Record<string, string> = {
+  "last-mechanic": "THE LAST MECHANIC",
   "frost-core": "FROST CORE",
   "rampage-rally": "RAMPAGE RALLY",
   "the-visit": "THE VISIT",
@@ -88,6 +91,7 @@ export default function ProjectOverlay({
       if (idx !== -1) return idx;
     }
     const titleLower = project.title.toLowerCase();
+    if (titleLower.includes("mechanic")) return PROJECT_ORDER.indexOf("last-mechanic");
     if (titleLower.includes("frost")) return PROJECT_ORDER.indexOf("frost-core");
     if (titleLower.includes("rampage")) return PROJECT_ORDER.indexOf("rampage-rally");
     if (titleLower.includes("visit")) return PROJECT_ORDER.indexOf("the-visit");
@@ -431,22 +435,23 @@ export default function ProjectOverlay({
       )}
       
       {/* 2.5 CINEMATIC SHOWCASE (UPDATED) */}
-      {project.hoverVideo && (
+      {(project.showcaseVideo || project.hoverVideo) && (
         <section className="w-full bg-[#F0F0EE] px-6 md:px-12 py-12 md:py-20">
           <div 
-            className="relative aspect-video w-full max-w-[1700px] mx-auto overflow-hidden rounded-sm shadow-xl group bg-black"
+            className="relative aspect-video max-h-[85vh] w-full max-w-[1700px] mx-auto overflow-hidden rounded-sm shadow-xl group bg-black flex items-center justify-center"
             onClick={toggleSidebarPlay}
           >
             <video 
               ref={videoPlayerRef}
+              key={project.showcaseVideo || project.hoverVideo}
               autoPlay 
               preload="metadata"
               loop 
               muted={isMuted}
               playsInline 
-              className="w-full h-full object-cover cursor-pointer"
+              className="w-full h-full object-contain cursor-pointer"
             >
-              <source src={project.hoverVideo} type="video/mp4" />
+              <source src={project.showcaseVideo || project.hoverVideo} type="video/mp4" />
             </video>
             
             {/* Player visual elements */}
@@ -516,32 +521,46 @@ export default function ProjectOverlay({
         </section>
       )}
 
-      {/* 2.8. FULL BREAKDOWN VIDEO (YouTube embed) */}
-      {project.youtubeId && (
+      {/* 2.8. FULL BREAKDOWN VIDEO (YouTube embed or Local MP4) */}
+      {(project.youtubeId || project.breakdownVideo) && (
         <section className="w-full bg-[#111111] px-6 md:px-12 py-16 md:py-24">
           <div className="max-w-[1700px] mx-auto flex flex-col gap-10">
             <div className="flex items-center gap-6">
               <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight text-white">{t.overlay.breakdown}</h2>
               <div className="flex-1 h-[2px] bg-white/10" />
-              <a
-                href={`https://www.youtube.com/watch?v=${project.youtubeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-[#FF5F1F] transition-colors flex items-center gap-2 shrink-0"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-                YouTube ↗
-              </a>
+              {project.youtubeId && (
+                <a
+                  href={`https://www.youtube.com/watch?v=${project.youtubeId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40 hover:text-[#FF5F1F] transition-colors flex items-center gap-2 shrink-0"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                  YouTube ↗
+                </a>
+              )}
             </div>
-            <div className="relative w-full aspect-video overflow-hidden shadow-2xl">
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
-                title={`${project.title} — Full Breakdown`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full border-0"
-              />
-            </div>
+            {project.youtubeId ? (
+              <div className="relative w-full aspect-video overflow-hidden shadow-2xl">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${project.youtubeId}?rel=0&modestbranding=1`}
+                  title={`${project.title} — Full Breakdown`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-0"
+                />
+              </div>
+            ) : (
+              <div className="relative w-full aspect-video max-h-[85vh] mx-auto overflow-hidden shadow-2xl rounded-sm bg-black flex items-center justify-center">
+                <video
+                  src={project.breakdownVideo}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            )}
           </div>
         </section>
       )}

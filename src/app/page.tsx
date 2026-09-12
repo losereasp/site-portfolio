@@ -150,8 +150,8 @@ export default function Home() {
 
           {/* Block 1: Featured — 100% width */}
           <ProjectCard
-            id="frost-core"
-            data={PROJECTS_DATA["frost-core"]}
+            id="last-mechanic"
+            data={PROJECTS_DATA["last-mechanic"]}
             onClick={openProject}
             className="w-full h-[60vh] md:h-[80vh]"
             isFeatured
@@ -160,20 +160,28 @@ export default function Home() {
           {/* Block 2 & 3: Secondary — 60/40 split */}
           <div className="flex flex-col md:flex-row w-full gap-[2px]" style={{ height: "clamp(400px, 70vh, 800px)" }}>
             <ProjectCard
-              id="rampage-rally"
-              data={PROJECTS_DATA["rampage-rally"]}
+              id="frost-core"
+              data={PROJECTS_DATA["frost-core"]}
               onClick={openProject}
               className="flex-[6] h-full"
             />
             <ProjectCard
-              id="the-visit"
-              data={PROJECTS_DATA["the-visit"]}
+              id="rampage-rally"
+              data={PROJECTS_DATA["rampage-rally"]}
               onClick={openProject}
               className="flex-[4] h-full"
             />
           </div>
 
-          {/* Block 4: Clean Tech/Utility Archive Link */}
+          {/* Block 4: The Visit — Panoramic full width */}
+          <ProjectCard
+            id="the-visit"
+            data={PROJECTS_DATA["the-visit"]}
+            onClick={openProject}
+            className="w-full h-[50vh] md:h-[65vh]"
+          />
+
+          {/* Block 5: Clean Tech/Utility Archive Link */}
           <div className="w-full mt-8 mb-6 font-mono text-[10px] md:text-xs select-none flex justify-end items-center">
             <Magnetic>
               <Link
@@ -223,7 +231,7 @@ export default function Home() {
       <ProjectOverlay
         isOpen={!!selectedProject}
         onClose={closeProject}
-        project={selectedProject || activeData || PROJECTS_DATA["frost-core"]}
+        project={selectedProject || activeData || PROJECTS_DATA["last-mechanic"]}
         onSelectProject={openProject}
         currentProjectId={selectedProject ? Object.keys(PROJECTS_DATA).find(key => (PROJECTS_DATA as any)[key] === selectedProject) : undefined}
       />

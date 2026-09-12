@@ -739,7 +739,11 @@ export default function ProjectOverlay({
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
-                                    {asset.includes('rampage_start_viewport_animation_car') ? 'Animation // Car Rig Viewport' :
+                                    {asset.includes('last_mechanic_cascadeur') ? 'Animation // Cascadeur Rig' :
+                                     asset.includes('last_mechanic_blender') ? '3D Modeling // Blender' :
+                                     asset.includes('last_mechanic_painter') ? 'Texturing // Substance 3D Painter' :
+                                     asset.includes('last_mechanic_ue5') ? 'Staging & Camera // Unreal Engine 5' :
+                                     asset.includes('rampage_start_viewport_animation_car') ? 'Animation // Car Rig Viewport' :
                                      asset.includes('rampage_start_viewport') ? 'Viewport // Start Layout' :
                                      asset.includes('rampage_start') ? 'Render // Start Scene' :
                                      asset.includes('rampage_end_plus') ? 'Render // Final Cut +' :

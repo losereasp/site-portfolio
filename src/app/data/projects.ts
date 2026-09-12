@@ -16,7 +16,12 @@ export const PROJECTS_DATA = {
     showcaseVideo: "/last_mechanic_showcase.mp4",
     beforeImage: "/last_mechanic_before.webp",
     afterImage: "/last_mechanic_after.webp",
-    assets: []
+    assets: [
+      "/last_mechanic_cascadeur.mp4",
+      "/last_mechanic_blender.mp4",
+      "/last_mechanic_painter.mp4",
+      "/last_mechanic_ue5.mp4"
+    ]
   },
   "frost-core": {
     title: "FROST CORE",

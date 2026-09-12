@@ -574,10 +574,25 @@ export default function ProjectOverlay({
               <div className="flex-1 h-[2px] bg-black/10" />
             </div>
           </div>
-          <div className="bg-black max-w-[1800px] mx-auto">
+          <div className="bg-black max-w-[1800px] mx-auto py-6 md:py-12 flex justify-center">
             <BeforeAfterSlider
               beforeImage={project.beforeImage}
               afterImage={project.afterImage}
+              aspectClass={
+                (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
+                  ? "aspect-[9/16] h-[75vh] md:h-[85vh] max-w-full rounded-sm shadow-2xl"
+                  : "aspect-video md:aspect-[21/9] w-full"
+              }
+              beforeLabel={
+                (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
+                  ? "DRESSED"
+                  : "UNLIT RENDER"
+              }
+              afterLabel={
+                (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
+                  ? "FINAL"
+                  : "LIT RENDER"
+              }
             />
           </div>
         </section>
@@ -649,8 +664,9 @@ export default function ProjectOverlay({
       )}
 
       {/* 4. ASSETS BLOCK (Bento) */}
-      <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
-        <div className="flex flex-col gap-12">
+      {((project.assets && project.assets.length > 0) || project.modelPath) && (
+        <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
+          <div className="flex flex-col gap-12">
           <div className="flex items-center gap-6">
             <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{t.overlay.breakdown}</h2>
             <div className="flex-1 h-[2px] bg-black/10" />
@@ -832,6 +848,7 @@ export default function ProjectOverlay({
           </div>
         </div>
       </section>
+      )}
     </div>
 
     {/* Lightbox Fullscreen Modal */}

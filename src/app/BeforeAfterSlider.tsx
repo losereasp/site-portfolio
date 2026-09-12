@@ -6,9 +6,18 @@ import Image from 'next/image';
 interface BeforeAfterSliderProps {
   beforeImage: string;
   afterImage: string;
+  aspectClass?: string;
+  beforeLabel?: string;
+  afterLabel?: string;
 }
 
-export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({ 
+  beforeImage, 
+  afterImage, 
+  aspectClass = "aspect-video md:aspect-[21/9] w-full",
+  beforeLabel = "UNLIT RENDER",
+  afterLabel = "LIT RENDER"
+}: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,7 +51,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
   return (
     <div 
       ref={containerRef}
-      className="relative w-full aspect-video md:aspect-[21/9] overflow-hidden cursor-ew-resize select-none bg-black/10"
+      className={`relative overflow-hidden cursor-ew-resize select-none bg-black/10 ${aspectClass}`}
       onMouseDown={() => setIsDragging(true)}
       onTouchStart={() => setIsDragging(true)}
       onMouseMove={onMouseMove}
@@ -53,7 +62,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
         src={afterImage} 
         alt="After" 
         fill
-        sizes="100vw"
+        sizes="(max-width: 768px) 100vw, 1200px"
         priority
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
@@ -67,13 +76,13 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
           src={beforeImage} 
           alt="Before" 
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 1200px"
           priority
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Before Label */}
         <div className="absolute top-6 left-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest">
-          UNLIT RENDER
+          {beforeLabel}
         </div>
       </div>
 
@@ -97,7 +106,7 @@ export default function BeforeAfterSlider({ beforeImage, afterImage }: BeforeAft
         style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
       >
         <div className="absolute top-6 right-6 font-mono text-[10px] uppercase bg-black/50 text-white px-2 py-1 tracking-widest">
-          LIT RENDER
+          {afterLabel}
         </div>
       </div>
     </div>

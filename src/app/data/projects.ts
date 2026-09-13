@@ -14,6 +14,7 @@ export const PROJECTS_DATA = {
     heroImage: "/last_mechanic_hero.webp",
     hoverVideo: "/last_mechanic_hover.mp4",
     showcaseVideo: "/last_mechanic_showcase.mp4",
+    breakdownVideo: "/last_mechanic_breakdown.mp4",
     beforeImage: "/last_mechanic_before.webp",
     afterImage: "/last_mechanic_after.webp",
     assets: [

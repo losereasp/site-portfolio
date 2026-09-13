@@ -668,7 +668,7 @@ export default function ProjectOverlay({
         <section className="w-full bg-[#F0F0EE] pt-24 md:pt-40 pb-16 md:pb-24 px-6 md:px-12">
           <div className="flex flex-col gap-12">
           <div className="flex items-center gap-6">
-            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{t.overlay.breakdown}</h2>
+            <h2 className="font-mono text-xl md:text-3xl uppercase font-black tracking-tight">{project.breakdownVideo || project.youtubeId ? t.overlay.processGrid : t.overlay.breakdown}</h2>
             <div className="flex-1 h-[2px] bg-black/10" />
           </div>
 

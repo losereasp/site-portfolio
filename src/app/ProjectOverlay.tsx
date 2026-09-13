@@ -798,7 +798,11 @@ export default function ProjectOverlay({
                           <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest transition-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
                             isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                           }`}>
-                            {asset.includes('rampage_start_viewport_animation_car') ? 'Start Scene — Car Animation Viewport' :
+                            {asset.includes('last_mechanic_cascadeur') ? (lang === 'ru' ? 'Cascadeur — Анимация персонажа' : 'Cascadeur — Character Animation') :
+                             asset.includes('last_mechanic_blender') ? (lang === 'ru' ? 'Blender — Моделирование фартука' : 'Blender — Apron 3D Modeling') :
+                             asset.includes('last_mechanic_painter') ? (lang === 'ru' ? 'Substance Painter — Текстурирование фартука' : 'Substance Painter — Apron Texturing') :
+                             asset.includes('last_mechanic_ue5') ? (lang === 'ru' ? 'Unreal Engine 5 — Сборка сцены и камера' : 'Unreal Engine 5 — Scene Staging & Camera') :
+                             asset.includes('rampage_start_viewport_animation_car') ? 'Start Scene — Car Animation Viewport' :
                              asset.includes('rampage_start_viewport') ? 'Start Scene — Viewport Blocking' :
                              asset.includes('rampage_start') ? 'Start Scene — Final Lighting Render' :
                              asset.includes('rampage_end_plus') ? 'End Scene — Final Lighting Render' :

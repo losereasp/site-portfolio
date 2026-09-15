@@ -84,7 +84,7 @@ export default function ToolsPage() {
               {/* Top Calibration Bar */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-[#344553] bg-[#182129] font-mono text-[11px] text-[#7fb7c9] tracking-[0.16em] uppercase">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#f0a85a] font-bold">AB</span>
+                  <span className="text-[#f0a85a] font-bold">MS</span>
                   <span className="text-[#344553]">|</span>
                   <span>SHELL_CALIBRATION</span>
                 </div>
@@ -108,14 +108,22 @@ export default function ToolsPage() {
                     <span>{t.tools.desktopReady}</span>
                   </div>
 
-                  <div className="pt-4 border-t border-[#344553]/60 grid grid-cols-2 gap-4 font-mono text-[10px] md:text-xs text-[#9dabb2] uppercase tracking-wider">
+                  <div className="pt-4 border-t border-[#344553]/60 grid grid-cols-1 sm:grid-cols-2 gap-3.5 font-mono text-[10px] md:text-xs text-[#9dabb2] uppercase tracking-wider">
                     <div>
                       <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.catalogEngine}</span>
-                      <span className="text-[#e8eef1]">{t.tools.standby}</span>
+                      <span className="text-[#e8eef1] font-bold">{t.tools.catalogEngineValue}</span>
+                    </div>
+                    <div>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.previewEngine}</span>
+                      <span className="text-[#e8eef1] font-bold">{t.tools.previewEngineValue}</span>
+                    </div>
+                    <div>
+                      <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.formatCoverage}</span>
+                      <span className="text-[#e8eef1] font-bold">{t.tools.formatCoverageValue}</span>
                     </div>
                     <div>
                       <span className="text-[#7fb7c9]/60 block mb-0.5">{t.tools.dccBridge}</span>
-                      <span className="text-[#e8eef1]">{t.tools.standby}</span>
+                      <span className="text-[#e8eef1] font-bold">{t.tools.dccBridgeValue}</span>
                     </div>
                   </div>
                 </div>
@@ -437,7 +445,7 @@ export default function ToolsPage() {
             {/* Horizontal Connecting Line (Desktop) */}
             <div className="hidden lg:block absolute top-[36px] left-0 right-0 h-[2px] bg-black/15 z-0" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 lg:gap-6 relative z-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative z-10">
               {t.tools.stages.map((stage, idx) => (
                 <div key={idx} className="flex flex-col">
                   <div className="flex items-center gap-3 mb-6 bg-white pr-4 self-start z-10">

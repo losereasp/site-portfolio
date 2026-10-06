@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Magnetic from "./Magnetic";
 import { useLanguage } from "./context/LanguageContext";
@@ -10,8 +11,12 @@ interface MainNavbarProps {
 }
 
 export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const { lang, toggleLang, t } = useLanguage();
+
+  const isHome = pathname === "/";
+  const showReel = !isHome || scrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +60,7 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
             target="_blank"
             rel="noopener noreferrer"
             className={`${linkBase} ${
-              scrolled
+              showReel
                 ? "opacity-100 translate-y-0 pointer-events-auto"
                 : "opacity-0 translate-y-4 pointer-events-none"
             }`}

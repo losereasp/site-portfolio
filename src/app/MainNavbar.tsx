@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Magnetic from "./Magnetic";
 import { useLanguage } from "./context/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 
 interface MainNavbarProps {
   lightMode?: boolean;
@@ -13,7 +14,7 @@ interface MainNavbarProps {
 export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const { lang, toggleLang, t } = useLanguage();
+  const { t } = useLanguage();
 
   const isHome = pathname === "/";
   const showReel = !isHome || scrolled;
@@ -78,24 +79,9 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           <Link href="/about" className={linkBase}>{t.nav.about}</Link>
         </Magnetic>
 
-        {/* Subtle Language Toggle Button */}
+        {/* Tactile Pill Language Toggle */}
         <Magnetic>
-          <button
-            onClick={toggleLang}
-            type="button"
-            aria-label={lang === "en" ? "Переключить сайт на русский" : "Switch site language to English"}
-            className="font-mono text-xs md:text-sm tracking-widest uppercase cursor-pointer select-none transition-all duration-300 opacity-50 hover:opacity-100 flex items-center gap-0.5"
-          >
-            <span className={isLight ? "text-black/40" : "text-white/40"}>[</span>
-            <span className={lang === "en" ? (isLight ? "text-black font-bold" : "text-white font-bold") : (isLight ? "text-black/40" : "text-white/40")}>
-              EN
-            </span>
-            <span className={isLight ? "text-black/25" : "text-white/25"}>|</span>
-            <span className={lang === "ru" ? (isLight ? "text-black font-bold" : "text-white font-bold") : (isLight ? "text-black/40" : "text-white/40")}>
-              RU
-            </span>
-            <span className={isLight ? "text-black/40" : "text-white/40"}>]</span>
-          </button>
+          <LanguageToggle isLight={isLight} />
         </Magnetic>
       </div>
     </nav>

@@ -93,6 +93,7 @@ function SketchLightbox({ sketch, onClose }: { sketch: SketchItem | null; onClos
 
 
 const SKETCHES = [
+  { id: "spiderman",    video: "/sketches_spiderman.mp4",   label: "BLENDER // WEB OF SPIDER-MAN #1", aspect: 9 / 16, poster: "/sketches_spiderman_poster.webp" },
   { id: "apollo",       video: "/sketches_01.mp4",          label: "Houdini // APOLLO",              aspect: 16 / 9, posterTime: 1.5 },
   { id: "brainpop",     video: "/sketches_brainpop.mp4",    label: "Houdini // BRAINPOP",            aspect: 9 / 16 },
   { id: "pingpong",     video: "/sketches_03.mp4",          label: "Houdini // PING-PONG",           aspect: 16 / 9 },

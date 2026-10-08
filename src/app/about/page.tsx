@@ -126,7 +126,7 @@ export default function AboutPage() {
 
             <Magnetic>
               <a 
-                href={lang === 'ru' ? '/Iaroslav-Marchenkov-CV-RU.pdf' : '/Iaroslav-Marchenkov-CV-EN.pdf'}
+                href={lang === 'ru' ? '/Iaroslav-Marchenkov-CV-RU.pdf?v=20261008' : '/Iaroslav-Marchenkov-CV-EN.pdf?v=20261008'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/20 text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:border-[#FF5F1F] hover:text-[#FF5F1F] hover:bg-[#FF5F1F]/5 rounded-[3px] w-full sm:w-auto whitespace-nowrap"

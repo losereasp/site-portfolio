@@ -1,15 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!$";
 const TARGET = "LSRSP";
-const REVEAL_START = 480;
+const REVEAL_START = 350;
 const STAGGER = 190;
 const BRACKET_SPLIT_DURATION = 650;
-const MARK_TRANSITION_DURATION = 700;
-const BRACKET_OFFSET = 0.14;
 const EXIT_SETTLE = 480;
 const PANEL_EXIT_DURATION = 700;
 
@@ -27,19 +24,9 @@ export default function LoadingScreen() {
   const [revealStarted, setRevealStarted] = useState(false);
   const lockedCountRef = useRef(0);
   const revealStartedRef = useRef(false);
-  const markRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const introFrame = requestAnimationFrame(() => {
-      markRef.current?.animate(
-        [
-          { opacity: 0, transform: "scale(0.94)" },
-          { opacity: 1, transform: "scale(1)" },
-        ],
-        { duration: MARK_TRANSITION_DURATION, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" }
-      );
-    });
 
     // Scramble unlocked letters every 60ms after the initial [l] hold
     const scramble = setInterval(() => {
@@ -83,7 +70,6 @@ export default function LoadingScreen() {
     }, hideAt);
 
     return () => {
-      cancelAnimationFrame(introFrame);
       clearInterval(scramble);
       locks.forEach(clearTimeout);
       clearTimeout(bracketTimer);
@@ -104,74 +90,46 @@ export default function LoadingScreen() {
       }}
     >
       <div
-        className="relative flex items-center justify-center"
+        className="font-primary uppercase leading-none tracking-tight flex items-center whitespace-nowrap"
         aria-label="LSRSP loading"
-        style={{
-          width: "clamp(300px, 58vw, 860px)",
-          height: "clamp(120px, 20vw, 260px)",
-        }}
+        style={{ fontSize: "clamp(64px, 12vw, 180px)" }}
       >
-        <Image
-          src="/icon.png"
-          alt="LSRSP logo"
-          width={512}
-          height={512}
-          ref={markRef}
-          className="absolute object-contain pointer-events-none"
+        <span
+          aria-hidden="true"
           style={{
-            width: "clamp(88px, 16vw, 220px)",
-            height: "clamp(88px, 16vw, 220px)",
-            opacity: revealStarted ? 0 : 1,
-            transform: revealStarted ? "scale(0.94)" : "scale(1)",
-            transition: `opacity ${MARK_TRANSITION_DURATION}ms ease, transform ${MARK_TRANSITION_DURATION}ms cubic-bezier(0.22, 1, 0.36, 1)`,
-          }}
-        />
-        <div
-          className="font-primary uppercase leading-none tracking-tight flex items-center whitespace-nowrap"
-          style={{
-            fontSize: "clamp(64px, 12vw, 180px)",
-            opacity: revealStarted ? 1 : 0,
-            transform: revealStarted ? "scale(1)" : "scale(0.94)",
-            transition: `opacity ${MARK_TRANSITION_DURATION}ms ease, transform ${MARK_TRANSITION_DURATION}ms cubic-bezier(0.22, 1, 0.36, 1)`,
+            color: "#FF5F1F",
+            display: "inline-block",
+            transform: bracketsOpen ? "translateX(-0.32em)" : "translateX(0)",
+            transition: `transform ${BRACKET_SPLIT_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)`,
           }}
         >
+          [
+        </span>
+        {letters.map((l, i) => (
           <span
-            aria-hidden="true"
+            key={i}
             style={{
-              color: "#FF5F1F",
-              display: "inline-block",
-              transform: bracketsOpen ? `translateX(-${BRACKET_OFFSET}em)` : "translateX(0)",
-              transition: `transform ${BRACKET_SPLIT_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)`,
+              color: l.locked ? "#ffffff" : "#FF5F1F",
+              transition: l.locked ? "color 0.08s ease-out" : "none",
+              display: i === 0 || revealStarted ? "inline-block" : "none",
+              minWidth: "0.6em",
+              textAlign: "center",
             }}
           >
-            [
+            {l.char}
           </span>
-          {letters.map((l, i) => (
-            <span
-              key={i}
-              style={{
-                color: l.locked ? "#ffffff" : "#FF5F1F",
-                transition: l.locked ? "color 0.08s ease-out" : "none",
-                display: i === 0 || revealStarted ? "inline-block" : "none",
-                minWidth: "0.6em",
-                textAlign: "center",
-              }}
-            >
-              {l.char}
-            </span>
-          ))}
-          <span
-            aria-hidden="true"
-            style={{
-              color: "#FF5F1F",
-              display: "inline-block",
-              transform: bracketsOpen ? `translateX(${BRACKET_OFFSET}em)` : "translateX(0)",
-              transition: `transform ${BRACKET_SPLIT_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)`,
-            }}
-          >
-            ]
-          </span>
-        </div>
+        ))}
+        <span
+          aria-hidden="true"
+          style={{
+            color: "#FF5F1F",
+            display: "inline-block",
+            transform: bracketsOpen ? "translateX(0.32em)" : "translateX(0)",
+            transition: `transform ${BRACKET_SPLIT_DURATION}ms cubic-bezier(0.76, 0, 0.24, 1)`,
+          }}
+        >
+          ]
+        </span>
       </div>
     </div>
   );

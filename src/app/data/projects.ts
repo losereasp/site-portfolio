@@ -1,4 +1,27 @@
 export const PROJECTS_DATA = {
+  "echoes-of-kalyazin": {
+    title: "ECHOES OF KALYAZIN",
+    category: "ENVIRONMENT ART & POST-APOCALYPSE",
+    categoryEn: "ENVIRONMENT ART & POST-APOCALYPSE",
+    categoryRu: "ENVIRONMENT ART И ПОСТАПОКАЛИПСИС",
+    thematicHeader: "Abandoned Horizon // Kalyazin",
+    thematicHeaderEn: "Abandoned Horizon // Kalyazin",
+    thematicHeaderRu: "Заброшенный горизонт // Калязин",
+    description: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Assembled and scattered in Houdini Solaris (USD / Karma), blocked in Blender, with final atmosphere and compositing in Nuke.",
+    descriptionEn: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Assembled and scattered in Houdini Solaris (USD / Karma), blocked in Blender, with final atmosphere and compositing in Nuke.",
+    descriptionRu: "Постапокалиптическая сцена в заброшенной деревне: одинокий путник на разбитой колее среди полуразрушенных изб и заросшей старинной колокольни. На горизонте возвышается колоссальная чаша радиотелескопа РТ-64, улавливающая сигналы мертвого эфира. Собрано и заскаттерено в Houdini Solaris (USD / Karma), блокинг и пропсы подготовлены в Blender, финальный композ и атмосфера собраны в Nuke.",
+    software: ["Houdini", "Solaris / Karma", "Blender", "Nuke"],
+    heroImage: "/kalyazin_hero.webp",
+    beforeImage: "/kalyazin_clay.webp",
+    afterImage: "/kalyazin_final.webp",
+    assets: [
+      "/kalyazin_beauty.webp",
+      "/kalyazin_blocking.webp",
+      "/kalyazin_houdini_graph.webp",
+      "/kalyazin_nuke_graph.webp",
+      "/kalyazin_reference.webp"
+    ]
+  },
   "last-mechanic": {
     title: "THE LAST MECHANIC",
     category: "CHALLENGE",

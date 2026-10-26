@@ -710,15 +710,22 @@ export default function ProjectOverlay({
                       const isExpanded = expandedIndex === globalIndex;
                       const isDisplaced = expandedIndex !== null && !isExpanded;
                       const isSolo = rowAssets.length === 1;
+                      const isGraph = asset.includes('graph');
                       
                       return (
                         <div 
                           key={globalIndex} 
                           ref={el => { assetRefs.current[globalIndex] = el; }}
-                          className={`relative group overflow-hidden bg-white aspect-video border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden ${
+                          className={`relative group overflow-hidden ${isGraph ? 'bg-[#18191c]' : 'bg-white'} aspect-video border-b border-black/10 last:border-b-0 cursor-pointer ${
                             isExpanded ? 'w-full z-20 order-[-1]' : isSolo ? 'w-full z-10 order-0' : 'w-full md:w-[calc(50%-0.5px)] z-10 order-0'
                           } ${isDisplaced ? 'opacity-40 grayscale-[0.5]' : 'opacity-100 grayscale-0'}`}
-                          onClick={() => handleAssetClick(globalIndex)}
+                          onClick={() => {
+                            if (isVideo) {
+                              handleAssetClick(globalIndex);
+                            } else {
+                              setActiveLightbox(asset);
+                            }
+                          }}
                           style={{ transformOrigin: "0 0" }}
                         >
                           {/* Scanner Effect (Video Only) */}
@@ -790,7 +797,7 @@ export default function ProjectOverlay({
                                 fill
                                 sizes="100vw"
                                 unoptimized
-                                className="object-cover transition-transform duration-1000 group-hover:scale-105" 
+                                className={`w-full h-full ${isGraph ? 'object-contain py-3' : 'object-cover transition-transform duration-1000 group-hover:scale-105'}`} 
                               />
                             </div>
                           )}

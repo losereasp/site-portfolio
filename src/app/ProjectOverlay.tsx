@@ -788,7 +788,8 @@ export default function ProjectOverlay({
                                 src={asset} 
                                 alt={`Asset ${globalIndex+2}`} 
                                 fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="100vw"
+                                unoptimized
                                 className="object-cover transition-transform duration-1000 group-hover:scale-105" 
                               />
                             </div>

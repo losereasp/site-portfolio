@@ -62,7 +62,8 @@ export default function BeforeAfterSlider({
         src={afterImage} 
         alt="After" 
         fill
-        sizes="(max-width: 768px) 100vw, 1200px"
+        sizes="100vw"
+        unoptimized
         priority
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
@@ -76,7 +77,8 @@ export default function BeforeAfterSlider({
           src={beforeImage} 
           alt="Before" 
           fill
-          sizes="(max-width: 768px) 100vw, 1200px"
+          sizes="100vw"
+        unoptimized
           priority
           className="absolute inset-0 w-full h-full object-cover"
         />

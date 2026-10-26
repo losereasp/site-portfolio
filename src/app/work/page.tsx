@@ -13,15 +13,16 @@ import { PROJECTS_DATA } from "../data/projects";
 import { useLanguage } from "../context/LanguageContext";
 
 // Full archive order
-const ALL_IDS = ["last-mechanic", "frost-core", "the-visit", "rampage-rally", "stanley-bottle"];
+const ALL_IDS = ["echoes-of-kalyazin", "last-mechanic", "frost-core", "the-visit", "rampage-rally", "stanley-bottle"];
 
 // Technical metadata for the archive view
 const PROJECT_METADATA: Record<string, { year: string; index: string }> = {
-  "last-mechanic": { index: "01", year: "2026" },
-  "frost-core": { index: "02", year: "2026" },
-  "the-visit": { index: "03", year: "2026" },
-  "rampage-rally": { index: "04", year: "2025" },
-  "stanley-bottle": { index: "05", year: "2024" },
+  "echoes-of-kalyazin": { index: "01", year: "2026" },
+  "last-mechanic": { index: "02", year: "2026" },
+  "frost-core": { index: "03", year: "2026" },
+  "the-visit": { index: "04", year: "2026" },
+  "rampage-rally": { index: "05", year: "2025" },
+  "stanley-bottle": { index: "06", year: "2024" },
 };
 
 export default function WorkPage() {

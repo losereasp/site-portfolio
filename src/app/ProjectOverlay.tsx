@@ -436,8 +436,8 @@ export default function ProjectOverlay({
         </section>
       )}
       
-      {/* 2.5 CINEMATIC SHOWCASE (UPDATED) */}
-      {(project.showcaseVideo || project.hoverVideo) && (
+      {/* 2.5 CINEMATIC SHOWCASE (Video if available, otherwise Master Still) */}
+      {(project.showcaseVideo || project.hoverVideo) ? (
         <section className="w-full bg-[#F0F0EE] px-6 md:px-12 py-12 md:py-20">
           <div 
             className="relative aspect-video max-h-[85vh] w-full max-w-[1700px] mx-auto overflow-hidden rounded-sm shadow-xl group bg-black flex items-center justify-center"
@@ -521,7 +521,45 @@ export default function ProjectOverlay({
             </div>
           </div>
         </section>
-      )}
+      ) : project.heroImage ? (
+        <section className="w-full bg-[#F0F0EE] px-6 md:px-12 py-12 md:py-20">
+          <div 
+            className="relative aspect-video max-h-[85vh] w-full max-w-[1700px] mx-auto overflow-hidden rounded-sm shadow-2xl group bg-black flex items-center justify-center cursor-zoom-in"
+            onClick={() => setActiveLightbox(project.heroImage)}
+          >
+            <Image 
+              src={project.heroImage}
+              alt={`${project.title} Final Still`}
+              fill
+              sizes="100vw"
+              unoptimized
+              priority
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            />
+            {/* Cinematic Still HUD elements */}
+            <div className="absolute top-6 right-6 md:top-10 md:right-10 flex items-center gap-3 bg-black/50 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10 z-20">
+              <div className="w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#FF5F1F] shadow-[0_0_8px_#FF5F1F]" />
+              <span className="font-mono text-[9px] md:text-[11px] text-white uppercase tracking-[0.25em]">Master Still // Final Keyframe</span>
+            </div>
+
+            {/* Click to expand hover affordance */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none z-20">
+              <div className="flex flex-col items-center gap-3 translate-y-3 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center backdrop-blur-md bg-white/10 text-white">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                </div>
+                <span className="font-mono text-[10px] text-white uppercase tracking-[0.35em] font-semibold drop-shadow">[ Click to Inspect Fullscreen ]</span>
+              </div>
+            </div>
+
+            {/* Bottom-left Info HUD */}
+            <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-col gap-1 pointer-events-none z-20">
+              <p className="font-mono text-[8px] md:text-[10px] text-white/50 uppercase tracking-widest italic">1920 × 1080 // Master Grade</p>
+              <p className="font-primary text-xl md:text-3xl text-white uppercase tracking-normal">{project.title} // Final Frame</p>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* 2.8. FULL BREAKDOWN VIDEO (YouTube embed or Local MP4) */}
       {(project.youtubeId || project.breakdownVideo) && (

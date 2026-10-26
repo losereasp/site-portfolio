@@ -55,8 +55,9 @@ interface ProjectOverlayProps {
   currentProjectId?: string;
 }
 
-const PROJECT_ORDER = ["last-mechanic", "frost-core", "rampage-rally", "the-visit", "stanley-bottle"];
+const PROJECT_ORDER = ["echoes-of-kalyazin", "last-mechanic", "frost-core", "rampage-rally", "the-visit", "stanley-bottle"];
 const PROJECT_TITLES: Record<string, string> = {
+  "echoes-of-kalyazin": "ECHOES OF KALYAZIN",
   "last-mechanic": "THE LAST MECHANIC",
   "frost-core": "FROST CORE",
   "rampage-rally": "RAMPAGE RALLY",
@@ -91,6 +92,7 @@ export default function ProjectOverlay({
       if (idx !== -1) return idx;
     }
     const titleLower = project.title.toLowerCase();
+    if (titleLower.includes("kalyazin")) return PROJECT_ORDER.indexOf("echoes-of-kalyazin");
     if (titleLower.includes("mechanic")) return PROJECT_ORDER.indexOf("last-mechanic");
     if (titleLower.includes("frost")) return PROJECT_ORDER.indexOf("frost-core");
     if (titleLower.includes("rampage")) return PROJECT_ORDER.indexOf("rampage-rally");
@@ -581,16 +583,22 @@ export default function ProjectOverlay({
               aspectClass={
                 (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
                   ? "aspect-[9/16] h-[75vh] md:h-[85vh] max-w-full rounded-sm shadow-2xl"
+                  : (currentProjectId === "echoes-of-kalyazin" || project.title.toLowerCase().includes("kalyazin"))
+                  ? "aspect-video w-full max-w-[1600px] rounded-sm shadow-2xl"
                   : "aspect-video md:aspect-[21/9] w-full"
               }
               beforeLabel={
                 (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
                   ? "DRESSED"
+                  : (currentProjectId === "echoes-of-kalyazin" || project.title.toLowerCase().includes("kalyazin"))
+                  ? "CLAY VIEWPORT"
                   : "UNLIT RENDER"
               }
               afterLabel={
                 (currentProjectId === "last-mechanic" || project.title.toLowerCase().includes("mechanic"))
                   ? "FINAL"
+                  : (currentProjectId === "echoes-of-kalyazin" || project.title.toLowerCase().includes("kalyazin"))
+                  ? "FINAL COMP"
                   : "LIT RENDER"
               }
             />
@@ -739,7 +747,12 @@ export default function ProjectOverlay({
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
-                                    {asset.includes('last_mechanic_cascadeur') ? 'Animation // Cascadeur Rig' :
+                                    {asset.includes('kalyazin_beauty') ? 'Solaris & Karma // Raw Beauty Pass' :
+                                     asset.includes('kalyazin_blocking') ? 'Blender // 3D Blocking & Scale' :
+                                     asset.includes('kalyazin_houdini_graph') ? 'Houdini // USD Solaris Graph' :
+                                     asset.includes('kalyazin_nuke_graph') ? 'Nuke // Compositing Tree' :
+                                     asset.includes('kalyazin_reference') ? 'Reference // Kalyazin Tower & RT-64' :
+                                     asset.includes('last_mechanic_cascadeur') ? 'Animation // Cascadeur Rig' :
                                      asset.includes('last_mechanic_blender') ? '3D Modeling // Blender' :
                                      asset.includes('last_mechanic_painter') ? 'Texturing // Substance 3D Painter' :
                                      asset.includes('last_mechanic_ue5') ? 'Staging & Camera // Unreal Engine 5' :
@@ -798,7 +811,12 @@ export default function ProjectOverlay({
                           <div className={`absolute bottom-6 left-6 font-mono text-[8px] md:text-[10px] uppercase tracking-widest transition-all duration-500 ease-in-out text-black bg-white px-3 py-1 z-10 shadow-lg ${
                             isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                           }`}>
-                            {asset.includes('last_mechanic_cascadeur') ? (lang === 'ru' ? 'Cascadeur — Анимация персонажа' : 'Cascadeur — Character Animation') :
+                            {asset.includes('kalyazin_beauty') ? (lang === 'ru' ? 'Solaris & Karma — Raw Beauty Pass (USD Render)' : 'Solaris & Karma — Raw Beauty Pass (USD Render)') :
+                             asset.includes('kalyazin_blocking') ? (lang === 'ru' ? 'Blender — 3D блокинг, композиция и масштаб' : 'Blender — 3D Blocking & Scale Composition') :
+                             asset.includes('kalyazin_houdini_graph') ? (lang === 'ru' ? 'Houdini Solaris — USD Scene Graph & Scatter LOPs' : 'Houdini Solaris — USD Scene Graph & Scatter LOPs') :
+                             asset.includes('kalyazin_nuke_graph') ? (lang === 'ru' ? 'Nuke — Нодовый граф композа и цветокоррекция' : 'Nuke — Node-based Compositing Tree & Color Grade') :
+                             asset.includes('kalyazin_reference') ? (lang === 'ru' ? 'Реальный референс — Калязинская колокольня и радиотелескоп РТ-64' : 'Real Reference — Kalyazin Bell Tower & RT-64 Radio Telescope') :
+                             asset.includes('last_mechanic_cascadeur') ? (lang === 'ru' ? 'Cascadeur — Анимация персонажа' : 'Cascadeur — Character Animation') :
                              asset.includes('last_mechanic_blender') ? (lang === 'ru' ? 'Blender — Моделирование фартука' : 'Blender — Apron 3D Modeling') :
                              asset.includes('last_mechanic_painter') ? (lang === 'ru' ? 'Substance Painter — Текстурирование фартука' : 'Substance Painter — Apron Texturing') :
                              asset.includes('last_mechanic_ue5') ? (lang === 'ru' ? 'Unreal Engine 5 — Сборка сцены и камера' : 'Unreal Engine 5 — Scene Staging & Camera') :

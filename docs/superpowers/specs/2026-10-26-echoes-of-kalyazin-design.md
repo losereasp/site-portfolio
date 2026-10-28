@@ -25,10 +25,8 @@ The integration covers:
 ### 2.1 Technical Specs
 - **ID:** `echoes-of-kalyazin`
 - **Title:** `ECHOES OF KALYAZIN`
-- **Category (EN):** `ENVIRONMENT ART & POST-APOCALYPSE`
-- **Category (RU):** `ENVIRONMENT ART И ПОСТАПОКАЛИПСИС`
-- **Thematic Header (EN):** `Abandoned Horizon // Kalyazin`
-- **Thematic Header (RU):** `Заброшенный горизонт // Калязин`
+- **Category (EN):** `ENVIRONMENT ART`
+- **Category (RU):** `3D ОКРУЖЕНИЕ`
 - **Software Stack:**
   - `Houdini`
   - `Solaris / Karma`
@@ -37,10 +35,10 @@ The integration covers:
 
 ### 2.2 Descriptions
 - **Russian (`descriptionRu`):**
-  «Постапокалиптическая сцена в заброшенной деревне: одинокий путник на разбитой колее среди полуразрушенных изб и заросшей старинной колокольни. На горизонте возвышается колоссальная чаша радиотелескопа РТ-64, улавливающая сигналы мертвого эфира. Собрано и заскаттерено в Houdini Solaris (USD / Karma), блокинг и пропсы подготовлены в Blender, финальный композ и атмосфера собраны в Nuke.»
+  «Постапокалиптическая сцена в заброшенной деревне: одинокий путник на разбитой колее среди полуразрушенных изб и заросшей старинной колокольни. На горизонте возвышается колоссальная чаша радиотелескопа РТ-64, улавливающая сигналы мертвого эфира. Блокинг, сборка сцены и скаттеринг выполнены в Houdini Solaris (USD / Karma), Blender использовался как вспомогательный софт, финальный композ и атмосфера собраны в Nuke.»
 
 - **English (`descriptionEn`):**
-  «A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Assembled and scattered in Houdini Solaris (USD / Karma), blocked in Blender, with final atmosphere and compositing in Nuke.»
+  «A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Blocked, assembled, and scattered in Houdini Solaris (USD / Karma), with Blender used as auxiliary software, and final atmosphere and compositing in Nuke.»
 
 ---
 
@@ -129,8 +127,8 @@ Add key `"echoes-of-kalyazin"` containing:
      - RU: `Solaris & Karma — Raw Beauty Pass (USD Render)`
      - EN: `Solaris & Karma — Raw Beauty Pass (USD Render)`
    - `kalyazin_blocking`:
-     - RU: `Blender — 3D блокинг, композиция и масштаб`
-     - EN: `Blender — 3D Blocking & Scale Composition`
+     - RU: `Houdini — 3D блокинг, композиция и масштаб`
+     - EN: `Houdini — 3D Blocking & Scale Composition`
    - `kalyazin_houdini_graph`:
      - RU: `Houdini Solaris — USD Scene Graph & Scatter LOPs`
      - EN: `Houdini Solaris — USD Scene Graph & Scatter LOPs`

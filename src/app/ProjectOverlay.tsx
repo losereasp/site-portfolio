@@ -772,7 +772,7 @@ export default function ProjectOverlay({
                                   <div className="w-1.5 h-1.5 bg-[#FF5F1F] rounded-full animate-pulse shadow-[0_0_8px_#FF5F1F] shrink-0 translate-y-[-1.5px]" />
                                   <span className="font-mono text-[9px] text-white/90 uppercase tracking-[0.2em] drop-shadow-md">
                                     {asset.includes('kalyazin_beauty') ? 'Solaris & Karma // Raw Beauty Pass' :
-                                     asset.includes('kalyazin_blocking') ? 'Blender // 3D Blocking & Scale' :
+                                     asset.includes('kalyazin_blocking') ? 'Houdini // 3D Blocking & Scale' :
                                      asset.includes('kalyazin_houdini_graph') ? 'Houdini // USD Solaris Graph' :
                                      asset.includes('kalyazin_nuke_graph') ? 'Nuke // Compositing Tree' :
                                      asset.includes('kalyazin_reference') ? 'Reference // Kalyazin Tower & RT-64' :
@@ -837,7 +837,7 @@ export default function ProjectOverlay({
                             isExpanded ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0'
                           }`}>
                             {asset.includes('kalyazin_beauty') ? (lang === 'ru' ? 'Solaris & Karma — Raw Beauty Pass (USD Render)' : 'Solaris & Karma — Raw Beauty Pass (USD Render)') :
-                             asset.includes('kalyazin_blocking') ? (lang === 'ru' ? 'Blender — 3D блокинг, композиция и масштаб' : 'Blender — 3D Blocking & Scale Composition') :
+                             asset.includes('kalyazin_blocking') ? (lang === 'ru' ? 'Houdini — 3D блокинг, композиция и масштаб' : 'Houdini — 3D Blocking & Scale Composition') :
                              asset.includes('kalyazin_houdini_graph') ? (lang === 'ru' ? 'Houdini Solaris — USD Scene Graph & Scatter LOPs' : 'Houdini Solaris — USD Scene Graph & Scatter LOPs') :
                              asset.includes('kalyazin_nuke_graph') ? (lang === 'ru' ? 'Nuke — Нодовый граф композа и цветокоррекция' : 'Nuke — Node-based Compositing Tree & Color Grade') :
                              asset.includes('kalyazin_reference') ? (lang === 'ru' ? 'Реальный референс — Калязинская колокольня и радиотелескоп РТ-64' : 'Real Reference — Kalyazin Bell Tower & RT-64 Radio Telescope') :

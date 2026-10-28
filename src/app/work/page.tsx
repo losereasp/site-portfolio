@@ -26,7 +26,7 @@ const PROJECT_METADATA: Record<string, { year: string; index: string }> = {
 };
 
 export default function WorkPage() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [hoveredId, setHoveredId] = useState<string | null>(null);
@@ -207,7 +207,7 @@ export default function WorkPage() {
 
                   {/* Category */}
                   <div className="w-[25%] font-mono text-xs uppercase tracking-[0.15em] text-black/50 group-hover:text-black/80 transition-colors">
-                    {project.category}
+                    {lang === 'ru' ? (project.categoryRu || project.category) : (project.categoryEn || project.category)}
                   </div>
 
                   {/* Stack */}
@@ -256,7 +256,7 @@ export default function WorkPage() {
                   <span className="font-mono text-xs text-black/50">{meta.year}</span>
                 </div>
                 <p className="font-mono text-[10px] tracking-[0.1em] uppercase text-black/40">
-                  {project.category}
+                  {lang === 'ru' ? (project.categoryRu || project.category) : (project.categoryEn || project.category)}
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-1">
                   {project.software.map((tool) => (

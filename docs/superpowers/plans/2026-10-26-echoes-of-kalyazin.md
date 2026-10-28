@@ -12,10 +12,8 @@
 
 - **Project ID:** `echoes-of-kalyazin`
 - **Title:** `ECHOES OF KALYAZIN`
-- **Category (EN):** `ENVIRONMENT ART & POST-APOCALYPSE`
-- **Category (RU):** `ENVIRONMENT ART И ПОСТАПОКАЛИПСИС`
-- **Thematic Header (EN):** `Abandoned Horizon // Kalyazin`
-- **Thematic Header (RU):** `Заброшенный горизонт // Калязин`
+- **Category (EN):** `ENVIRONMENT ART`
+- **Category (RU):** `3D ОКРУЖЕНИЕ`
 - **Software Stack:** `["Houdini", "Solaris / Karma", "Blender", "Nuke"]`
 - No placeholder strings ("TBD", "TODO"). All code must be complete and exact.
 
@@ -92,15 +90,12 @@ In `src/app/data/projects.ts`, insert as the first entry:
 ```typescript
   "echoes-of-kalyazin": {
     title: "ECHOES OF KALYAZIN",
-    category: "ENVIRONMENT ART & POST-APOCALYPSE",
-    categoryEn: "ENVIRONMENT ART & POST-APOCALYPSE",
-    categoryRu: "ENVIRONMENT ART И ПОСТАПОКАЛИПСИС",
-    thematicHeader: "Abandoned Horizon // Kalyazin",
-    thematicHeaderEn: "Abandoned Horizon // Kalyazin",
-    thematicHeaderRu: "Заброшенный горизонт // Калязин",
-    description: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Assembled and scattered in Houdini Solaris (USD / Karma), blocked in Blender, with final atmosphere and compositing in Nuke.",
-    descriptionEn: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Assembled and scattered in Houdini Solaris (USD / Karma), blocked in Blender, with final atmosphere and compositing in Nuke.",
-    descriptionRu: "Постапокалиптическая сцена в заброшенной деревне: одинокий путник на разбитой колее среди полуразрушенных изб и заросшей старинной колокольни. На горизонте возвышается колоссальная чаша радиотелескопа РТ-64, улавливающая сигналы мертвого эфира. Собрано и заскаттерено в Houdini Solaris (USD / Karma), блокинг и пропсы подготовлены в Blender, финальный композ и атмосфера собраны в Nuke.",
+    category: "ENVIRONMENT ART",
+    categoryEn: "ENVIRONMENT ART",
+    categoryRu: "3D ОКРУЖЕНИЕ",
+    description: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Blocked, assembled, and scattered in Houdini Solaris (USD / Karma), with Blender used as auxiliary software, and final atmosphere and compositing in Nuke.",
+    descriptionEn: "A post-apocalyptic scene set in an abandoned village: a lone wanderer walking down a muddy road between decaying izbas and an overgrown stone bell tower. On the horizon looms the colossal dish of the RT-64 radio telescope, listening to dead frequencies. Blocked, assembled, and scattered in Houdini Solaris (USD / Karma), with Blender used as auxiliary software, and final atmosphere and compositing in Nuke.",
+    descriptionRu: "Постапокалиптическая сцена в заброшенной деревне: одинокий путник на разбитой колее среди полуразрушенных изб и заросшей старинной колокольни. На горизонте возвышается колоссальная чаша радиотелескопа РТ-64, улавливающая сигналы мертвого эфира. Блокинг, сборка сцены и скаттеринг выполнены в Houdini Solaris (USD / Karma), Blender использовался как вспомогательный софт, финальный композ и атмосфера собраны в Nuke.",
     software: ["Houdini", "Solaris / Karma", "Blender", "Nuke"],
     heroImage: "/kalyazin_hero.webp",
     beforeImage: "/kalyazin_clay.webp",
@@ -300,7 +295,7 @@ asset.includes('kalyazin_reference') ? 'Reference // Kalyazin Tower & RT-64' :
 In expanded card titles (lines ~830):
 ```typescript
 asset.includes('kalyazin_beauty') ? (lang === 'ru' ? 'Solaris & Karma — Raw Beauty Pass (USD Render)' : 'Solaris & Karma — Raw Beauty Pass (USD Render)') :
-asset.includes('kalyazin_blocking') ? (lang === 'ru' ? 'Blender — 3D блокинг, композиция и масштаб' : 'Blender — 3D Blocking & Scale Composition') :
+asset.includes('kalyazin_blocking') ? (lang === 'ru' ? 'Houdini — 3D блокинг, композиция и масштаб' : 'Houdini — 3D Blocking & Scale Composition') :
 asset.includes('kalyazin_houdini_graph') ? (lang === 'ru' ? 'Houdini Solaris — USD Scene Graph & Scatter LOPs' : 'Houdini Solaris — USD Scene Graph & Scatter LOPs') :
 asset.includes('kalyazin_nuke_graph') ? (lang === 'ru' ? 'Nuke — Нодовый граф композа и цветокоррекция' : 'Nuke — Node-based Compositing Tree & Color Grade') :
 asset.includes('kalyazin_reference') ? (lang === 'ru' ? 'Реальный референс — Калязинская колокольня и радиотелескоп РТ-64' : 'Real Reference — Kalyazin Bell Tower & RT-64 Radio Telescope') :

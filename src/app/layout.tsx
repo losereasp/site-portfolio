@@ -16,8 +16,12 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://losereasp.com"),
   title: "LSRSP | CG Artist & 3D Motion Designer",
   description: "Trying to procrastinate less and do more 3d. Honestly, it's not going great, but i'm trying.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -35,4 +39,3 @@ export default function RootLayout({
     </html>
   );
 }
-

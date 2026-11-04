@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/tools",
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function ToolsLayout({

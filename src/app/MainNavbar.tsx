@@ -70,9 +70,6 @@ export default function MainNavbar({ lightMode = false }: MainNavbarProps) {
           </a>
         </Magnetic>
         <Magnetic>
-          <Link href="/tools" className={linkBase}>{t.nav.tools}</Link>
-        </Magnetic>
-        <Magnetic>
           <Link href="/work" className={linkBase}>{t.nav.work}</Link>
         </Magnetic>
         <Magnetic>

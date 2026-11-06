@@ -45,7 +45,7 @@ export default function HeroSection() {
                   onClick={e => e.stopPropagation()}
                   className="hover:text-[#FF5F1F] transition-colors flex items-center gap-2 whitespace-nowrap"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 md:w-4 md:h-4 shrink-0"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.334h13.457l-2.79-4.839H0zm24 .023c0-.304-.08-.588-.221-.832l-8.892-15.4a2.422 2.422 0 0 0-2.099-1.214H7.865l13.064 22.628c1.875-.41 3.07-1.896 3.071-3.682v-1.5zM11.666 5.892L5.437 16.68h12.458l-6.229-10.788z"/></svg>
+                  <svg viewBox="0 0 512 512" fill="none" stroke="currentColor" strokeWidth="42" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 md:w-4 md:h-4 shrink-0"><path d="M2 377.4l43 74.3A51.35 51.35 0 0 0 90.9 480h285.4l-59.2-102.6z"/><path d="M501.8 350L335.6 59.3A51.38 51.38 0 0 0 290.2 32h-88.4l257.3 447.6 40.7-70.5c1.9-3.2 21-29.7 2-59.1z"/><path d="M275 304.5l-115.5-200L44 304.5z"/></svg>
                   <span>ArtStation</span>
                 </a>
                 <a
@@ -55,7 +55,7 @@ export default function HeroSection() {
                   onClick={e => e.stopPropagation()}
                   className="hover:text-[#FF5F1F] transition-colors flex items-center gap-2 whitespace-nowrap"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3 md:w-4 md:h-4 shrink-0"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.971 3-3.467 0-5.83-2.46-5.83-6.07 0-3.693 2.508-6.11 5.76-6.11 3.42 0 5.419 2.44 5.419 5.82 0 .52-.061 1.05-.119 1.36h-8.03c.09 1.7 1.25 2.76 2.89 2.76 1.48 0 2.27-.64 2.74-1.76h2.141zm-7.796-4.99h5.11c-.13-1.47-.98-2.31-2.48-2.31-1.46 0-2.44.89-2.63 2.31zm-10.93-7.01h5.88c2.47 0 4.12 1.25 4.12 3.46 0 1.44-.8 2.62-2.14 3.09 1.76.49 2.68 1.87 2.68 3.59 0 2.45-1.93 3.86-4.57 3.86h-6.04v-14zm3.03 2.42v3.25h2.61c1.07 0 1.83-.56 1.83-1.63 0-1.04-.73-1.62-1.83-1.62h-2.61zm0 5.67v3.49h2.81c1.19 0 1.99-.6 1.99-1.74 0-1.16-.79-1.75-2-1.75h-2.8z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 md:w-4 md:h-4 shrink-0"><path d="M3 18v-12h4.5a3 3 0 0 1 0 6a3 3 0 0 1 0 6h-4.5" /><path d="M3 12l4.5 0" /><path d="M14 13h7a3.5 3.5 0 0 0 -7 0v2a3.5 3.5 0 0 0 6.64 1" /><path d="M16 6l3 0" /></svg>
                   <span>Behance</span>
                 </a>
                 <a

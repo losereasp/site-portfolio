@@ -41,15 +41,23 @@ export default function Footer() {
         </div>
 
         {/* Right Block (Links) */}
-        <div className="flex flex-col justify-between font-mono text-sm md:text-lg lg:text-xl font-bold tracking-widest uppercase items-start text-left min-w-[200px] h-full pt-1 pb-1">
-          <a href="mailto:iaroslav@losereasp.com" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">iaroslav@losereasp.com</a>
-          <a href="https://t.me/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">TELEGRAM</a>
-          <a href="https://www.artstation.com/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">ARTSTATION</a>
-          <a href="https://www.behance.net/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">BEHANCE</a>
-          <a href="https://www.instagram.com/yaroslav.losereasp/" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">INSTAGRAM</a>
-          <a href="https://www.threads.com/@yaroslav.losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">THREADS</a>
-          <a href="https://www.linkedin.com/in/losereasp/" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">LINKEDIN</a>
-          <a href="https://vimeo.com/1175696148" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors">VIMEO REEL</a>
+        <div className="flex flex-col justify-start font-mono text-sm md:text-base lg:text-lg font-bold tracking-widest uppercase items-start text-left min-w-[240px] pt-1">
+          <a href="mailto:iaroslav@losereasp.com" className="mb-6 pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors inline-block w-fit">
+            iaroslav@losereasp.com
+          </a>
+          <div className="flex flex-row gap-8 lg:gap-12">
+            <div className="flex flex-col gap-3.5 items-start">
+              <a href="https://t.me/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">TELEGRAM</a>
+              <a href="https://www.artstation.com/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">ARTSTATION</a>
+              <a href="https://www.behance.net/losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">BEHANCE</a>
+              <a href="https://vimeo.com/1175696148" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">VIMEO REEL</a>
+            </div>
+            <div className="flex flex-col gap-3.5 items-start">
+              <a href="https://www.instagram.com/yaroslav.losereasp/" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">INSTAGRAM</a>
+              <a href="https://www.threads.com/@yaroslav.losereasp" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">THREADS</a>
+              <a href="https://www.linkedin.com/in/losereasp/" target="_blank" rel="noopener noreferrer" className="pb-1 border-b-[3px] border-[#FF5F1F] hover:text-[#FF5F1F] transition-colors w-fit">LINKEDIN</a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

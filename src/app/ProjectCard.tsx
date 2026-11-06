@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { useLanguage } from "./context/LanguageContext";
 
 interface ProjectCardProps {
@@ -32,13 +33,21 @@ export default function ProjectCard({ id, data, onClick, className = "", isFeatu
     }
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (!e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
+      e.preventDefault();
+      onClick(id);
+    }
+  };
+
   return (
-    <div
+    <Link
+      href={`/work/${id}`}
       data-view-cursor
-      onClick={() => onClick(id)}
+      onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative group overflow-hidden rounded-sm cursor-none ${className}`}
+      className={`relative group overflow-hidden rounded-sm cursor-none block ${className}`}
     >
       {/* Base Image */}
       <img
@@ -112,6 +121,6 @@ export default function ProjectCard({ id, data, onClick, className = "", isFeatu
           </div>
         </>
       )}
-    </div>
+    </Link>
   );
 }

@@ -111,19 +111,52 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [activeData, setActiveData] = useState<any>(null);
   const [openSketch, setOpenSketch] = useState<SketchItem | null>(null);
-  const openProject = (id: string) => {
+  const openProject = (id: string, updateHistory = true) => {
     const data = (PROJECTS_DATA as any)[id];
+    if (!data) return;
     setActiveData(data);
     setSelectedProject(data);
+    if (updateHistory && typeof window !== "undefined") {
+      window.history.pushState({ projectId: id }, "", `/work/${id}`);
+    }
   };
 
-  const closeProject = () => {
+  const switchProject = (id: string) => {
+    const data = (PROJECTS_DATA as any)[id];
+    if (!data) return;
+    setActiveData(data);
+    setSelectedProject(data);
+    if (typeof window !== "undefined") {
+      window.history.replaceState({ projectId: id }, "", `/work/${id}`);
+    }
+  };
+
+  const closeProject = (updateHistory = true) => {
     setSelectedProject(null);
     // Оставляем activeData на время анимации закрытия
     setTimeout(() => {
       setActiveData(null);
     }, 800);
+    if (updateHistory && typeof window !== "undefined") {
+      window.history.pushState({}, "", "/");
+    }
   };
+
+  // Browser Back/Forward navigation listener
+  useEffect(() => {
+    const handlePopState = () => {
+      const pathname = window.location.pathname;
+      const match = pathname.match(/^\/work\/([^/]+)/);
+      if (match && match[1] && match[1] in PROJECTS_DATA) {
+        openProject(match[1], false);
+      } else {
+        closeProject(false);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   return (
     <main className="min-h-screen selection:bg-[#FF5F1F] selection:text-white">
@@ -239,9 +272,9 @@ export default function Home() {
       {/* Case Study Overlay */}
       <ProjectOverlay
         isOpen={!!selectedProject}
-        onClose={closeProject}
+        onClose={() => closeProject(true)}
         project={selectedProject || activeData || PROJECTS_DATA["echoes-of-kalyazin"]}
-        onSelectProject={openProject}
+        onSelectProject={switchProject}
         currentProjectId={selectedProject ? Object.keys(PROJECTS_DATA).find(key => (PROJECTS_DATA as any)[key] === selectedProject) : undefined}
       />
     </main>

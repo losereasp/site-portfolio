@@ -126,7 +126,7 @@ export default function AboutPage() {
 
             <Magnetic>
               <a 
-                href={lang === 'ru' ? '/Iaroslav-Marchenkov-CV-RU.pdf?v=20261008' : '/Iaroslav-Marchenkov-CV-EN.pdf?v=20261008'}
+                href={lang === 'ru' ? '/Iaroslav-Marchenkov-CV-RU.pdf?v=20261107' : '/Iaroslav-Marchenkov-CV-EN.pdf?v=20261008'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-black/20 text-[#111111] font-mono text-base md:text-lg font-bold uppercase transition-all duration-300 hover:border-[#FF5F1F] hover:text-[#FF5F1F] hover:bg-[#FF5F1F]/5 rounded-[3px] w-full sm:w-auto whitespace-nowrap"
@@ -137,7 +137,13 @@ export default function AboutPage() {
           </div>
           
           <div className="flex gap-6 md:gap-8">
-            <a href="https://www.instagram.com/yaroslav.losereasp/" target="_blank" className="animate-social opacity-0 text-black/60 hover:text-[#FF5F1F] transition-all duration-300 hover:-translate-y-[3px]">
+            <a href="https://www.artstation.com/losereasp" target="_blank" rel="noopener noreferrer" className="animate-social opacity-0 text-black/60 hover:text-[#FF5F1F] transition-all duration-300 hover:-translate-y-[3px]" aria-label="ArtStation">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 md:w-10 md:h-10"><path d="M0 17.723l2.027 3.505h.001a2.424 2.424 0 0 0 2.164 1.334h13.457l-2.79-4.839H0zm24 .023c0-.304-.08-.588-.221-.832l-8.892-15.4a2.422 2.422 0 0 0-2.099-1.214H7.865l13.064 22.628c1.875-.41 3.07-1.896 3.071-3.682v-1.5zM11.666 5.892L5.437 16.68h12.458l-6.229-10.788z"/></svg>
+            </a>
+            <a href="https://www.behance.net/losereasp" target="_blank" rel="noopener noreferrer" className="animate-social opacity-0 text-black/60 hover:text-[#FF5F1F] transition-all duration-300 hover:-translate-y-[3px]" aria-label="Behance">
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 md:w-10 md:h-10"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.971 3-3.467 0-5.83-2.46-5.83-6.07 0-3.693 2.508-6.11 5.76-6.11 3.42 0 5.419 2.44 5.419 5.82 0 .52-.061 1.05-.119 1.36h-8.03c.09 1.7 1.25 2.76 2.89 2.76 1.48 0 2.27-.64 2.74-1.76h2.141zm-7.796-4.99h5.11c-.13-1.47-.98-2.31-2.48-2.31-1.46 0-2.44.89-2.63 2.31zm-10.93-7.01h5.88c2.47 0 4.12 1.25 4.12 3.46 0 1.44-.8 2.62-2.14 3.09 1.76.49 2.68 1.87 2.68 3.59 0 2.45-1.93 3.86-4.57 3.86h-6.04v-14zm3.03 2.42v3.25h2.61c1.07 0 1.83-.56 1.83-1.63 0-1.04-.73-1.62-1.83-1.62h-2.61zm0 5.67v3.49h2.81c1.19 0 1.99-.6 1.99-1.74 0-1.16-.79-1.75-2-1.75h-2.8z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/yaroslav.losereasp/" target="_blank" rel="noopener noreferrer" className="animate-social opacity-0 text-black/60 hover:text-[#FF5F1F] transition-all duration-300 hover:-translate-y-[3px]" aria-label="Instagram">
                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 md:w-10 md:h-10"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
             <a href="https://www.threads.com/@yaroslav.losereasp" target="_blank" className="animate-social opacity-0 text-black/60 hover:text-[#FF5F1F] transition-all duration-300 hover:-translate-y-[3px]">
